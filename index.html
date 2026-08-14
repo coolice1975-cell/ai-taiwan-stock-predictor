@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#020617">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AI台股預測">
+<link rel="manifest" href="manifest.json">
+<title>AI 台股預測</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#020617;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;-webkit-tap-highlight-color:transparent}
+.page{display:none;min-height:100vh;padding-bottom:105px}
+.page.active{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:.3}to{opacity:1}}
+.glass{background:rgba(30,41,59,.62);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.09);border-radius:20px}
+.nav{background:rgba(2,6,23,.94);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);padding-bottom:env(safe-area-inset-bottom)}
+.nav button{min-width:72px}
+.hide-scroll::-webkit-scrollbar{display:none}
+.hide-scroll{scrollbar-width:none}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:99px;background:currentColor}
+</style>
+</head>
+<body>
+
+<section id="homePage" class="page active">
+  <header class="sticky top-0 z-40 px-5 pt-5 pb-4 bg-slate-950/85 backdrop-blur-xl border-b border-white/5">
+    <div class="flex justify-between items-center">
+      <div>
+        <div class="text-[10px] text-cyan-400 font-black tracking-widest">AI TAIWAN MARKET</div>
+        <h1 class="text-xl font-black mt-1">今日台股預測</h1>
+      </div>
+      <div id="marketBadge" class="text-[10px] font-bold px-3 py-2 rounded-full bg-amber-500/10 text-amber-400">模擬資料版</div>
+    </div>
+  </header>
+
+  <main class="p-5 space-y-4">
+    <div class="glass p-6 text-center">
+      <div class="text-[10px] text-slate-500 font-bold tracking-widest">AI 綜合判斷</div>
+      <div id="homeTrend" class="text-4xl font-black text-amber-400 mt-2">↑ 偏多</div>
+      <div class="text-sm text-slate-400 mt-2">上漲機率 <span id="homeProb" class="text-white font-black">76%</span></div>
+      <div class="mt-4 text-3xl font-black text-white" id="homeRange">+80 ～ +160</div>
+      <div class="text-[10px] text-slate-500 mt-1">預估加權指數點數區間（V1 模擬）</div>
+    </div>
+
+    <div class="glass p-4">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="font-black text-sm">AI 主要因子</h2>
+        <span class="text-[9px] text-slate-500">V1 介面</span>
+      </div>
+      <div id="factorList" class="space-y-4"></div>
+    </div>
+
+    <div class="glass overflow-hidden">
+      <div class="p-4 border-b border-white/5">
+        <div class="font-black text-sm">AI 預測戰績</div>
+        <div class="text-[10px] text-slate-500 mt-1">正式版會由真實資料與隔日驗證自動更新</div>
+      </div>
+      <div id="historyList" class="divide-y divide-white/5"></div>
+    </div>
+
+    <div class="glass p-4 border-l-4 border-amber-400">
+      <div class="text-[10px] text-amber-400 font-black">目前版本狀態</div>
+      <p class="text-xs text-slate-400 leading-relaxed mt-2">
+        這是第一階段 UI/PWA 原型。現在先把 App 架構與操作介面完成；下一階段才會接入真實台股、美股、ADR、夜盤、新聞與 AI 預測引擎。
+      </p>
+    </div>
+  </main>
+</section>
+
+<section id="watchlistPage" class="page">
+  <header class="px-5 pt-6 pb-4">
+    <div class="flex justify-between items-end">
+      <div>
+        <div class="text-[10px] text-cyan-400 font-black tracking-widest">WATCHLIST</div>
+        <h1 class="text-2xl font-black mt-1">自選監控</h1>
+        <p class="text-[10px] text-slate-500 mt-1">最多 20 檔 · <span id="watchCount">0</span> 檔</p>
+      </div>
+      <button onclick="addWatch()" class="bg-blue-600 active:scale-95 px-4 py-2.5 rounded-xl text-xs font-black">＋新增</button>
+    </div>
+  </header>
+  <main id="watchContainer" class="px-5 space-y-4"></main>
+</section>
+
+<section id="analysisPage" class="page">
+  <header class="px-5 pt-6 pb-4">
+    <div class="text-[10px] text-cyan-400 font-black tracking-widest">AI ANALYSIS</div>
+    <h1 class="text-2xl font-black mt-1">個股 AI 分析</h1>
+  </header>
+  <main class="px-5 space-y-4">
+    <div class="flex gap-2">
+      <input id="symbolInput" inputmode="numeric" maxlength="6" value="2330"
+        class="flex-1 bg-slate-900 border border-slate-700 rounded-2xl px-4 py-3 outline-none font-black"
+        placeholder="輸入台股代號">
+      <button onclick="analyze()" class="bg-blue-600 px-5 rounded-2xl font-black">分析</button>
+    </div>
+
+    <div class="glass p-5">
+      <div class="flex justify-between items-start">
+        <div>
+          <div class="text-[10px] text-blue-400 font-black">AI STOCK ANALYSIS</div>
+          <h2 id="stockName" class="text-2xl font-black mt-1">台積電</h2>
+          <div id="stockCode" class="text-[10px] text-slate-500 mt-1">2330.TW</div>
+        </div>
+        <div id="stockTrend" class="text-2xl font-black text-amber-400">↑ 偏多</div>
+      </div>
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <div class="bg-white/5 rounded-2xl p-4">
+          <div class="text-[9px] text-slate-500">上漲機率</div>
+          <div id="stockProb" class="text-2xl font-black mt-1">81%</div>
+        </div>
+        <div class="bg-white/5 rounded-2xl p-4">
+          <div class="text-[9px] text-slate-500">AI 信心度</div>
+          <div id="stockConf" class="text-2xl font-black mt-1">88%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass p-5">
+      <div class="font-black text-sm mb-4">影響因子</div>
+      <div id="stockFactors" class="space-y-4"></div>
+    </div>
+
+    <div class="glass p-5">
+      <div class="font-black text-sm">AI 判斷理由</div>
+      <p id="stockReason" class="text-xs text-slate-400 leading-relaxed mt-3">
+        目前為介面原型，正式版會由真實資料與模型產生理由。
+      </p>
+    </div>
+  </main>
+</section>
+
+<section id="reportPage" class="page">
+  <header class="px-5 pt-6 pb-4">
+    <div class="text-[10px] text-cyan-400 font-black tracking-widest">AI MORNING REPORT</div>
+    <h1 class="text-2xl font-black mt-1">AI 晨報</h1>
+  </header>
+  <main class="px-5 space-y-4">
+    <div class="glass p-5">
+      <div class="text-xs text-slate-500">今日市場摘要</div>
+      <h2 class="text-2xl font-black mt-2">偏多，但留意開高震盪</h2>
+      <p class="text-xs text-slate-400 leading-relaxed mt-3">
+        這一頁先建立正式 App 的呈現格式。接上資料後，這裡會自動整合前一晚國內外新聞、美股、ADR、台指夜盤、法人與技術面。
+      </p>
+    </div>
+    <div class="glass p-5">
+      <div class="font-black text-sm mb-4">今日重點</div>
+      <div class="space-y-3 text-xs">
+        <div class="flex gap-3"><span class="text-emerald-400">●</span><span>美股科技股與半導體市場影響</span></div>
+        <div class="flex gap-3"><span class="text-emerald-400">●</span><span>台積電 ADR 與台指夜盤方向</span></div>
+        <div class="flex gap-3"><span class="text-amber-400">●</span><span>重要總經數據與政策事件</span></div>
+        <div class="flex gap-3"><span class="text-rose-400">●</span><span>重大國際風險與突發新聞</span></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<nav class="nav fixed bottom-0 left-0 right-0 z-50 h-20 flex justify-around items-center">
+  <button onclick="switchPage('home')" id="navHome" class="flex flex-col items-center gap-1 text-blue-400">
+    <span class="text-2xl">⌂</span><span class="text-[10px] font-black">首頁</span>
+  </button>
+  <button onclick="switchPage('watchlist')" id="navWatch" class="flex flex-col items-center gap-1 text-slate-500">
+    <span class="text-2xl">▦</span><span class="text-[10px] font-black">自選</span>
+  </button>
+  <button onclick="switchPage('analysis')" id="navAnalysis" class="flex flex-col items-center gap-1 text-slate-500">
+    <span class="text-2xl">⌕</span><span class="text-[10px] font-black">分析</span>
+  </button>
+  <button onclick="switchPage('report')" id="navReport" class="flex flex-col items-center gap-1 text-slate-500">
+    <span class="text-2xl">▤</span><span class="text-[10px] font-black">晨報</span>
+  </button>
+</nav>
+
+<script>
+const stockDB={"2330":"台積電","2317":"鴻海","2454":"聯發科","3017":"奇鋐","2382":"廣達","3037":"欣興","2308":"台達電"};
+let watchlist=JSON.parse(localStorage.getItem("aiStockWatchlist")||'["2330","3017","2454"]');
+let current="2330";
+
+const factors=[
+ ["美股科技","偏多","text-emerald-400",84],
+ ["SOX 半導體","偏多","text-emerald-400",88],
+ ["台積電 ADR","偏多","text-emerald-400",91],
+ ["台指夜盤","偏多","text-emerald-400",78],
+ ["新聞情緒","中性偏多","text-amber-400",63],
+ ["風險因子","中性","text-slate-400",48]
+];
+
+function renderFactors(targetId=factors){
+ const el=document.getElementById(targetId);
+ el.innerHTML=factors.map(x=>`
+ <div>
+   <div class="flex justify-between text-xs mb-2">
+     <span class="text-slate-300 font-bold">${x[0]}</span>
+     <span class="${x[2]} font-black">${x[1]}</span>
+   </div>
+   <div class="bar ${x[2]}"><i style="width:${x[3]}%"></i></div>
+ </div>`).join("");
+}
+
+function renderHome(){
+ renderFactors("factorList");
+ const history=[
+  ["08/08","+120","+138","✓"],
+  ["08/07","-80","-63","✓"],
+  ["08/06","+150","-42","×"],
+  ["08/05","+60","+71","✓"]
+ ];
+ document.getElementById("historyList").innerHTML=history.map(r=>`
+ <div class="grid grid-cols-4 items-center px-4 py-4 text-xs">
+   <span class="text-slate-500">${r[0]}</span>
+   <span class="${r[1][0]=='-'?'text-rose-400':'text-amber-400'} font-bold">${r[1]}</span>
+   <span class="${r[2][0]=='-'?'text-rose-400':'text-emerald-400'} font-bold">${r[2]}</span>
+   <span class="${r[3]=='✓'?'text-emerald-400':'text-rose-400'} text-right font-black">${r[3]}</span>
+ </div>`).join("");
+}
+
+function stockData(symbol){
+ let n=0; for(let i=0;i<symbol.length;i++) n=(n*31+symbol.charCodeAt(i))>>>0;
+ const prob=70+(n%23), conf=78+(n%18);
+ return {prob,conf,up:prob>=65};
+}
+
+function renderWatch(){
+ document.getElementById("watchCount").textContent=watchlist.length;
+ const el=document.getElementById("watchContainer");
+ el.innerHTML=watchlist.map((s,i)=>{
+   const d=stockData(s), name=stockDB[s]||("台股 "+s);
+   return `<div class="glass p-5">
+    <div class="flex justify-between items-start">
+      <div><div class="text-lg font-black">${name}</div><div class="text-[10px] text-slate-500">${s}.TW</div></div>
+      <button onclick="removeWatch(${i})" class="text-slate-500 text-xl">×</button>
+    </div>
+    <div class="flex justify-between items-end mt-5">
+      <div><div class="text-[9px] text-slate-500">AI 判斷</div>
+        <div class="text-xl font-black ${d.up?'text-emerald-400':'text-rose-400'}">${d.up?'↑ 偏多':'↓ 偏空'}</div>
+      </div>
+      <div class="text-right"><div class="text-[9px] text-slate-500">上漲機率</div><div class="text-2xl font-black">${d.prob}%</div></div>
+    </div>
+    <button onclick="openStock('${s}')" class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs font-black">查看 AI 分析</button>
+   </div>`;
+ }).join("");
+}
+
+function analyze(){
+ let s=document.getElementById("symbolInput").value.trim().replace(/[^0-9]/g,"");
+ if(!s)return;
+ current=s;
+ const d=stockData(s);
+ document.getElementById("stockName").textContent=stockDB[s]||("台股 "+s);
+ document.getElementById("stockCode").textContent=s+".TW";
+ document.getElementById("stockTrend").textContent=d.up?"↑ 偏多":"↓ 偏空";
+ document.getElementById("stockTrend").className="text-2xl font-black "+(d.up?"text-emerald-400":"text-rose-400");
+ document.getElementById("stockProb").textContent=d.prob+"%";
+ document.getElementById("stockConf").textContent=d.conf+"%";
+ renderFactors("stockFactors");
+ document.getElementById("stockReason").textContent="目前為第一階段原型。正式版會將歷史行情、技術指標、法人、ADR、台指夜盤與前一晚新聞事件交由 AI 綜合分析，再產生可追蹤、可回測的預測結果。";
+}
+
+function openStock(s){document.getElementById("symbolInput").value=s; analyze(); switchPage("analysis");}
+function addWatch(){
+ if(watchlist.length>=20){alert("最多 20 檔");return}
+ const s=prompt("輸入台股代號，例如 2330")?.trim().replace(/[^0-9]/g,"");
+ if(!s||watchlist.includes(s))return;
+ watchlist.push(s);localStorage.setItem("aiStockWatchlist",JSON.stringify(watchlist));renderWatch();
+}
+function removeWatch(i){watchlist.splice(i,1);localStorage.setItem("aiStockWatchlist",JSON.stringify(watchlist));renderWatch();}
+function switchPage(page){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(page+"Page").classList.add("active");
+ const map={home:"navHome",watchlist:"navWatch",analysis:"navAnalysis",report:"navReport"};
+ Object.entries(map).forEach(([k,id])=>{
+   document.getElementById(id).className="flex flex-col items-center gap-1 "+(k===page?"text-blue-400":"text-slate-500");
+ });
+ if(page==="watchlist")renderWatch();
+ if(page==="analysis")analyze();
+}
+renderHome();renderWatch();analyze();
+
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}
+</script>
+</body>
+</html>
