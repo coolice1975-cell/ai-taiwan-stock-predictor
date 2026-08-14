@@ -8,278 +8,1988 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="AI台股預測">
 <link rel="manifest" href="manifest.json">
+
 <title>AI 台股預測</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#020617;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;-webkit-tap-highlight-color:transparent}
-.page{display:none;min-height:100vh;padding-bottom:105px}
-.page.active{display:block;animation:fade .2s ease}
-@keyframes fade{from{opacity:.3}to{opacity:1}}
-.glass{background:rgba(30,41,59,.62);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.09);border-radius:20px}
-.nav{background:rgba(2,6,23,.94);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);padding-bottom:env(safe-area-inset-bottom)}
-.nav button{min-width:72px}
-.hide-scroll::-webkit-scrollbar{display:none}
-.hide-scroll{scrollbar-width:none}
-.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
-.bar>i{display:block;height:100%;border-radius:99px;background:currentColor}
+
+body{
+  margin:0;
+  background:#020617;
+  color:#f8fafc;
+  font-family:-apple-system,BlinkMacSystemFont,
+  "PingFang TC","Noto Sans TC",sans-serif;
+  -webkit-tap-highlight-color:transparent
+}
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding-bottom:105px
+}
+
+.page.active{
+  display:block;
+  animation:fade .2s ease
+}
+
+@keyframes fade{
+  from{opacity:.3}
+  to{opacity:1}
+}
+
+.glass{
+  background:rgba(30,41,59,.62);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:20px
+}
+
+.nav{
+  background:rgba(2,6,23,.94);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-bottom:env(safe-area-inset-bottom)
+}
+
+.nav button{
+  min-width:72px
+}
+
+.bar{
+  height:8px;
+  border-radius:99px;
+  background:rgba(255,255,255,.08);
+  overflow:hidden
+}
+
+.bar>i{
+  display:block;
+  height:100%;
+  border-radius:99px;
+  background:currentColor
+}
+
+.loading{
+  opacity:.6;
+  animation:pulse 1.2s infinite
+}
+
+@keyframes pulse{
+  0%,100%{opacity:.4}
+  50%{opacity:1}
+}
 </style>
 </head>
+
 <body>
 
+<!-- =========================
+     首頁
+========================= -->
+
 <section id="homePage" class="page active">
-  <header class="sticky top-0 z-40 px-5 pt-5 pb-4 bg-slate-950/85 backdrop-blur-xl border-b border-white/5">
-    <div class="flex justify-between items-center">
-      <div>
-        <div class="text-[10px] text-cyan-400 font-black tracking-widest">AI TAIWAN MARKET</div>
-        <h1 class="text-xl font-black mt-1">今日台股預測</h1>
-      </div>
-      <div id="marketBadge" class="text-[10px] font-bold px-3 py-2 rounded-full bg-amber-500/10 text-amber-400">模擬資料版</div>
-    </div>
-  </header>
 
-  <main class="p-5 space-y-4">
-    <div class="glass p-6 text-center">
-      <div class="text-[10px] text-slate-500 font-bold tracking-widest">AI 綜合判斷</div>
-      <div id="homeTrend" class="text-4xl font-black text-amber-400 mt-2">↑ 偏多</div>
-      <div class="text-sm text-slate-400 mt-2">上漲機率 <span id="homeProb" class="text-white font-black">76%</span></div>
-      <div class="mt-4 text-3xl font-black text-white" id="homeRange">+80 ～ +160</div>
-      <div class="text-[10px] text-slate-500 mt-1">預估加權指數點數區間（V1 模擬）</div>
-    </div>
+<header class="sticky top-0 z-40 px-5 pt-5 pb-4 bg-slate-950/85 backdrop-blur-xl border-b border-white/5">
 
-    <div class="glass p-4">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="font-black text-sm">AI 主要因子</h2>
-        <span class="text-[9px] text-slate-500">V1 介面</span>
-      </div>
-      <div id="factorList" class="space-y-4"></div>
-    </div>
+<div class="flex justify-between items-center">
 
-    <div class="glass overflow-hidden">
-      <div class="p-4 border-b border-white/5">
-        <div class="font-black text-sm">AI 預測戰績</div>
-        <div class="text-[10px] text-slate-500 mt-1">正式版會由真實資料與隔日驗證自動更新</div>
-      </div>
-      <div id="historyList" class="divide-y divide-white/5"></div>
-    </div>
+<div>
+<div class="text-[10px] text-cyan-400 font-black tracking-widest">
+AI TAIWAN MARKET
+</div>
 
-    <div class="glass p-4 border-l-4 border-amber-400">
-      <div class="text-[10px] text-amber-400 font-black">目前版本狀態</div>
-      <p class="text-xs text-slate-400 leading-relaxed mt-2">
-        這是第一階段 UI/PWA 原型。現在先把 App 架構與操作介面完成；下一階段才會接入真實台股、美股、ADR、夜盤、新聞與 AI 預測引擎。
-      </p>
-    </div>
-  </main>
+<h1 class="text-xl font-black mt-1">
+今日台股預測
+</h1>
+</div>
+
+<div id="marketBadge"
+class="text-[10px] font-bold px-3 py-2 rounded-full bg-blue-500/10 text-blue-400">
+真實資料
+</div>
+
+</div>
+
+</header>
+
+
+<main class="p-5 space-y-4">
+
+<!-- 市場狀態 -->
+
+<div class="glass p-6 text-center">
+
+<div class="text-[10px] text-slate-500 font-bold tracking-widest">
+台股資料
+</div>
+
+<div id="marketStatus"
+class="text-lg font-black text-cyan-400 mt-2 loading">
+正在讀取真實資料…
+</div>
+
+<div class="text-sm text-slate-400 mt-2">
+資料日期：
+<span id="marketDate" class="text-white font-black">
+--
+</span>
+</div>
+
+<div class="mt-4 text-3xl font-black text-white"
+id="marketClose">
+--
+</div>
+
+<div class="text-[10px] text-slate-500 mt-1">
+加權指數 / 最新資料
+</div>
+
+</div>
+
+
+<!-- AI 預測 -->
+
+<div class="glass p-6 text-center">
+
+<div class="text-[10px] text-slate-500 font-bold tracking-widest">
+AI 綜合判斷
+</div>
+
+<div id="homeTrend"
+class="text-4xl font-black text-amber-400 mt-2">
+資料分析中
+</div>
+
+<div class="text-sm text-slate-400 mt-2">
+
+上漲機率
+
+<span id="homeProb"
+class="text-white font-black">
+--
+</span>
+
+</div>
+
+<div class="mt-4 text-3xl font-black text-white"
+id="homeRange">
+--
+</div>
+
+<div class="text-[10px] text-slate-500 mt-1">
+目前為第一階段真實資料分析
+</div>
+
+</div>
+
+
+<!-- 真實市場因子 -->
+
+<div class="glass p-4">
+
+<div class="flex justify-between items-center mb-4">
+
+<h2 class="font-black text-sm">
+目前市場資料
+</h2>
+
+<span class="text-[9px] text-slate-500">
+REAL DATA
+</span>
+
+</div>
+
+<div id="factorList"
+class="space-y-4">
+
+<div class="text-xs text-slate-500 loading">
+正在取得市場資料…
+</div>
+
+</div>
+
+</div>
+
+
+<!-- 最近行情 -->
+
+<div class="glass overflow-hidden">
+
+<div class="p-4 border-b border-white/5">
+
+<div class="font-black text-sm">
+最近交易日
+</div>
+
+<div class="text-[10px] text-slate-500 mt-1">
+由台股真實資料 API 提供
+</div>
+
+</div>
+
+<div id="historyList"
+class="divide-y divide-white/5">
+
+</div>
+
+</div>
+
+
+<div class="glass p-4 border-l-4 border-blue-400">
+
+<div class="text-[10px] text-blue-400 font-black">
+系統狀態
+</div>
+
+<p id="systemMessage"
+class="text-xs text-slate-400 leading-relaxed mt-2">
+正在連接 Google Apps Script 台股資料 API…
+</p>
+
+</div>
+
+</main>
+
 </section>
+
+
+
+<!-- =========================
+     自選股
+========================= -->
 
 <section id="watchlistPage" class="page">
-  <header class="px-5 pt-6 pb-4">
-    <div class="flex justify-between items-end">
-      <div>
-        <div class="text-[10px] text-cyan-400 font-black tracking-widest">WATCHLIST</div>
-        <h1 class="text-2xl font-black mt-1">自選監控</h1>
-        <p class="text-[10px] text-slate-500 mt-1">最多 20 檔 · <span id="watchCount">0</span> 檔</p>
-      </div>
-      <button onclick="addWatch()" class="bg-blue-600 active:scale-95 px-4 py-2.5 rounded-xl text-xs font-black">＋新增</button>
-    </div>
-  </header>
-  <main id="watchContainer" class="px-5 space-y-4"></main>
+
+<header class="px-5 pt-6 pb-4">
+
+<div class="flex justify-between items-end">
+
+<div>
+
+<div class="text-[10px] text-cyan-400 font-black tracking-widest">
+WATCHLIST
+</div>
+
+<h1 class="text-2xl font-black mt-1">
+自選監控
+</h1>
+
+<p class="text-[10px] text-slate-500 mt-1">
+最多 20 檔 ·
+<span id="watchCount">0</span>
+檔
+</p>
+
+</div>
+
+<button
+onclick="addWatch()"
+class="bg-blue-600 active:scale-95 px-4 py-2.5 rounded-xl text-xs font-black">
+＋新增
+</button>
+
+</div>
+
+</header>
+
+<main id="watchContainer"
+class="px-5 space-y-4">
+</main>
+
 </section>
+
+
+
+<!-- =========================
+     個股分析
+========================= -->
 
 <section id="analysisPage" class="page">
-  <header class="px-5 pt-6 pb-4">
-    <div class="text-[10px] text-cyan-400 font-black tracking-widest">AI ANALYSIS</div>
-    <h1 class="text-2xl font-black mt-1">個股 AI 分析</h1>
-  </header>
-  <main class="px-5 space-y-4">
-    <div class="flex gap-2">
-      <input id="symbolInput" inputmode="numeric" maxlength="6" value="2330"
-        class="flex-1 bg-slate-900 border border-slate-700 rounded-2xl px-4 py-3 outline-none font-black"
-        placeholder="輸入台股代號">
-      <button onclick="analyze()" class="bg-blue-600 px-5 rounded-2xl font-black">分析</button>
-    </div>
 
-    <div class="glass p-5">
-      <div class="flex justify-between items-start">
-        <div>
-          <div class="text-[10px] text-blue-400 font-black">AI STOCK ANALYSIS</div>
-          <h2 id="stockName" class="text-2xl font-black mt-1">台積電</h2>
-          <div id="stockCode" class="text-[10px] text-slate-500 mt-1">2330.TW</div>
-        </div>
-        <div id="stockTrend" class="text-2xl font-black text-amber-400">↑ 偏多</div>
-      </div>
-      <div class="grid grid-cols-2 gap-3 mt-5">
-        <div class="bg-white/5 rounded-2xl p-4">
-          <div class="text-[9px] text-slate-500">上漲機率</div>
-          <div id="stockProb" class="text-2xl font-black mt-1">81%</div>
-        </div>
-        <div class="bg-white/5 rounded-2xl p-4">
-          <div class="text-[9px] text-slate-500">AI 信心度</div>
-          <div id="stockConf" class="text-2xl font-black mt-1">88%</div>
-        </div>
-      </div>
-    </div>
+<header class="px-5 pt-6 pb-4">
 
-    <div class="glass p-5">
-      <div class="font-black text-sm mb-4">影響因子</div>
-      <div id="stockFactors" class="space-y-4"></div>
-    </div>
+<div class="text-[10px] text-cyan-400 font-black tracking-widest">
+AI ANALYSIS
+</div>
 
-    <div class="glass p-5">
-      <div class="font-black text-sm">AI 判斷理由</div>
-      <p id="stockReason" class="text-xs text-slate-400 leading-relaxed mt-3">
-        目前為介面原型，正式版會由真實資料與模型產生理由。
-      </p>
-    </div>
-  </main>
+<h1 class="text-2xl font-black mt-1">
+個股 AI 分析
+</h1>
+
+</header>
+
+
+<main class="px-5 space-y-4">
+
+<div class="flex gap-2">
+
+<input
+id="symbolInput"
+inputmode="numeric"
+maxlength="6"
+value="2330"
+class="flex-1 bg-slate-900 border border-slate-700 rounded-2xl px-4 py-3 outline-none font-black"
+placeholder="輸入台股代號">
+
+<button
+onclick="analyze()"
+class="bg-blue-600 px-5 rounded-2xl font-black">
+分析
+</button>
+
+</div>
+
+
+<div class="glass p-5">
+
+<div class="flex justify-between items-start">
+
+<div>
+
+<div class="text-[10px] text-blue-400 font-black">
+REAL STOCK DATA
+</div>
+
+<h2 id="stockName"
+class="text-2xl font-black mt-1">
+台積電
+</h2>
+
+<div id="stockCode"
+class="text-[10px] text-slate-500 mt-1">
+2330.TW
+</div>
+
+</div>
+
+<div id="stockTrend"
+class="text-2xl font-black text-amber-400">
+分析中
+</div>
+
+</div>
+
+
+<div class="grid grid-cols-2 gap-3 mt-5">
+
+<div class="bg-white/5 rounded-2xl p-4">
+
+<div class="text-[9px] text-slate-500">
+最新收盤
+</div>
+
+<div id="stockPrice"
+class="text-2xl font-black mt-1">
+--
+</div>
+
+</div>
+
+
+<div class="bg-white/5 rounded-2xl p-4">
+
+<div class="text-[9px] text-slate-500">
+漲跌
+</div>
+
+<div id="stockChange"
+class="text-2xl font-black mt-1">
+--
+</div>
+
+</div>
+
+</div>
+
+
+<div class="grid grid-cols-2 gap-3 mt-3">
+
+<div class="bg-white/5 rounded-2xl p-4">
+
+<div class="text-[9px] text-slate-500">
+漲跌幅
+</div>
+
+<div id="stockChangePct"
+class="text-2xl font-black mt-1">
+--
+</div>
+
+</div>
+
+
+<div class="bg-white/5 rounded-2xl p-4">
+
+<div class="text-[9px] text-slate-500">
+資料日期
+</div>
+
+<div id="stockDate"
+class="text-sm font-black mt-2">
+--
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="glass p-5">
+
+<div class="font-black text-sm mb-4">
+技術資料
+</div>
+
+<div id="stockFactors"
+class="space-y-4">
+
+</div>
+
+</div>
+
+
+
+<div class="glass p-5">
+
+<div class="font-black text-sm">
+AI 判斷理由
+</div>
+
+<p id="stockReason"
+class="text-xs text-slate-400 leading-relaxed mt-3">
+
+正在分析真實歷史資料…
+
+</p>
+
+</div>
+
+</main>
+
 </section>
+
+
+
+<!-- =========================
+     晨報
+========================= -->
 
 <section id="reportPage" class="page">
-  <header class="px-5 pt-6 pb-4">
-    <div class="text-[10px] text-cyan-400 font-black tracking-widest">AI MORNING REPORT</div>
-    <h1 class="text-2xl font-black mt-1">AI 晨報</h1>
-  </header>
-  <main class="px-5 space-y-4">
-    <div class="glass p-5">
-      <div class="text-xs text-slate-500">今日市場摘要</div>
-      <h2 class="text-2xl font-black mt-2">偏多，但留意開高震盪</h2>
-      <p class="text-xs text-slate-400 leading-relaxed mt-3">
-        這一頁先建立正式 App 的呈現格式。接上資料後，這裡會自動整合前一晚國內外新聞、美股、ADR、台指夜盤、法人與技術面。
-      </p>
-    </div>
-    <div class="glass p-5">
-      <div class="font-black text-sm mb-4">今日重點</div>
-      <div class="space-y-3 text-xs">
-        <div class="flex gap-3"><span class="text-emerald-400">●</span><span>美股科技股與半導體市場影響</span></div>
-        <div class="flex gap-3"><span class="text-emerald-400">●</span><span>台積電 ADR 與台指夜盤方向</span></div>
-        <div class="flex gap-3"><span class="text-amber-400">●</span><span>重要總經數據與政策事件</span></div>
-        <div class="flex gap-3"><span class="text-rose-400">●</span><span>重大國際風險與突發新聞</span></div>
-      </div>
-    </div>
-  </main>
+
+<header class="px-5 pt-6 pb-4">
+
+<div class="text-[10px] text-cyan-400 font-black tracking-widest">
+AI MORNING REPORT
+</div>
+
+<h1 class="text-2xl font-black mt-1">
+AI 晨報
+</h1>
+
+</header>
+
+
+<main class="px-5 space-y-4">
+
+<div class="glass p-5">
+
+<div class="text-xs text-slate-500">
+市場資料狀態
+</div>
+
+<h2
+id="reportTitle"
+class="text-2xl font-black mt-2">
+等待真實資料
+</h2>
+
+<p
+id="reportSummary"
+class="text-xs text-slate-400 leading-relaxed mt-3">
+
+系統正在取得台股歷史資料。
+
+下一階段將加入：
+
+美股、SOX、ADR、台指夜盤、法人、
+國內外新聞與事件。
+
+</p>
+
+</div>
+
+
+<div class="glass p-5">
+
+<div class="font-black text-sm mb-4">
+目前資料來源
+</div>
+
+<div class="space-y-3 text-xs">
+
+<div class="flex gap-3">
+<span class="text-emerald-400">●</span>
+<span>台股歷史行情</span>
+</div>
+
+<div class="flex gap-3">
+<span class="slate-400">●</span>
+<span>美股科技股</span>
+</div>
+
+<div class="flex gap-3">
+<span class="slate-400">●</span>
+<span>SOX 半導體指數</span>
+</div>
+
+<div class="flex gap-3">
+<span class="slate-400">●</span>
+<span>台積電 ADR</span>
+</div>
+
+<div class="flex gap-3">
+<span class="slate-400">●</span>
+<span>台指夜盤</span>
+</div>
+
+<div class="flex gap-3">
+<span class="slate-400">●</span>
+<span>國內外新聞</span>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
 </section>
 
+
+
+<!-- =========================
+     底部導航
+========================= -->
+
 <nav class="nav fixed bottom-0 left-0 right-0 z-50 h-20 flex justify-around items-center">
-  <button onclick="switchPage('home')" id="navHome" class="flex flex-col items-center gap-1 text-blue-400">
-    <span class="text-2xl">⌂</span><span class="text-[10px] font-black">首頁</span>
-  </button>
-  <button onclick="switchPage('watchlist')" id="navWatch" class="flex flex-col items-center gap-1 text-slate-500">
-    <span class="text-2xl">▦</span><span class="text-[10px] font-black">自選</span>
-  </button>
-  <button onclick="switchPage('analysis')" id="navAnalysis" class="flex flex-col items-center gap-1 text-slate-500">
-    <span class="text-2xl">⌕</span><span class="text-[10px] font-black">分析</span>
-  </button>
-  <button onclick="switchPage('report')" id="navReport" class="flex flex-col items-center gap-1 text-slate-500">
-    <span class="text-2xl">▤</span><span class="text-[10px] font-black">晨報</span>
-  </button>
+
+<button
+onclick="switchPage('home')"
+id="navHome"
+class="flex flex-col items-center gap-1 text-blue-400">
+
+<span class="text-2xl">⌂</span>
+<span class="text-[10px] font-black">首頁</span>
+
+</button>
+
+
+<button
+onclick="switchPage('watchlist')"
+id="navWatch"
+class="flex flex-col items-center gap-1 text-slate-500">
+
+<span class="text-2xl">▦</span>
+<span class="text-[10px] font-black">自選</span>
+
+</button>
+
+
+<button
+onclick="switchPage('analysis')"
+id="navAnalysis"
+class="flex flex-col items-center gap-1 text-slate-500">
+
+<span class="text-2xl">⌕</span>
+<span class="text-[10px] font-black">分析</span>
+
+</button>
+
+
+<button
+onclick="switchPage('report')"
+id="navReport"
+class="flex flex-col items-center gap-1 text-slate-500">
+
+<span class="text-2xl">▤</span>
+<span class="text-[10px] font-black">晨報</span>
+
+</button>
+
 </nav>
 
+
+
 <script>
-const stockDB={"2330":"台積電","2317":"鴻海","2454":"聯發科","3017":"奇鋐","2382":"廣達","3037":"欣興","2308":"台達電"};
-let watchlist=JSON.parse(localStorage.getItem("aiStockWatchlist")||'["2330","3017","2454"]');
+
+/* =========================================================
+   Google Apps Script API
+========================================================= */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwRbibuyRDdCJOkcpNubFVGwyiVngwOK95MprQJ7jAj0kW-sNYVE5tIcB0dWWO_p_jV/exec";
+
+
+/* =========================================================
+   股票名稱
+========================================================= */
+
+const stockDB={
+"2330":"台積電",
+"2317":"鴻海",
+"2454":"聯發科",
+"3017":"奇鋐",
+"2382":"廣達",
+"3037":"欣興",
+"2308":"台達電",
+"2881":"富邦金",
+"2882":"國泰金",
+"2891":"中信金",
+"2412":"中華電",
+"2303":"聯電"
+};
+
+
+/* =========================================================
+   自選股
+========================================================= */
+
+let watchlist=
+JSON.parse(
+localStorage.getItem("aiStockWatchlist")
+||'["2330","3017","2454"]'
+);
+
 let current="2330";
 
-const factors=[
- ["美股科技","偏多","text-emerald-400",84],
- ["SOX 半導體","偏多","text-emerald-400",88],
- ["台積電 ADR","偏多","text-emerald-400",91],
- ["台指夜盤","偏多","text-emerald-400",78],
- ["新聞情緒","中性偏多","text-amber-400",63],
- ["風險因子","中性","text-slate-400",48]
-];
+let marketData=null;
 
-function renderFactors(targetId=factors){
- const el=document.getElementById(targetId);
- el.innerHTML=factors.map(x=>`
- <div>
-   <div class="flex justify-between text-xs mb-2">
-     <span class="text-slate-300 font-bold">${x[0]}</span>
-     <span class="${x[2]} font-black">${x[1]}</span>
-   </div>
-   <div class="bar ${x[2]}"><i style="width:${x[3]}%"></i></div>
- </div>`).join("");
+
+/* =========================================================
+   API 取得資料
+========================================================= */
+
+async function getStockData(symbol="2330"){
+
+  const url =
+  API_URL +
+  "?symbol=" +
+  encodeURIComponent(symbol) +
+  "&t=" +
+  Date.now();
+
+  const response=await fetch(url,{
+    method:"GET",
+    cache:"no-store"
+  });
+
+  if(!response.ok){
+    throw new Error(
+      "API HTTP 錯誤：" +
+      response.status
+    );
+  }
+
+  const json=await response.json();
+
+  if(!json.success){
+    throw new Error(
+      json.error ||
+      "API 回傳失敗"
+    );
+  }
+
+  return json;
+
 }
 
-function renderHome(){
- renderFactors("factorList");
- const history=[
-  ["08/08","+120","+138","✓"],
-  ["08/07","-80","-63","✓"],
-  ["08/06","+150","-42","×"],
-  ["08/05","+60","+71","✓"]
- ];
- document.getElementById("historyList").innerHTML=history.map(r=>`
- <div class="grid grid-cols-4 items-center px-4 py-4 text-xs">
-   <span class="text-slate-500">${r[0]}</span>
-   <span class="${r[1][0]=='-'?'text-rose-400':'text-amber-400'} font-bold">${r[1]}</span>
-   <span class="${r[2][0]=='-'?'text-rose-400':'text-emerald-400'} font-bold">${r[2]}</span>
-   <span class="${r[3]=='✓'?'text-emerald-400':'text-rose-400'} text-right font-black">${r[3]}</span>
- </div>`).join("");
+
+/* =========================================================
+   找出資料陣列
+========================================================= */
+
+function extractRows(api){
+
+  if(!api || !api.data){
+    return [];
+  }
+
+  if(
+    api.data.rows &&
+    Array.isArray(api.data.rows)
+  ){
+    return api.data.rows;
+  }
+
+  if(
+    api.data.data &&
+    Array.isArray(api.data.data)
+  ){
+    return api.data.data;
+  }
+
+  if(Array.isArray(api.data)){
+    return api.data;
+  }
+
+  return [];
 }
 
-function stockData(symbol){
- let n=0; for(let i=0;i<symbol.length;i++) n=(n*31+symbol.charCodeAt(i))>>>0;
- const prob=70+(n%23), conf=78+(n%18);
- return {prob,conf,up:prob>=65};
+
+/* =========================================================
+   解析台股資料
+========================================================= */
+
+function normalizeRow(row){
+
+  if(Array.isArray(row)){
+
+    return {
+      date:row[0],
+      volume:row[1],
+      amount:row[2],
+      open:row[3],
+      high:row[4],
+      low:row[5],
+      close:row[6],
+      change:row[7],
+      pct:row[8]
+    };
+
+  }
+
+
+  return {
+
+    date:
+      row["日期"] ||
+      row.date ||
+      "",
+
+    volume:
+      row["成交股數"] ||
+      row.volume ||
+      "",
+
+    amount:
+      row["成交金額"] ||
+      row.amount ||
+      "",
+
+    open:
+      row["開盤價"] ||
+      row.open ||
+      "",
+
+    high:
+      row["最高價"] ||
+      row.high ||
+      "",
+
+    low:
+      row["最低價"] ||
+      row.low ||
+      "",
+
+    close:
+      row["收盤價"] ||
+      row.close ||
+      "",
+
+    change:
+      row["漲跌價差"] ||
+      row.change ||
+      "",
+
+    pct:
+      row["漲跌幅"] ||
+      row.pct ||
+      ""
+
+  };
+
 }
 
-function renderWatch(){
- document.getElementById("watchCount").textContent=watchlist.length;
- const el=document.getElementById("watchContainer");
- el.innerHTML=watchlist.map((s,i)=>{
-   const d=stockData(s), name=stockDB[s]||("台股 "+s);
-   return `<div class="glass p-5">
-    <div class="flex justify-between items-start">
-      <div><div class="text-lg font-black">${name}</div><div class="text-[10px] text-slate-500">${s}.TW</div></div>
-      <button onclick="removeWatch(${i})" class="text-slate-500 text-xl">×</button>
-    </div>
-    <div class="flex justify-between items-end mt-5">
-      <div><div class="text-[9px] text-slate-500">AI 判斷</div>
-        <div class="text-xl font-black ${d.up?'text-emerald-400':'text-rose-400'}">${d.up?'↑ 偏多':'↓ 偏空'}</div>
-      </div>
-      <div class="text-right"><div class="text-[9px] text-slate-500">上漲機率</div><div class="text-2xl font-black">${d.prob}%</div></div>
-    </div>
-    <button onclick="openStock('${s}')" class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs font-black">查看 AI 分析</button>
-   </div>`;
- }).join("");
+
+/* =========================================================
+   數字清理
+========================================================= */
+
+function toNumber(value){
+
+  if(value===null || value===undefined){
+    return NaN;
+  }
+
+  if(typeof value==="number"){
+    return value;
+  }
+
+  const s=
+    String(value)
+    .replace(/,/g,"")
+    .replace(/[^\d.\-+]/g,"");
+
+  return Number(s);
+
 }
 
-function analyze(){
- let s=document.getElementById("symbolInput").value.trim().replace(/[^0-9]/g,"");
- if(!s)return;
- current=s;
- const d=stockData(s);
- document.getElementById("stockName").textContent=stockDB[s]||("台股 "+s);
- document.getElementById("stockCode").textContent=s+".TW";
- document.getElementById("stockTrend").textContent=d.up?"↑ 偏多":"↓ 偏空";
- document.getElementById("stockTrend").className="text-2xl font-black "+(d.up?"text-emerald-400":"text-rose-400");
- document.getElementById("stockProb").textContent=d.prob+"%";
- document.getElementById("stockConf").textContent=d.conf+"%";
- renderFactors("stockFactors");
- document.getElementById("stockReason").textContent="目前為第一階段原型。正式版會將歷史行情、技術指標、法人、ADR、台指夜盤與前一晚新聞事件交由 AI 綜合分析，再產生可追蹤、可回測的預測結果。";
+
+/* =========================================================
+   格式化數字
+========================================================= */
+
+function formatNumber(value,digits=2){
+
+  const n=toNumber(value);
+
+  if(!Number.isFinite(n)){
+    return "--";
+  }
+
+  return n.toLocaleString(
+    "zh-TW",
+    {
+      minimumFractionDigits:digits,
+      maximumFractionDigits:digits
+    }
+  );
+
 }
 
-function openStock(s){document.getElementById("symbolInput").value=s; analyze(); switchPage("analysis");}
+
+/* =========================================================
+   計算均線
+========================================================= */
+
+function movingAverage(rows,days){
+
+  const values=
+    rows
+    .map(r=>toNumber(r.close))
+    .filter(Number.isFinite);
+
+  if(values.length<days){
+    return null;
+  }
+
+  const slice=
+    values.slice(
+      values.length-days
+    );
+
+  return slice.reduce(
+    (a,b)=>a+b,
+    0
+  )/slice.length;
+
+}
+
+
+/* =========================================================
+   技術方向判斷
+========================================================= */
+
+function calculateSignal(rows){
+
+  if(!rows.length){
+    return {
+      trend:"資料不足",
+      color:"text-slate-400",
+      prob:"--"
+    };
+  }
+
+  const latest=
+    toNumber(rows[rows.length-1].close);
+
+  const ma5=
+    movingAverage(rows,5);
+
+  const ma10=
+    movingAverage(rows,10);
+
+  let score=50;
+
+  if(ma5!==null){
+
+    if(latest>ma5){
+      score+=12;
+    }else{
+      score-=12;
+    }
+
+  }
+
+  if(ma10!==null){
+
+    if(latest>ma10){
+      score+=13;
+    }else{
+      score-=13;
+    }
+
+  }
+
+  score=
+    Math.max(
+      20,
+      Math.min(80,score)
+    );
+
+  let trend="震盪";
+
+  if(score>=60){
+    trend="偏多";
+  }
+
+  if(score<=40){
+    trend="偏空";
+  }
+
+  return {
+
+    trend,
+
+    color:
+      score>=60
+      ?"text-emerald-400"
+      :
+      score<=40
+      ?"text-rose-400"
+      :
+      "text-amber-400",
+
+    prob:
+      Math.round(score)
+
+  };
+
+}
+
+
+/* =========================================================
+   首頁
+========================================================= */
+
+async function loadHome(){
+
+  const status=
+    document.getElementById(
+      "marketStatus"
+    );
+
+  status.textContent=
+    "正在取得真實台股資料…";
+
+  status.className=
+    "text-lg font-black text-cyan-400 mt-2 loading";
+
+
+  try{
+
+    const api=
+      await getStockData("2330");
+
+    const rows=
+      extractRows(api)
+      .map(normalizeRow)
+      .filter(r=>r.date);
+
+    if(!rows.length){
+      throw new Error(
+        "API 有回應，但沒有讀到行情資料"
+      );
+    }
+
+
+    marketData=rows;
+
+
+    const latest=
+      rows[rows.length-1];
+
+    const latestClose=
+      toNumber(latest.close);
+
+    const latestChange=
+      toNumber(latest.change);
+
+    const latestPct=
+      toNumber(latest.pct);
+
+
+    document.getElementById(
+      "marketDate"
+    ).textContent=
+      latest.date || "--";
+
+
+    document.getElementById(
+      "marketClose"
+    ).textContent=
+      formatNumber(latestClose);
+
+
+    status.textContent=
+      "真實資料連線成功";
+
+    status.className=
+      "text-lg font-black text-emerald-400 mt-2";
+
+
+    document.getElementById(
+      "marketBadge"
+    ).textContent=
+      "真實資料";
+
+
+    const signal=
+      calculateSignal(rows);
+
+
+    document.getElementById(
+      "homeTrend"
+    ).textContent=
+      signal.trend;
+
+
+    document.getElementById(
+      "homeTrend"
+    ).className=
+      "text-4xl font-black mt-2 " +
+      signal.color;
+
+
+    document.getElementById(
+      "homeProb"
+    ).textContent=
+      signal.prob==="--"
+      ?"資料不足"
+      :
+      signal.prob+"%";
+
+
+    if(Number.isFinite(latestChange)){
+
+      const sign=
+        latestChange>0
+        ?"+"
+        :"";
+
+      document.getElementById(
+        "homeRange"
+      ).textContent=
+        sign +
+        formatNumber(latestChange);
+
+    }else{
+
+      document.getElementById(
+        "homeRange"
+      ).textContent=
+        "--";
+
+    }
+
+
+    renderFactors(rows);
+
+    renderHistory(rows);
+
+    document.getElementById(
+      "systemMessage"
+    ).textContent=
+      "目前已成功取得台股真實歷史資料。下一階段會加入歷史回測、美股、SOX、ADR、台指夜盤與新聞資料。";
+
+
+  }catch(error){
+
+    console.error(error);
+
+    status.textContent=
+      "資料讀取失敗";
+
+    status.className=
+      "text-lg font-black text-rose-400 mt-2";
+
+
+    document.getElementById(
+      "marketBadge"
+    ).textContent=
+      "API 錯誤";
+
+
+    document.getElementById(
+      "systemMessage"
+    ).textContent=
+      "無法取得台股資料：" +
+      error.message;
+
+  }
+
+}
+
+
+/* =========================================================
+   首頁因子
+========================================================= */
+
+function renderFactors(rows){
+
+  const latest=
+    rows[rows.length-1];
+
+  const close=
+    toNumber(latest.close);
+
+  const ma5=
+    movingAverage(rows,5);
+
+  const ma10=
+    movingAverage(rows,10);
+
+
+  let ma5Score=50;
+  let ma10Score=50;
+
+
+  if(ma5!==null){
+
+    ma5Score=
+      close>=ma5
+      ?72
+      :35;
+
+  }
+
+
+  if(ma10!==null){
+
+    ma10Score=
+      close>=ma10
+      ?78
+      :32;
+
+  }
+
+
+  const factors=[
+
+    [
+      "最新收盤價",
+      formatNumber(close),
+      "text-cyan-400",
+      100
+    ],
+
+    [
+      "5日均線",
+      ma5
+      ?formatNumber(ma5)
+      :"資料不足",
+      ma5!==null
+      ?"text-emerald-400"
+      :"text-slate-400",
+      ma5Score
+    ],
+
+    [
+      "10日均線",
+      ma10
+      ?formatNumber(ma10)
+      :"資料不足",
+      ma10!==null
+      ?"text-emerald-400"
+      :"text-slate-400",
+      ma10Score
+    ],
+
+    [
+      "最新漲跌幅",
+      latest.pct || "--",
+      toNumber(latest.pct)>=0
+      ?"text-emerald-400"
+      :"text-rose-400",
+      Math.min(
+        100,
+        Math.max(
+          0,
+          50 +
+          toNumber(latest.pct)*10
+        )
+      )
+    ]
+
+  ];
+
+
+  document.getElementById(
+    "factorList"
+  ).innerHTML=
+    factors.map(x=>`
+
+<div>
+
+<div class="flex justify-between text-xs mb-2">
+
+<span class="text-slate-300 font-bold">
+${x[0]}
+</span>
+
+<span class="${x[2]} font-black">
+${x[1]}
+</span>
+
+</div>
+
+<div class="bar ${x[2]}">
+<i style="width:${x[3]}%"></i>
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================================================
+   歷史行情
+========================================================= */
+
+function renderHistory(rows){
+
+  const latestRows=
+    rows.slice(-10).reverse();
+
+
+  document.getElementById(
+    "historyList"
+  ).innerHTML=
+    latestRows.map(r=>{
+
+      const pct=
+        toNumber(r.pct);
+
+      const color=
+        pct>=0
+        ?"text-emerald-400"
+        :"text-rose-400";
+
+
+      return `
+
+<div class="grid grid-cols-4 items-center px-4 py-4 text-xs">
+
+<span class="text-slate-500">
+${r.date || "--"}
+</span>
+
+<span class="text-white font-bold">
+${formatNumber(r.close)}
+</span>
+
+<span class="${color} font-bold">
+${r.change || "--"}
+</span>
+
+<span class="${color} text-right font-black">
+${r.pct || "--"}
+</span>
+
+</div>
+
+`;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   個股分析
+========================================================= */
+
+async function analyze(){
+
+  let symbol=
+    document
+    .getElementById("symbolInput")
+    .value
+    .trim()
+    .replace(/[^0-9]/g,"");
+
+
+  if(!symbol){
+    return;
+  }
+
+
+  current=symbol;
+
+
+  document.getElementById(
+    "stockName"
+  ).textContent=
+    stockDB[symbol] ||
+    ("台股 "+symbol);
+
+
+  document.getElementById(
+    "stockCode"
+  ).textContent=
+    symbol+".TW";
+
+
+  document.getElementById(
+    "stockReason"
+  ).textContent=
+    "正在從真實台股 API 取得歷史資料…";
+
+
+  try{
+
+    const api=
+      await getStockData(symbol);
+
+    const rows=
+      extractRows(api)
+      .map(normalizeRow)
+      .filter(r=>r.date);
+
+
+    if(!rows.length){
+
+      throw new Error(
+        "沒有找到這檔股票的資料"
+      );
+
+    }
+
+
+    const latest=
+      rows[rows.length-1];
+
+
+    const close=
+      toNumber(latest.close);
+
+    const change=
+      toNumber(latest.change);
+
+    const pct=
+      toNumber(latest.pct);
+
+
+    const signal=
+      calculateSignal(rows);
+
+
+    document.getElementById(
+      "stockTrend"
+    ).textContent=
+      signal.trend;
+
+
+    document.getElementById(
+      "stockTrend"
+    ).className=
+      "text-2xl font-black "+
+      signal.color;
+
+
+    document.getElementById(
+      "stockPrice"
+    ).textContent=
+      formatNumber(close);
+
+
+    document.getElementById(
+      "stockChange"
+    ).textContent=
+      latest.change || "--";
+
+
+    document.getElementById(
+      "stockChange"
+    ).className=
+      "text-2xl font-black mt-1 "+
+      (
+        change>=0
+        ?"text-emerald-400"
+        :"text-rose-400"
+      );
+
+
+    document.getElementById(
+      "stockChangePct"
+    ).textContent=
+      latest.pct || "--";
+
+
+    document.getElementById(
+      "stockChangePct"
+    ).className=
+      "text-2xl font-black mt-1 "+
+      (
+        pct>=0
+        ?"text-emerald-400"
+        :"text-rose-400"
+      );
+
+
+    document.getElementById(
+      "stockDate"
+    ).textContent=
+      latest.date || "--";
+
+
+    renderStockTechnical(rows);
+
+
+    document.getElementById(
+      "stockReason"
+    ).textContent=
+      buildReason(rows,signal);
+
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById(
+      "stockTrend"
+    ).textContent=
+      "資料錯誤";
+
+
+    document.getElementById(
+      "stockTrend"
+    ).className=
+      "text-2xl font-black text-rose-400";
+
+
+    document.getElementById(
+      "stockReason"
+    ).textContent=
+      "無法取得 "+
+      symbol+
+      " 的真實資料："+error.message;
+
+  }
+
+}
+
+
+/* =========================================================
+   個股技術資料
+========================================================= */
+
+function renderStockTechnical(rows){
+
+  const latest=
+    rows[rows.length-1];
+
+  const close=
+    toNumber(latest.close);
+
+  const ma5=
+    movingAverage(rows,5);
+
+  const ma10=
+    movingAverage(rows,10);
+
+
+  const items=[
+
+    [
+      "最新收盤",
+      formatNumber(close),
+      100
+    ],
+
+    [
+      "5日均線",
+      ma5
+      ?formatNumber(ma5)
+      :"資料不足",
+      ma5
+      ?Math.min(
+        100,
+        close/ma5*50
+      )
+      :0
+    ],
+
+    [
+      "10日均線",
+      ma10
+      ?formatNumber(ma10)
+      :"資料不足",
+      ma10
+      ?Math.min(
+        100,
+        close/ma10*50
+      )
+      :0
+    ]
+
+  ];
+
+
+  document.getElementById(
+    "stockFactors"
+  ).innerHTML=
+    items.map(x=>`
+
+<div>
+
+<div class="flex justify-between text-xs mb-2">
+
+<span class="text-slate-300 font-bold">
+${x[0]}
+</span>
+
+<span class="text-cyan-400 font-black">
+${x[1]}
+</span>
+
+</div>
+
+<div class="bar text-cyan-400">
+<i style="width:${x[2]}%"></i>
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================================================
+   AI 判斷文字
+========================================================= */
+
+function buildReason(rows,signal){
+
+  const latest=
+    rows[rows.length-1];
+
+  const close=
+    toNumber(latest.close);
+
+  const ma5=
+    movingAverage(rows,5);
+
+  const ma10=
+    movingAverage(rows,10);
+
+
+  let text=
+    "目前系統已成功取得真實台股歷史行情。";
+
+
+  if(ma5!==null){
+
+    if(close>ma5){
+
+      text+=
+        " 最新收盤價位於5日均線之上，短線結構偏強。";
+
+    }else{
+
+      text+=
+        " 最新收盤價位於5日均線之下，短線結構偏弱。";
+
+    }
+
+  }
+
+
+  if(ma10!==null){
+
+    if(close>ma10){
+
+      text+=
+        " 同時位於10日均線之上，中短期趨勢較偏多。";
+
+    }else{
+
+      text+=
+        " 同時位於10日均線之下，中短期趨勢較偏空。";
+
+    }
+
+  }
+
+
+  text+=
+    " 目前判斷為「"+
+    signal.trend+
+    "」，這不是最終 AI 預測。";
+
+
+  text+=
+    " 下一階段將加入更多市場因子與歷史回測，避免單靠單一技術指標做決策。";
+
+
+  return text;
+
+}
+
+
+/* =========================================================
+   自選股
+========================================================= */
+
+async function renderWatch(){
+
+  document.getElementById(
+    "watchCount"
+  ).textContent=
+    watchlist.length;
+
+
+  const el=
+    document.getElementById(
+      "watchContainer"
+    );
+
+
+  el.innerHTML=
+    watchlist.map((s,i)=>`
+
+<div class="glass p-5">
+
+<div class="flex justify-between items-start">
+
+<div>
+
+<div class="text-lg font-black">
+${stockDB[s]||("台股 "+s)}
+</div>
+
+<div class="text-[10px] text-slate-500">
+${s}.TW
+</div>
+
+</div>
+
+<button
+onclick="removeWatch(${i})"
+class="text-slate-500 text-xl">
+×
+</button>
+
+</div>
+
+<div
+id="watch-${s}"
+class="mt-5 text-xs text-slate-500 loading">
+正在取得真實資料…
+</div>
+
+<button
+onclick="openStock('${s}')"
+class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs font-black">
+查看 AI 分析
+</button>
+
+</div>
+
+`).join("");
+
+
+  for(const s of watchlist){
+
+    try{
+
+      const api=
+        await getStockData(s);
+
+      const rows=
+        extractRows(api)
+        .map(normalizeRow)
+        .filter(r=>r.date);
+
+
+      const latest=
+        rows[rows.length-1];
+
+      const change=
+        toNumber(latest.change);
+
+      const signal=
+        calculateSignal(rows);
+
+
+      const el=
+        document.getElementById(
+          "watch-"+s
+        );
+
+
+      if(!el)continue;
+
+
+      el.className=
+        "mt-5";
+
+
+      el.innerHTML=`
+
+<div class="flex justify-between items-end">
+
+<div>
+
+<div class="text-[9px] text-slate-500">
+AI 趨勢
+</div>
+
+<div class="text-xl font-black ${signal.color}">
+${signal.trend}
+</div>
+
+</div>
+
+
+<div class="text-right">
+
+<div class="text-[9px] text-slate-500">
+最新收盤
+</div>
+
+<div class="text-xl font-black">
+${formatNumber(latest.close)}
+</div>
+
+</div>
+
+</div>
+
+
+<div class="flex justify-between mt-3 text-xs">
+
+<span class="text-slate-500">
+漲跌
+</span>
+
+<span class="${change>=0?"text-emerald-400":"text-rose-400"} font-black">
+${latest.change||"--"}
+&nbsp;
+${latest.pct||""}
+</span>
+
+</div>
+
+`;
+
+    }catch(error){
+
+      const el=
+        document.getElementById(
+          "watch-"+s
+        );
+
+      if(el){
+
+        el.className=
+          "mt-5 text-xs text-rose-400";
+
+        el.textContent=
+          "資料讀取失敗";
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   新增自選
+========================================================= */
+
 function addWatch(){
- if(watchlist.length>=20){alert("最多 20 檔");return}
- const s=prompt("輸入台股代號，例如 2330")?.trim().replace(/[^0-9]/g,"");
- if(!s||watchlist.includes(s))return;
- watchlist.push(s);localStorage.setItem("aiStockWatchlist",JSON.stringify(watchlist));renderWatch();
-}
-function removeWatch(i){watchlist.splice(i,1);localStorage.setItem("aiStockWatchlist",JSON.stringify(watchlist));renderWatch();}
-function switchPage(page){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(page+"Page").classList.add("active");
- const map={home:"navHome",watchlist:"navWatch",analysis:"navAnalysis",report:"navReport"};
- Object.entries(map).forEach(([k,id])=>{
-   document.getElementById(id).className="flex flex-col items-center gap-1 "+(k===page?"text-blue-400":"text-slate-500");
- });
- if(page==="watchlist")renderWatch();
- if(page==="analysis")analyze();
-}
-renderHome();renderWatch();analyze();
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}
+  if(watchlist.length>=20){
+
+    alert("最多 20 檔");
+
+    return;
+
+  }
+
+
+  const s=
+    prompt(
+      "輸入台股代號，例如 2330"
+    )
+    ?.trim()
+    .replace(/[^0-9]/g,"");
+
+
+  if(
+    !s ||
+    watchlist.includes(s)
+  ){
+    return;
+  }
+
+
+  watchlist.push(s);
+
+
+  localStorage.setItem(
+    "aiStockWatchlist",
+    JSON.stringify(watchlist)
+  );
+
+
+  renderWatch();
+
+}
+
+
+/* =========================================================
+   移除自選
+========================================================= */
+
+function removeWatch(i){
+
+  watchlist.splice(i,1);
+
+  localStorage.setItem(
+    "aiStockWatchlist",
+    JSON.stringify(watchlist)
+  );
+
+  renderWatch();
+
+}
+
+
+/* =========================================================
+   開啟個股
+========================================================= */
+
+function openStock(s){
+
+  document.getElementById(
+    "symbolInput"
+  ).value=s;
+
+  switchPage("analysis");
+
+}
+
+
+/* =========================================================
+   分頁
+========================================================= */
+
+function switchPage(page){
+
+  document
+  .querySelectorAll(".page")
+  .forEach(
+    p=>p.classList.remove("active")
+  );
+
+
+  document
+  .getElementById(
+    page+"Page"
+  )
+  .classList.add("active");
+
+
+  const map={
+    home:"navHome",
+    watchlist:"navWatch",
+    analysis:"navAnalysis",
+    report:"navReport"
+  };
+
+
+  Object.entries(map).forEach(
+    ([k,id])=>{
+
+      document
+      .getElementById(id)
+      .className=
+        "flex flex-col items-center gap-1 "+
+        (
+          k===page
+          ?"text-blue-400"
+          :"text-slate-500"
+        );
+
+    }
+  );
+
+
+  if(page==="home"){
+    loadHome();
+  }
+
+  if(page==="watchlist"){
+    renderWatch();
+  }
+
+  if(page==="analysis"){
+    analyze();
+  }
+
+}
+
+
+/* =========================================================
+   初始化
+========================================================= */
+
+loadHome();
+
+renderWatch();
+
+analyze();
+
+
+/* =========================================================
+   PWA Service Worker
+========================================================= */
+
+if("serviceWorker" in navigator){
+
+  window.addEventListener(
+    "load",
+    ()=>{
+      navigator.serviceWorker
+      .register("./sw.js")
+      .catch(
+        error=>
+          console.log(
+            "Service Worker:",
+            error
+          )
+      );
+    }
+  );
+
+}
+
 </script>
+
 </body>
 </html>
