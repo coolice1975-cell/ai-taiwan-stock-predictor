@@ -567,7 +567,62 @@ class="text-xs text-slate-400 leading-relaxed mt-3">
 </div>
 
 </div>
+<!-- ============================================================
+     歷史回測
+     ============================================================ -->
+<div class="glass p-5">
 
+    <div class="text-xs text-slate-500">
+        歷史回測
+    </div>
+
+    <h2 class="text-2xl font-black mt-2">
+        策略歷史表現
+    </h2>
+
+    <p id="backtestSummary"
+       class="text-xs text-slate-400 leading-relaxed mt-3">
+        系統正在計算歷史回測結果。
+    </p>
+
+    <div class="grid grid-cols-3 gap-3 mt-4">
+
+        <div class="glass p-4">
+            <div class="text-xs text-slate-500">
+                回測次數
+            </div>
+
+            <div id="backtestTotal"
+                 class="text-2xl font-black mt-1">
+                --
+            </div>
+        </div>
+
+        <div class="glass p-4">
+            <div class="text-xs text-slate-500">
+                預測正確
+            </div>
+
+            <div id="backtestCorrect"
+                 class="text-2xl font-black mt-1 text-emerald-400">
+                --
+            </div>
+        </div>
+
+        <div class="glass p-4">
+            <div class="text-xs text-slate-500">
+                歷史準確率
+            </div>
+
+            <div id="backtestAccuracy"
+                 class="text-2xl font-black mt-1">
+                --
+            </div>
+        </div>
+
+    </div>
+
+</div>
 </main>
 
 </section>
@@ -973,7 +1028,96 @@ function calculateSignal(rows){
   };
 
 }
+/* ============================================================
+   歷史回測
+   使用目前的 MA5 + MA10 訊號，逐日模擬過去交易
+   ============================================================ */
 
+function backtest(rows) {
+
+    if (!Array.isArray(rows) || rows.length < 12) {
+        return {
+            total: 0,
+            correct: 0,
+            wrong: 0,
+            accuracy: null
+        };
+    }
+
+    let total = 0;
+    let correct = 0;
+    let wrong = 0;
+
+    /*
+      從第 11 筆開始：
+      確保當天已經有足夠資料計算 MA5 / MA10
+    */
+    for (let i = 10; i < rows.length - 1; i++) {
+
+        const historyRows = rows.slice(0, i + 1);
+
+        const signal = calculateSignal(historyRows);
+
+        if (!signal || signal.prob === "--") {
+            continue;
+        }
+
+        const todayClose =
+            toNumber(rows[i].close);
+
+        const nextClose =
+            toNumber(rows[i + 1].close);
+
+        if (
+            !Number.isFinite(todayClose) ||
+            !Number.isFinite(nextClose)
+        ) {
+            continue;
+        }
+
+        /*
+          實際結果：
+          隔天上漲 = 多
+          隔天下跌 = 空
+        */
+        const actual =
+            nextClose > todayClose
+                ? "偏多"
+                : nextClose < todayClose
+                    ? "偏空"
+                    : "平盤";
+
+        /*
+          震盪不列入方向判斷
+        */
+        if (signal.trend === "震盪") {
+            continue;
+        }
+
+        total++;
+
+        if (
+            (signal.trend === "偏多" && actual === "偏多") ||
+            (signal.trend === "偏空" && actual === "偏空")
+        ) {
+            correct++;
+        } else {
+            wrong++;
+        }
+    }
+
+    const accuracy =
+        total > 0
+            ? Math.round((correct / total) * 100)
+            : null;
+
+    return {
+        total,
+        correct,
+        wrong,
+        accuracy
+    };
+}
 
 /* =========================================================
    首頁
@@ -1011,7 +1155,8 @@ async function loadHome(){
 
 
     marketData=rows;
-
+     const backtestResult = backtest(rows);
+    
 
     const latest=
       rows[rows.length-1];
