@@ -14,7 +14,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box
+}
 
 body{
   margin:0;
@@ -37,8 +39,12 @@ body{
 }
 
 @keyframes fade{
-  from{opacity:.3}
-  to{opacity:1}
+  from{
+    opacity:.3
+  }
+  to{
+    opacity:1
+  }
 }
 
 .glass{
@@ -79,17 +85,21 @@ body{
 }
 
 @keyframes pulse{
-  0%,100%{opacity:.4}
-  50%{opacity:1}
+  0%,100%{
+    opacity:.4
+  }
+  50%{
+    opacity:1
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
+<!-- =========================================================
      首頁
-========================= -->
+========================================================= -->
 
 <section id="homePage" class="page active">
 
@@ -98,6 +108,7 @@ body{
 <div class="flex justify-between items-center">
 
 <div>
+
 <div class="text-[10px] text-cyan-400 font-black tracking-widest">
 AI TAIWAN MARKET
 </div>
@@ -105,9 +116,11 @@ AI TAIWAN MARKET
 <h1 class="text-xl font-black mt-1">
 今日台股預測
 </h1>
+
 </div>
 
-<div id="marketBadge"
+<div
+id="marketBadge"
 class="text-[10px] font-bold px-3 py-2 rounded-full bg-blue-500/10 text-blue-400">
 真實資料
 </div>
@@ -119,6 +132,7 @@ class="text-[10px] font-bold px-3 py-2 rounded-full bg-blue-500/10 text-blue-400
 
 <main class="p-5 space-y-4">
 
+
 <!-- 市場狀態 -->
 
 <div class="glass p-6 text-center">
@@ -127,25 +141,32 @@ class="text-[10px] font-bold px-3 py-2 rounded-full bg-blue-500/10 text-blue-400
 台股資料
 </div>
 
-<div id="marketStatus"
+<div
+id="marketStatus"
 class="text-lg font-black text-cyan-400 mt-2 loading">
 正在讀取真實資料…
 </div>
 
 <div class="text-sm text-slate-400 mt-2">
+
 資料日期：
-<span id="marketDate" class="text-white font-black">
+
+<span
+id="marketDate"
+class="text-white font-black">
 --
 </span>
+
 </div>
 
-<div class="mt-4 text-3xl font-black text-white"
+<div
+class="mt-4 text-3xl font-black text-white"
 id="marketClose">
 --
 </div>
 
 <div class="text-[10px] text-slate-500 mt-1">
-加權指數 / 最新資料
+台積電 2330 / 最新資料
 </div>
 
 </div>
@@ -159,7 +180,8 @@ id="marketClose">
 AI 綜合判斷
 </div>
 
-<div id="homeTrend"
+<div
+id="homeTrend"
 class="text-4xl font-black text-amber-400 mt-2">
 資料分析中
 </div>
@@ -168,20 +190,22 @@ class="text-4xl font-black text-amber-400 mt-2">
 
 上漲機率
 
-<span id="homeProb"
+<span
+id="homeProb"
 class="text-white font-black">
 --
 </span>
 
 </div>
 
-<div class="mt-4 text-3xl font-black text-white"
+<div
+class="mt-4 text-3xl font-black text-white"
 id="homeRange">
 --
 </div>
 
 <div class="text-[10px] text-slate-500 mt-1">
-目前為第一階段真實資料分析
+目前為第一階段技術資料分析
 </div>
 
 </div>
@@ -203,7 +227,8 @@ REAL DATA
 
 </div>
 
-<div id="factorList"
+<div
+id="factorList"
 class="space-y-4">
 
 <div class="text-xs text-slate-500 loading">
@@ -231,13 +256,15 @@ class="space-y-4">
 
 </div>
 
-<div id="historyList"
+<div
+id="historyList"
 class="divide-y divide-white/5">
-
 </div>
 
 </div>
 
+
+<!-- 系統狀態 -->
 
 <div class="glass p-4 border-l-4 border-blue-400">
 
@@ -245,7 +272,8 @@ class="divide-y divide-white/5">
 系統狀態
 </div>
 
-<p id="systemMessage"
+<p
+id="systemMessage"
 class="text-xs text-slate-400 leading-relaxed mt-2">
 正在連接 Google Apps Script 台股資料 API…
 </p>
@@ -258,9 +286,9 @@ class="text-xs text-slate-400 leading-relaxed mt-2">
 
 
 
-<!-- =========================
+<!-- =========================================================
      自選股
-========================= -->
+========================================================= -->
 
 <section id="watchlistPage" class="page">
 
@@ -279,9 +307,15 @@ WATCHLIST
 </h1>
 
 <p class="text-[10px] text-slate-500 mt-1">
+
 最多 20 檔 ·
-<span id="watchCount">0</span>
+
+<span id="watchCount">
+0
+</span>
+
 檔
+
 </p>
 
 </div>
@@ -296,7 +330,8 @@ class="bg-blue-600 active:scale-95 px-4 py-2.5 rounded-xl text-xs font-black">
 
 </header>
 
-<main id="watchContainer"
+<main
+id="watchContainer"
 class="px-5 space-y-4">
 </main>
 
@@ -304,9 +339,9 @@ class="px-5 space-y-4">
 
 
 
-<!-- =========================
+<!-- =========================================================
      個股分析
-========================= -->
+========================================================= -->
 
 <section id="analysisPage" class="page">
 
@@ -324,6 +359,7 @@ AI ANALYSIS
 
 
 <main class="px-5 space-y-4">
+
 
 <div class="flex gap-2">
 
@@ -344,6 +380,7 @@ class="bg-blue-600 px-5 rounded-2xl font-black">
 </div>
 
 
+
 <div class="glass p-5">
 
 <div class="flex justify-between items-start">
@@ -354,24 +391,28 @@ class="bg-blue-600 px-5 rounded-2xl font-black">
 REAL STOCK DATA
 </div>
 
-<h2 id="stockName"
+<h2
+id="stockName"
 class="text-2xl font-black mt-1">
 台積電
 </h2>
 
-<div id="stockCode"
+<div
+id="stockCode"
 class="text-[10px] text-slate-500 mt-1">
 2330.TW
 </div>
 
 </div>
 
-<div id="stockTrend"
+<div
+id="stockTrend"
 class="text-2xl font-black text-amber-400">
 分析中
 </div>
 
 </div>
+
 
 
 <div class="grid grid-cols-2 gap-3 mt-5">
@@ -382,7 +423,8 @@ class="text-2xl font-black text-amber-400">
 最新收盤
 </div>
 
-<div id="stockPrice"
+<div
+id="stockPrice"
 class="text-2xl font-black mt-1">
 --
 </div>
@@ -396,7 +438,8 @@ class="text-2xl font-black mt-1">
 漲跌
 </div>
 
-<div id="stockChange"
+<div
+id="stockChange"
 class="text-2xl font-black mt-1">
 --
 </div>
@@ -404,6 +447,7 @@ class="text-2xl font-black mt-1">
 </div>
 
 </div>
+
 
 
 <div class="grid grid-cols-2 gap-3 mt-3">
@@ -414,7 +458,8 @@ class="text-2xl font-black mt-1">
 漲跌幅
 </div>
 
-<div id="stockChangePct"
+<div
+id="stockChangePct"
 class="text-2xl font-black mt-1">
 --
 </div>
@@ -428,7 +473,8 @@ class="text-2xl font-black mt-1">
 資料日期
 </div>
 
-<div id="stockDate"
+<div
+id="stockDate"
 class="text-sm font-black mt-2">
 --
 </div>
@@ -447,9 +493,9 @@ class="text-sm font-black mt-2">
 技術資料
 </div>
 
-<div id="stockFactors"
+<div
+id="stockFactors"
 class="space-y-4">
-
 </div>
 
 </div>
@@ -462,11 +508,10 @@ class="space-y-4">
 AI 判斷理由
 </div>
 
-<p id="stockReason"
+<p
+id="stockReason"
 class="text-xs text-slate-400 leading-relaxed mt-3">
-
 正在分析真實歷史資料…
-
 </p>
 
 </div>
@@ -477,9 +522,9 @@ class="text-xs text-slate-400 leading-relaxed mt-3">
 
 
 
-<!-- =========================
+<!-- =========================================================
      晨報
-========================= -->
+========================================================= -->
 
 <section id="reportPage" class="page">
 
@@ -498,6 +543,9 @@ AI 晨報
 
 <main class="px-5 space-y-4">
 
+
+<!-- 市場資料狀態 -->
+
 <div class="glass p-5">
 
 <div class="text-xs text-slate-500">
@@ -513,18 +561,14 @@ class="text-2xl font-black mt-2">
 <p
 id="reportSummary"
 class="text-xs text-slate-400 leading-relaxed mt-3">
-
 系統正在取得台股歷史資料。
-
-下一階段將加入：
-
-美股、SOX、ADR、台指夜盤、法人、
-國內外新聞與事件。
-
 </p>
 
 </div>
 
+
+
+<!-- 資料來源 -->
 
 <div class="glass p-5">
 
@@ -535,113 +579,187 @@ class="text-xs text-slate-400 leading-relaxed mt-3">
 <div class="space-y-3 text-xs">
 
 <div class="flex gap-3">
-<span class="text-emerald-400">●</span>
-<span>台股歷史行情</span>
+
+<span class="text-emerald-400">
+●
+</span>
+
+<span>
+台股歷史行情
+</span>
+
 </div>
+
 
 <div class="flex gap-3">
-<span class="slate-400">●</span>
-<span>美股科技股</span>
+
+<span class="text-slate-400">
+●
+</span>
+
+<span>
+美股科技股（尚未接入）
+</span>
+
 </div>
+
 
 <div class="flex gap-3">
-<span class="slate-400">●</span>
-<span>SOX 半導體指數</span>
+
+<span class="text-slate-400">
+●
+</span>
+
+<span>
+SOX 半導體指數（尚未接入）
+</span>
+
 </div>
+
 
 <div class="flex gap-3">
-<span class="slate-400">●</span>
-<span>台積電 ADR</span>
+
+<span class="text-slate-400">
+●
+</span>
+
+<span>
+台積電 ADR（尚未接入）
+</span>
+
 </div>
+
 
 <div class="flex gap-3">
-<span class="slate-400">●</span>
-<span>台指夜盤</span>
+
+<span class="text-slate-400">
+●
+</span>
+
+<span>
+台指夜盤（尚未接入）
+</span>
+
 </div>
+
 
 <div class="flex gap-3">
-<span class="slate-400">●</span>
-<span>國內外新聞</span>
-</div>
+
+<span class="text-slate-400">
+●
+</span>
+
+<span>
+國內外新聞（尚未接入）
+</span>
 
 </div>
 
 </div>
-<!-- ============================================================
+
+</div>
+
+
+
+<!-- =========================================================
      歷史回測
-     ============================================================ -->
+========================================================= -->
+
 <div class="glass p-5">
 
-    <div class="text-xs text-slate-500">
-        歷史回測
-    </div>
+<div class="text-xs text-slate-500">
+歷史回測
+</div>
 
-    <h2 class="text-2xl font-black mt-2">
-        策略歷史表現
-    </h2>
+<h2 class="text-2xl font-black mt-2">
+策略歷史表現
+</h2>
 
-    <p id="backtestSummary"
-       class="text-xs text-slate-400 leading-relaxed mt-3">
-        系統正在計算歷史回測結果。
-    </p>
+<p
+id="backtestSummary"
+class="text-xs text-slate-400 leading-relaxed mt-3">
+系統正在計算歷史回測結果。
+</p>
 
-    <div class="grid grid-cols-3 gap-3 mt-4">
 
-        <div class="glass p-4">
-            <div class="text-xs text-slate-500">
-                回測次數
-            </div>
+<div class="grid grid-cols-3 gap-3 mt-4">
 
-            <div id="backtestTotal"
-                 class="text-2xl font-black mt-1">
-                --
-            </div>
-        </div>
 
-        <div class="glass p-4">
-            <div class="text-xs text-slate-500">
-                預測正確
-            </div>
+<div class="glass p-4">
 
-            <div id="backtestCorrect"
-                 class="text-2xl font-black mt-1 text-emerald-400">
-                --
-            </div>
-        </div>
+<div class="text-xs text-slate-500">
+回測次數
+</div>
 
-        <div class="glass p-4">
-            <div class="text-xs text-slate-500">
-                歷史準確率
-            </div>
-
-            <div id="backtestAccuracy"
-                 class="text-2xl font-black mt-1">
-                --
-            </div>
-        </div>
-
-    </div>
+<div
+id="backtestTotal"
+class="text-2xl font-black mt-1">
+--
+</div>
 
 </div>
+
+
+<div class="glass p-4">
+
+<div class="text-xs text-slate-500">
+預測正確
+</div>
+
+<div
+id="backtestCorrect"
+class="text-2xl font-black mt-1 text-emerald-400">
+--
+</div>
+
+</div>
+
+
+<div class="glass p-4">
+
+<div class="text-xs text-slate-500">
+歷史準確率
+</div>
+
+<div
+id="backtestAccuracy"
+class="text-2xl font-black mt-1">
+--
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
 </main>
 
 </section>
 
 
 
-<!-- =========================
+<!-- =========================================================
      底部導航
-========================= -->
+========================================================= -->
 
-<nav class="nav fixed bottom-0 left-0 right-0 z-50 h-20 flex justify-around items-center">
+<nav
+class="nav fixed bottom-0 left-0 right-0 z-50 h-20 flex justify-around items-center">
+
 
 <button
 onclick="switchPage('home')"
 id="navHome"
 class="flex flex-col items-center gap-1 text-blue-400">
 
-<span class="text-2xl">⌂</span>
-<span class="text-[10px] font-black">首頁</span>
+<span class="text-2xl">
+⌂
+</span>
+
+<span class="text-[10px] font-black">
+首頁
+</span>
 
 </button>
 
@@ -651,8 +769,13 @@ onclick="switchPage('watchlist')"
 id="navWatch"
 class="flex flex-col items-center gap-1 text-slate-500">
 
-<span class="text-2xl">▦</span>
-<span class="text-[10px] font-black">自選</span>
+<span class="text-2xl">
+▦
+</span>
+
+<span class="text-[10px] font-black">
+自選
+</span>
 
 </button>
 
@@ -662,8 +785,13 @@ onclick="switchPage('analysis')"
 id="navAnalysis"
 class="flex flex-col items-center gap-1 text-slate-500">
 
-<span class="text-2xl">⌕</span>
-<span class="text-[10px] font-black">分析</span>
+<span class="text-2xl">
+⌕
+</span>
+
+<span class="text-[10px] font-black">
+分析
+</span>
 
 </button>
 
@@ -673,8 +801,13 @@ onclick="switchPage('report')"
 id="navReport"
 class="flex flex-col items-center gap-1 text-slate-500">
 
-<span class="text-2xl">▤</span>
-<span class="text-[10px] font-black">晨報</span>
+<span class="text-2xl">
+▤
+</span>
+
+<span class="text-[10px] font-black">
+晨報
+</span>
 
 </button>
 
@@ -697,6 +830,7 @@ const API_URL =
 ========================================================= */
 
 const stockDB={
+
 "2330":"台積電",
 "2317":"鴻海",
 "2454":"聯發科",
@@ -709,59 +843,366 @@ const stockDB={
 "2891":"中信金",
 "2412":"中華電",
 "2303":"聯電"
+
 };
 
 
 /* =========================================================
-   自選股
+   全域狀態
 ========================================================= */
 
+function loadWatchlist(){
+
+  try{
+
+    const saved=
+      JSON.parse(
+        localStorage.getItem(
+          "aiStockWatchlist"
+        ) || "null"
+      );
+
+    if(Array.isArray(saved)){
+
+      return saved
+        .map(String)
+        .map(
+          s=>s.replace(/[^0-9]/g,"")
+        )
+        .filter(
+          s=>s
+        )
+        .slice(0,20);
+
+    }
+
+  }catch(error){
+
+    console.warn(
+      "自選股資料損壞，改用預設值",
+      error
+    );
+
+  }
+
+  return [
+    "2330",
+    "3017",
+    "2454"
+  ];
+
+}
+
+
 let watchlist=
-JSON.parse(
-localStorage.getItem("aiStockWatchlist")
-||'["2330","3017","2454"]'
-);
+  loadWatchlist();
 
-let current="2330";
+let current=
+  "2330";
 
-let marketData=null;
+let marketData=
+  null;
+
+let marketBacktest=
+  null;
+
+let homeLoaded=
+  false;
+
+
+/* =========================================================
+   日期解析
+========================================================= */
+
+function parseDateValue(value){
+
+  if(
+    value instanceof Date &&
+    !Number.isNaN(
+      value.getTime()
+    )
+  ){
+
+    return value.getTime();
+
+  }
+
+
+  if(
+    value===null ||
+    value===undefined
+  ){
+
+    return NaN;
+
+  }
+
+
+  const s=
+    String(value).trim();
+
+
+  if(!s){
+
+    return NaN;
+
+  }
+
+
+  /*
+    民國日期
+    115/08/15
+  */
+
+  let m=
+    s.match(
+      /^(\d{3})[\/-](\d{1,2})[\/-](\d{1,2})/
+    );
+
+
+  if(m){
+
+    const year=
+      Number(m[1])+1911;
+
+    return new Date(
+      year,
+      Number(m[2])-1,
+      Number(m[3])
+    ).getTime();
+
+  }
+
+
+  /*
+    西元日期
+    2026/08/15
+  */
+
+  m=
+    s.match(
+      /^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})/
+    );
+
+
+  if(m){
+
+    return new Date(
+      Number(m[1]),
+      Number(m[2])-1,
+      Number(m[3])
+    ).getTime();
+
+  }
+
+
+  const t=
+    Date.parse(s);
+
+
+  return Number.isFinite(t)
+    ?t
+    :NaN;
+
+}
+
+
+/* =========================================================
+   確保行情由舊到新排列
+========================================================= */
+
+function sortRowsAscending(rows){
+
+  if(
+    !Array.isArray(rows) ||
+    rows.length<2
+  ){
+
+    return rows || [];
+
+  }
+
+
+  const copy=[
+    ...rows
+  ];
+
+
+  const parsed=
+    copy.map(
+      r=>parseDateValue(r.date)
+    );
+
+
+  const valid=
+    parsed.filter(
+      Number.isFinite
+    ).length;
+
+
+  if(valid<2){
+
+    return copy;
+
+  }
+
+
+  return copy
+    .map(
+      (row,i)=>({
+        row,
+        time:parsed[i],
+        index:i
+      })
+    )
+    .sort(
+      (a,b)=>{
+
+        if(
+          Number.isFinite(a.time) &&
+          Number.isFinite(b.time)
+        ){
+
+          return a.time-b.time;
+
+        }
+
+
+        if(
+          Number.isFinite(a.time)
+        ){
+
+          return -1;
+
+        }
+
+
+        if(
+          Number.isFinite(b.time)
+        ){
+
+          return 1;
+
+        }
+
+
+        return a.index-b.index;
+
+      }
+    )
+    .map(
+      x=>x.row
+    );
+
+}
 
 
 /* =========================================================
    API 取得資料
 ========================================================= */
 
-async function getStockData(symbol="2330"){
+async function getStockData(
+  symbol="2330"
+){
 
-  const url =
-  API_URL +
-  "?symbol=" +
-  encodeURIComponent(symbol) +
-  "&t=" +
-  Date.now();
+  const url=
+    API_URL+
+    "?symbol="+
+    encodeURIComponent(symbol)+
+    "&t="+
+    Date.now();
 
-  const response=await fetch(url,{
-    method:"GET",
-    cache:"no-store"
-  });
 
-  if(!response.ok){
-    throw new Error(
-      "API HTTP 錯誤：" +
-      response.status
+  const controller=
+    new AbortController();
+
+
+  const timer=
+    setTimeout(
+      ()=>{
+        controller.abort();
+      },
+      15000
     );
+
+
+  try{
+
+    const response=
+      await fetch(
+        url,
+        {
+          method:"GET",
+          cache:"no-store",
+          signal:controller.signal
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "API HTTP 錯誤："+response.status
+      );
+
+    }
+
+
+    const text=
+      await response.text();
+
+
+    let json;
+
+
+    try{
+
+      json=
+        JSON.parse(text);
+
+    }catch(error){
+
+      throw new Error(
+        "API 回傳不是有效 JSON"
+      );
+
+    }
+
+
+    if(!json.success){
+
+      throw new Error(
+        json.error ||
+        "API 回傳失敗"
+      );
+
+    }
+
+
+    return json;
+
+
+  }catch(error){
+
+    if(
+      error.name==="AbortError"
+    ){
+
+      throw new Error(
+        "API 連線逾時（15 秒）"
+      );
+
+    }
+
+
+    throw error;
+
+
+  }finally{
+
+    clearTimeout(timer);
+
   }
-
-  const json=await response.json();
-
-  if(!json.success){
-    throw new Error(
-      json.error ||
-      "API 回傳失敗"
-    );
-  }
-
-  return json;
 
 }
 
@@ -772,29 +1213,54 @@ async function getStockData(symbol="2330"){
 
 function extractRows(api){
 
-  if(!api || !api.data){
+  if(
+    !api ||
+    api.data===null ||
+    api.data===undefined
+  ){
+
     return [];
+
   }
+
 
   if(
     api.data.rows &&
-    Array.isArray(api.data.rows)
+    Array.isArray(
+      api.data.rows
+    )
   ){
+
     return api.data.rows;
+
   }
+
 
   if(
     api.data.data &&
-    Array.isArray(api.data.data)
+    Array.isArray(
+      api.data.data
+    )
   ){
+
     return api.data.data;
+
   }
 
-  if(Array.isArray(api.data)){
+
+  if(
+    Array.isArray(
+      api.data
+    )
+  ){
+
     return api.data;
+
   }
+
 
   return [];
+
 }
 
 
@@ -804,9 +1270,12 @@ function extractRows(api){
 
 function normalizeRow(row){
 
-  if(Array.isArray(row)){
+  if(
+    Array.isArray(row)
+  ){
 
     return {
+
       date:row[0],
       volume:row[1],
       amount:row[2],
@@ -816,56 +1285,61 @@ function normalizeRow(row){
       close:row[6],
       change:row[7],
       pct:row[8]
+
     };
 
   }
 
 
+  row=
+    row || {};
+
+
   return {
 
     date:
-      row["日期"] ||
-      row.date ||
+      row["日期"] ??
+      row.date ??
       "",
 
     volume:
-      row["成交股數"] ||
-      row.volume ||
+      row["成交股數"] ??
+      row.volume ??
       "",
 
     amount:
-      row["成交金額"] ||
-      row.amount ||
+      row["成交金額"] ??
+      row.amount ??
       "",
 
     open:
-      row["開盤價"] ||
-      row.open ||
+      row["開盤價"] ??
+      row.open ??
       "",
 
     high:
-      row["最高價"] ||
-      row.high ||
+      row["最高價"] ??
+      row.high ??
       "",
 
     low:
-      row["最低價"] ||
-      row.low ||
+      row["最低價"] ??
+      row.low ??
       "",
 
     close:
-      row["收盤價"] ||
-      row.close ||
+      row["收盤價"] ??
+      row.close ??
       "",
 
     change:
-      row["漲跌價差"] ||
-      row.change ||
+      row["漲跌價差"] ??
+      row.change ??
       "",
 
     pct:
-      row["漲跌幅"] ||
-      row.pct ||
+      row["漲跌幅"] ??
+      row.pct ??
       ""
 
   };
@@ -874,23 +1348,60 @@ function normalizeRow(row){
 
 
 /* =========================================================
-   數字清理
+   整理資料
+========================================================= */
+
+function prepareRows(api){
+
+  return sortRowsAscending(
+
+    extractRows(api)
+
+      .map(normalizeRow)
+
+      .filter(
+        r=>
+          r.date!=="" &&
+          r.date!==null &&
+          r.date!==undefined
+      )
+
+  );
+
+}
+
+
+/* =========================================================
+   數字處理
 ========================================================= */
 
 function toNumber(value){
 
-  if(value===null || value===undefined){
+  if(
+    value===null ||
+    value===undefined ||
+    value===""
+  ){
+
     return NaN;
+
   }
 
-  if(typeof value==="number"){
+
+  if(
+    typeof value==="number"
+  ){
+
     return value;
+
   }
+
 
   const s=
     String(value)
-    .replace(/,/g,"")
-    .replace(/[^\d.\-+]/g,"");
+      .replace(/,/g,"")
+      .replace(/[^\d.\-+]/g,"");
+
 
   return Number(s);
 
@@ -901,13 +1412,23 @@ function toNumber(value){
    格式化數字
 ========================================================= */
 
-function formatNumber(value,digits=2){
+function formatNumber(
+  value,
+  digits=2
+){
 
-  const n=toNumber(value);
+  const n=
+    toNumber(value);
 
-  if(!Number.isFinite(n)){
+
+  if(
+    !Number.isFinite(n)
+  ){
+
     return "--";
+
   }
+
 
   return n.toLocaleString(
     "zh-TW",
@@ -924,21 +1445,46 @@ function formatNumber(value,digits=2){
    計算均線
 ========================================================= */
 
-function movingAverage(rows,days){
+function movingAverage(
+  rows,
+  days
+){
+
+  if(
+    !Array.isArray(rows)
+  ){
+
+    return null;
+
+  }
+
 
   const values=
     rows
-    .map(r=>toNumber(r.close))
-    .filter(Number.isFinite);
 
-  if(values.length<days){
+      .map(
+        r=>toNumber(r.close)
+      )
+
+      .filter(
+        Number.isFinite
+      );
+
+
+  if(
+    values.length<days
+  ){
+
     return null;
+
   }
+
 
   const slice=
     values.slice(
-      values.length-days
+      -days
     );
+
 
   return slice.reduce(
     (a,b)=>a+b,
@@ -950,64 +1496,129 @@ function movingAverage(rows,days){
 
 /* =========================================================
    技術方向判斷
+   只使用目前資料，不使用未來資料
 ========================================================= */
 
 function calculateSignal(rows){
 
-  if(!rows.length){
+  if(
+    !Array.isArray(rows) ||
+    !rows.length
+  ){
+
     return {
+
       trend:"資料不足",
+
       color:"text-slate-400",
+
       prob:"--"
+
     };
+
   }
+
 
   const latest=
-    toNumber(rows[rows.length-1].close);
+    toNumber(
+      rows[
+        rows.length-1
+      ].close
+    );
+
+
+  if(
+    !Number.isFinite(latest)
+  ){
+
+    return {
+
+      trend:"資料不足",
+
+      color:"text-slate-400",
+
+      prob:"--"
+
+    };
+
+  }
+
 
   const ma5=
-    movingAverage(rows,5);
+    movingAverage(
+      rows,
+      5
+    );
+
 
   const ma10=
-    movingAverage(rows,10);
+    movingAverage(
+      rows,
+      10
+    );
 
-  let score=50;
 
-  if(ma5!==null){
+  let score=
+    50;
 
-    if(latest>ma5){
-      score+=12;
-    }else{
-      score-=12;
-    }
+
+  if(
+    ma5!==null
+  ){
+
+    score+=
+      latest>ma5
+      ?12
+      :-12;
+
+  }
+
+
+  if(
+    ma10!==null
+  ){
+
+    score+=
+      latest>ma10
+      ?13
+      :-13;
 
   }
 
-  if(ma10!==null){
-
-    if(latest>ma10){
-      score+=13;
-    }else{
-      score-=13;
-    }
-
-  }
 
   score=
     Math.max(
       20,
-      Math.min(80,score)
+      Math.min(
+        80,
+        score
+      )
     );
 
-  let trend="震盪";
 
-  if(score>=60){
-    trend="偏多";
+  let trend=
+    "震盪";
+
+
+  if(
+    score>=60
+  ){
+
+    trend=
+      "偏多";
+
   }
 
-  if(score<=40){
-    trend="偏空";
+
+  if(
+    score<=40
+  ){
+
+    trend=
+      "偏空";
+
   }
+
 
   return {
 
@@ -1028,96 +1639,323 @@ function calculateSignal(rows){
   };
 
 }
-/* ============================================================
+
+
+/* =========================================================
    歷史回測
-   使用目前的 MA5 + MA10 訊號，逐日模擬過去交易
-   ============================================================ */
 
-function backtest(rows) {
+   每一天只使用當天以前資料
+   再拿隔天實際結果驗證
+   避免 Look-ahead Bias
+========================================================= */
 
-    if (!Array.isArray(rows) || rows.length < 12) {
-        return {
-            total: 0,
-            correct: 0,
-            wrong: 0,
-            accuracy: null
-        };
-    }
+function backtest(rows){
 
-    let total = 0;
-    let correct = 0;
-    let wrong = 0;
-
-    /*
-      從第 11 筆開始：
-      確保當天已經有足夠資料計算 MA5 / MA10
-    */
-    for (let i = 10; i < rows.length - 1; i++) {
-
-        const historyRows = rows.slice(0, i + 1);
-
-        const signal = calculateSignal(historyRows);
-
-        if (!signal || signal.prob === "--") {
-            continue;
-        }
-
-        const todayClose =
-            toNumber(rows[i].close);
-
-        const nextClose =
-            toNumber(rows[i + 1].close);
-
-        if (
-            !Number.isFinite(todayClose) ||
-            !Number.isFinite(nextClose)
-        ) {
-            continue;
-        }
-
-        /*
-          實際結果：
-          隔天上漲 = 多
-          隔天下跌 = 空
-        */
-        const actual =
-            nextClose > todayClose
-                ? "偏多"
-                : nextClose < todayClose
-                    ? "偏空"
-                    : "平盤";
-
-        /*
-          震盪不列入方向判斷
-        */
-        if (signal.trend === "震盪") {
-            continue;
-        }
-
-        total++;
-
-        if (
-            (signal.trend === "偏多" && actual === "偏多") ||
-            (signal.trend === "偏空" && actual === "偏空")
-        ) {
-            correct++;
-        } else {
-            wrong++;
-        }
-    }
-
-    const accuracy =
-        total > 0
-            ? Math.round((correct / total) * 100)
-            : null;
+  if(
+    !Array.isArray(rows) ||
+    rows.length<12
+  ){
 
     return {
-        total,
-        correct,
-        wrong,
-        accuracy
+
+      total:0,
+
+      correct:0,
+
+      wrong:0,
+
+      accuracy:null,
+
+      insufficient:true,
+
+      dataCount:
+        Array.isArray(rows)
+        ?rows.length
+        :0
+
     };
+
+  }
+
+
+  let total=0;
+
+  let correct=0;
+
+  let wrong=0;
+
+
+  for(
+    let i=10;
+    i<rows.length-1;
+    i++
+  ){
+
+    /*
+      只拿到第 i 天
+      不包含第 i+1 天
+    */
+
+    const historyRows=
+      rows.slice(
+        0,
+        i+1
+      );
+
+
+    const signal=
+      calculateSignal(
+        historyRows
+      );
+
+
+    if(
+      !signal ||
+      signal.prob==="--"
+    ){
+
+      continue;
+
+    }
+
+
+    const todayClose=
+      toNumber(
+        rows[i].close
+      );
+
+
+    const nextClose=
+      toNumber(
+        rows[i+1].close
+      );
+
+
+    if(
+      !Number.isFinite(todayClose) ||
+      !Number.isFinite(nextClose)
+    ){
+
+      continue;
+
+    }
+
+
+    const actual=
+      nextClose>todayClose
+      ?"偏多"
+      :
+      nextClose<todayClose
+      ?"偏空"
+      :
+      "平盤";
+
+
+    /*
+      震盪訊號不列入方向預測
+    */
+
+    if(
+      signal.trend==="震盪"
+    ){
+
+      continue;
+
+    }
+
+
+    total++;
+
+
+    if(
+
+      (
+        signal.trend==="偏多" &&
+        actual==="偏多"
+      )
+
+      ||
+
+      (
+        signal.trend==="偏空" &&
+        actual==="偏空"
+      )
+
+    ){
+
+      correct++;
+
+    }else{
+
+      wrong++;
+
+    }
+
+  }
+
+
+  const accuracy=
+    total>0
+    ?Math.round(
+      correct/total*100
+    )
+    :null;
+
+
+  return {
+
+    total,
+
+    correct,
+
+    wrong,
+
+    accuracy,
+
+    insufficient:false,
+
+    dataCount:rows.length
+
+  };
+
 }
+
+
+/* =========================================================
+   回測結果顯示
+========================================================= */
+
+function renderBacktest(
+  result,
+  dataCount=0
+){
+
+  const summary=
+    document.getElementById(
+      "backtestSummary"
+    );
+
+
+  const total=
+    document.getElementById(
+      "backtestTotal"
+    );
+
+
+  const correct=
+    document.getElementById(
+      "backtestCorrect"
+    );
+
+
+  const accuracy=
+    document.getElementById(
+      "backtestAccuracy"
+    );
+
+
+  if(
+    !summary ||
+    !total ||
+    !correct ||
+    !accuracy
+  ){
+
+    return;
+
+  }
+
+
+  /*
+    資料不足
+  */
+
+  if(
+    !result ||
+    result.insufficient ||
+    result.total===0
+  ){
+
+    const count=
+      result?.dataCount ??
+      dataCount ??
+      0;
+
+
+    total.textContent=
+      "0";
+
+
+    correct.textContent=
+      "0";
+
+
+    accuracy.textContent=
+      "--";
+
+
+    accuracy.className=
+      "text-2xl font-black mt-1 text-slate-400";
+
+
+    if(count<12){
+
+      summary.textContent=
+        `目前 API 取得 ${count} 筆歷史資料，不足 12 筆，因此暫不進行回測。`;
+
+    }else{
+
+      summary.textContent=
+        "目前沒有可用的有效方向訊號，因此暫無回測結果。";
+
+    }
+
+
+    return;
+
+  }
+
+
+  /*
+    正常結果
+  */
+
+  total.textContent=
+    result.total.toLocaleString(
+      "zh-TW"
+    );
+
+
+  correct.textContent=
+    result.correct.toLocaleString(
+      "zh-TW"
+    );
+
+
+  accuracy.textContent=
+    result.accuracy!==null
+    ?result.accuracy+"%"
+    :"--";
+
+
+  accuracy.className=
+    "text-2xl font-black mt-1 "+
+    (
+      result.accuracy>=60
+      ?"text-emerald-400"
+      :
+      result.accuracy>=50
+      ?"text-amber-400"
+      :
+      "text-rose-400"
+    );
+
+
+  summary.textContent=
+    `使用 MA5 + MA10 技術訊號，共完成 ${result.total} 次有效方向預測，其中 ${result.correct} 次判斷正確，歷史準確率為 ${result.accuracy}%。此結果僅代表歷史樣本，不代表未來報酬。`;
+
+}
+
 
 /* =========================================================
    首頁
@@ -1130,61 +1968,98 @@ async function loadHome(){
       "marketStatus"
     );
 
+
   status.textContent=
     "正在取得真實台股資料…";
+
 
   status.className=
     "text-lg font-black text-cyan-400 mt-2 loading";
 
 
+  document.getElementById(
+    "systemMessage"
+  ).textContent=
+    "正在連接 Google Apps Script 台股資料 API…";
+
+
   try{
 
     const api=
-      await getStockData("2330");
+      await getStockData(
+        "2330"
+      );
+
 
     const rows=
-      extractRows(api)
-      .map(normalizeRow)
-      .filter(r=>r.date);
+      prepareRows(api);
 
-    if(!rows.length){
+
+    if(
+      !rows.length
+    ){
+
       throw new Error(
         "API 有回應，但沒有讀到行情資料"
       );
+
     }
 
 
-    marketData=rows;
-     const backtestResult = backtest(rows);
-    
+    marketData=
+      rows;
+
+
+    marketBacktest=
+      backtest(rows);
+
+
+    homeLoaded=
+      true;
+
 
     const latest=
-      rows[rows.length-1];
+      rows[
+        rows.length-1
+      ];
+
 
     const latestClose=
-      toNumber(latest.close);
+      toNumber(
+        latest.close
+      );
+
 
     const latestChange=
-      toNumber(latest.change);
+      toNumber(
+        latest.change
+      );
 
-    const latestPct=
-      toNumber(latest.pct);
+
+    const signal=
+      calculateSignal(
+        rows
+      );
 
 
     document.getElementById(
       "marketDate"
     ).textContent=
-      latest.date || "--";
+      latest.date ||
+      "--";
 
 
     document.getElementById(
       "marketClose"
     ).textContent=
-      formatNumber(latestClose);
+      formatNumber(
+        latestClose
+      );
 
 
     status.textContent=
       "真實資料連線成功";
+
 
     status.className=
       "text-lg font-black text-emerald-400 mt-2";
@@ -1196,10 +2071,6 @@ async function loadHome(){
       "真實資料";
 
 
-    const signal=
-      calculateSignal(rows);
-
-
     document.getElementById(
       "homeTrend"
     ).textContent=
@@ -1209,7 +2080,7 @@ async function loadHome(){
     document.getElementById(
       "homeTrend"
     ).className=
-      "text-4xl font-black mt-2 " +
+      "text-4xl font-black mt-2 "+
       signal.color;
 
 
@@ -1222,45 +2093,72 @@ async function loadHome(){
       signal.prob+"%";
 
 
-    if(Number.isFinite(latestChange)){
+    document.getElementById(
+      "homeRange"
+    ).textContent=
 
-      const sign=
+      Number.isFinite(
+        latestChange
+      )
+
+      ?
+
+      (
         latestChange>0
         ?"+"
-        :"";
+        :""
+      )+
+      formatNumber(
+        latestChange
+      )
 
-      document.getElementById(
-        "homeRange"
-      ).textContent=
-        sign +
-        formatNumber(latestChange);
+      :
 
-    }else{
-
-      document.getElementById(
-        "homeRange"
-      ).textContent=
-        "--";
-
-    }
+      "--";
 
 
-    renderFactors(rows);
+    renderFactors(
+      rows
+    );
 
-    renderHistory(rows);
+
+    renderHistory(
+      rows
+    );
+
+
+    renderBacktest(
+      marketBacktest,
+      rows.length
+    );
+
+
+    renderReportStatus(
+      rows,
+      marketBacktest
+    );
+
 
     document.getElementById(
       "systemMessage"
     ).textContent=
-      "目前已成功取得台股真實歷史資料。下一階段會加入歷史回測、美股、SOX、ADR、台指夜盤與新聞資料。";
+      `已成功取得台積電 2330 真實歷史資料，共 ${rows.length} 筆。首頁預測目前使用 MA5 + MA10；歷史回測同步完成。`;
 
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
+
+
+    homeLoaded=
+      false;
+
 
     status.textContent=
       "資料讀取失敗";
+
 
     status.className=
       "text-lg font-black text-rose-400 mt-2";
@@ -1275,10 +2173,51 @@ async function loadHome(){
     document.getElementById(
       "systemMessage"
     ).textContent=
-      "無法取得台股資料：" +
-      error.message;
+      "無法取得台股資料："+error.message;
+
+
+    renderBacktest(
+      null,
+      0
+    );
+
+
+    document.getElementById(
+      "reportTitle"
+    ).textContent=
+      "真實資料連線失敗";
+
+
+    document.getElementById(
+      "reportSummary"
+    ).textContent=
+      "無法取得 Google Apps Script 台股資料 API："+error.message;
 
   }
+
+}
+
+
+/* =========================================================
+   晨報狀態
+========================================================= */
+
+function renderReportStatus(
+  rows,
+  result
+){
+
+  document.getElementById(
+    "reportTitle"
+  ).textContent=
+    "真實資料連線成功";
+
+
+  document.getElementById(
+    "reportSummary"
+  ).textContent=
+
+    `目前已取得台積電 2330 歷史行情，共 ${rows.length} 筆。第一階段使用 MA5 + MA10 進行方向判斷；目前回測 ${result.total} 次，有效預測準確率 ${result.accuracy===null?"--":result.accuracy+"%"}。美股、SOX、ADR、台指夜盤與新聞尚未接入。`;
 
 }
 
@@ -1287,43 +2226,40 @@ async function loadHome(){
    首頁因子
 ========================================================= */
 
-function renderFactors(rows){
+function renderFactors(
+  rows
+){
 
   const latest=
-    rows[rows.length-1];
+    rows[
+      rows.length-1
+    ];
+
 
   const close=
-    toNumber(latest.close);
+    toNumber(
+      latest.close
+    );
+
 
   const ma5=
-    movingAverage(rows,5);
+    movingAverage(
+      rows,
+      5
+    );
+
 
   const ma10=
-    movingAverage(rows,10);
+    movingAverage(
+      rows,
+      10
+    );
 
 
-  let ma5Score=50;
-  let ma10Score=50;
-
-
-  if(ma5!==null){
-
-    ma5Score=
-      close>=ma5
-      ?72
-      :35;
-
-  }
-
-
-  if(ma10!==null){
-
-    ma10Score=
-      close>=ma10
-      ?78
-      :32;
-
-  }
+  const pct=
+    toNumber(
+      latest.pct
+    );
 
 
   const factors=[
@@ -1337,40 +2273,67 @@ function renderFactors(rows){
 
     [
       "5日均線",
-      ma5
+
+      ma5!==null
       ?formatNumber(ma5)
       :"資料不足",
+
       ma5!==null
       ?"text-emerald-400"
       :"text-slate-400",
-      ma5Score
+
+      ma5!==null
+      ?close>=ma5
+        ?72
+        :35
+      :0
     ],
 
     [
       "10日均線",
-      ma10
+
+      ma10!==null
       ?formatNumber(ma10)
       :"資料不足",
+
       ma10!==null
       ?"text-emerald-400"
       :"text-slate-400",
-      ma10Score
+
+      ma10!==null
+      ?close>=ma10
+        ?78
+        :32
+      :0
     ],
 
     [
       "最新漲跌幅",
-      latest.pct || "--",
-      toNumber(latest.pct)>=0
-      ?"text-emerald-400"
-      :"text-rose-400",
-      Math.min(
-        100,
-        Math.max(
-          0,
-          50 +
-          toNumber(latest.pct)*10
+
+      latest.pct ||
+      "--",
+
+      Number.isFinite(pct)
+      ?
+        (
+          pct>=0
+          ?"text-emerald-400"
+          :"text-rose-400"
         )
-      )
+      :
+        "text-slate-400",
+
+      Number.isFinite(pct)
+      ?
+        Math.min(
+          100,
+          Math.max(
+            0,
+            50+pct*10
+          )
+        )
+      :
+        0
     ]
 
   ];
@@ -1379,7 +2342,9 @@ function renderFactors(rows){
   document.getElementById(
     "factorList"
   ).innerHTML=
-    factors.map(x=>`
+
+    factors.map(
+      x=>`
 
 <div>
 
@@ -1396,12 +2361,23 @@ ${x[1]}
 </div>
 
 <div class="bar ${x[2]}">
-<i style="width:${x[3]}%"></i>
-</div>
+
+<i
+style="width:${Math.max(
+  0,
+  Math.min(
+    100,
+    x[3]
+  )
+)}%">
+</i>
 
 </div>
 
-`).join("");
+</div>
+
+`
+    ).join("");
 
 }
 
@@ -1410,29 +2386,49 @@ ${x[1]}
    歷史行情
 ========================================================= */
 
-function renderHistory(rows){
+function renderHistory(
+  rows
+){
 
   const latestRows=
-    rows.slice(-10).reverse();
+    rows
+      .slice(-10)
+      .reverse();
 
 
   document.getElementById(
     "historyList"
   ).innerHTML=
-    latestRows.map(r=>{
 
-      const pct=
-        toNumber(r.pct);
+    latestRows.map(
+      r=>{
 
-      const color=
-        pct>=0
-        ?"text-emerald-400"
-        :"text-rose-400";
+        const pct=
+          toNumber(
+            r.pct
+          );
 
 
-      return `
+        const color=
+          Number.isFinite(pct)
 
-<div class="grid grid-cols-4 items-center px-4 py-4 text-xs">
+          ?
+
+          (
+            pct>=0
+            ?"text-emerald-400"
+            :"text-rose-400"
+          )
+
+          :
+
+          "text-slate-400";
+
+
+        return `
+
+<div
+class="grid grid-cols-4 items-center px-4 py-4 text-xs">
 
 <span class="text-slate-500">
 ${r.date || "--"}
@@ -1454,7 +2450,8 @@ ${r.pct || "--"}
 
 `;
 
-    }).join("");
+      }
+    ).join("");
 
 }
 
@@ -1467,18 +2464,36 @@ async function analyze(){
 
   let symbol=
     document
-    .getElementById("symbolInput")
-    .value
-    .trim()
-    .replace(/[^0-9]/g,"");
+      .getElementById(
+        "symbolInput"
+      )
+      .value
+      .trim()
+      .replace(
+        /[^0-9]/g,
+        ""
+      )
+      .slice(
+        0,
+        6
+      );
 
 
   if(!symbol){
+
     return;
+
   }
 
 
-  current=symbol;
+  current=
+    symbol;
+
+
+  document.getElementById(
+    "symbolInput"
+  ).value=
+    symbol;
 
 
   document.getElementById(
@@ -1495,6 +2510,18 @@ async function analyze(){
 
 
   document.getElementById(
+    "stockTrend"
+  ).textContent=
+    "分析中";
+
+
+  document.getElementById(
+    "stockTrend"
+  ).className=
+    "text-2xl font-black text-amber-400";
+
+
+  document.getElementById(
     "stockReason"
   ).textContent=
     "正在從真實台股 API 取得歷史資料…";
@@ -1503,15 +2530,20 @@ async function analyze(){
   try{
 
     const api=
-      await getStockData(symbol);
+      await getStockData(
+        symbol
+      );
+
 
     const rows=
-      extractRows(api)
-      .map(normalizeRow)
-      .filter(r=>r.date);
+      prepareRows(
+        api
+      );
 
 
-    if(!rows.length){
+    if(
+      !rows.length
+    ){
 
       throw new Error(
         "沒有找到這檔股票的資料"
@@ -1521,21 +2553,33 @@ async function analyze(){
 
 
     const latest=
-      rows[rows.length-1];
+      rows[
+        rows.length-1
+      ];
 
 
     const close=
-      toNumber(latest.close);
+      toNumber(
+        latest.close
+      );
+
 
     const change=
-      toNumber(latest.change);
+      toNumber(
+        latest.change
+      );
+
 
     const pct=
-      toNumber(latest.pct);
+      toNumber(
+        latest.pct
+      );
 
 
     const signal=
-      calculateSignal(rows);
+      calculateSignal(
+        rows
+      );
 
 
     document.getElementById(
@@ -1554,13 +2598,16 @@ async function analyze(){
     document.getElementById(
       "stockPrice"
     ).textContent=
-      formatNumber(close);
+      formatNumber(
+        close
+      );
 
 
     document.getElementById(
       "stockChange"
     ).textContent=
-      latest.change || "--";
+      latest.change ||
+      "--";
 
 
     document.getElementById(
@@ -1568,16 +2615,27 @@ async function analyze(){
     ).className=
       "text-2xl font-black mt-1 "+
       (
-        change>=0
-        ?"text-emerald-400"
-        :"text-rose-400"
+        Number.isFinite(change)
+
+        ?
+
+        (
+          change>=0
+          ?"text-emerald-400"
+          :"text-rose-400"
+        )
+
+        :
+
+        "text-slate-400"
       );
 
 
     document.getElementById(
       "stockChangePct"
     ).textContent=
-      latest.pct || "--";
+      latest.pct ||
+      "--";
 
 
     document.getElementById(
@@ -1585,30 +2643,49 @@ async function analyze(){
     ).className=
       "text-2xl font-black mt-1 "+
       (
-        pct>=0
-        ?"text-emerald-400"
-        :"text-rose-400"
+        Number.isFinite(pct)
+
+        ?
+
+        (
+          pct>=0
+          ?"text-emerald-400"
+          :"text-rose-400"
+        )
+
+        :
+
+        "text-slate-400"
       );
 
 
     document.getElementById(
       "stockDate"
     ).textContent=
-      latest.date || "--";
+      latest.date ||
+      "--";
 
 
-    renderStockTechnical(rows);
+    renderStockTechnical(
+      rows
+    );
 
 
     document.getElementById(
       "stockReason"
     ).textContent=
-      buildReason(rows,signal);
+      buildReason(
+        rows,
+        signal
+      );
 
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     document.getElementById(
       "stockTrend"
@@ -1627,7 +2704,8 @@ async function analyze(){
     ).textContent=
       "無法取得 "+
       symbol+
-      " 的真實資料："+error.message;
+      " 的真實資料："+
+      error.message;
 
   }
 
@@ -1638,19 +2716,34 @@ async function analyze(){
    個股技術資料
 ========================================================= */
 
-function renderStockTechnical(rows){
+function renderStockTechnical(
+  rows
+){
 
   const latest=
-    rows[rows.length-1];
+    rows[
+      rows.length-1
+    ];
+
 
   const close=
-    toNumber(latest.close);
+    toNumber(
+      latest.close
+    );
+
 
   const ma5=
-    movingAverage(rows,5);
+    movingAverage(
+      rows,
+      5
+    );
+
 
   const ma10=
-    movingAverage(rows,10);
+    movingAverage(
+      rows,
+      10
+    );
 
 
   const items=[
@@ -1663,28 +2756,42 @@ function renderStockTechnical(rows){
 
     [
       "5日均線",
-      ma5
+
+      ma5!==null
       ?formatNumber(ma5)
       :"資料不足",
-      ma5
-      ?Math.min(
-        100,
-        close/ma5*50
-      )
-      :0
+
+      ma5!==null
+      ?
+        Math.min(
+          100,
+          Math.max(
+            0,
+            close/ma5*50
+          )
+        )
+      :
+        0
     ],
 
     [
       "10日均線",
-      ma10
+
+      ma10!==null
       ?formatNumber(ma10)
       :"資料不足",
-      ma10
-      ?Math.min(
-        100,
-        close/ma10*50
-      )
-      :0
+
+      ma10!==null
+      ?
+        Math.min(
+          100,
+          Math.max(
+            0,
+            close/ma10*50
+          )
+        )
+      :
+        0
     ]
 
   ];
@@ -1693,7 +2800,9 @@ function renderStockTechnical(rows){
   document.getElementById(
     "stockFactors"
   ).innerHTML=
-    items.map(x=>`
+
+    items.map(
+      x=>`
 
 <div>
 
@@ -1710,12 +2819,23 @@ ${x[1]}
 </div>
 
 <div class="bar text-cyan-400">
-<i style="width:${x[2]}%"></i>
-</div>
+
+<i
+style="width:${Math.max(
+  0,
+  Math.min(
+    100,
+    x[2]
+  )
+)}%">
+</i>
 
 </div>
 
-`).join("");
+</div>
+
+`
+    ).join("");
 
 }
 
@@ -1724,53 +2844,77 @@ ${x[1]}
    AI 判斷文字
 ========================================================= */
 
-function buildReason(rows,signal){
+function buildReason(
+  rows,
+  signal
+){
 
   const latest=
-    rows[rows.length-1];
+    rows[
+      rows.length-1
+    ];
+
 
   const close=
-    toNumber(latest.close);
+    toNumber(
+      latest.close
+    );
+
 
   const ma5=
-    movingAverage(rows,5);
+    movingAverage(
+      rows,
+      5
+    );
+
 
   const ma10=
-    movingAverage(rows,10);
+    movingAverage(
+      rows,
+      10
+    );
 
 
   let text=
     "目前系統已成功取得真實台股歷史行情。";
 
 
-  if(ma5!==null){
+  if(
+    ma5!==null
+  ){
 
-    if(close>ma5){
+    if(
+      close>ma5
+    ){
 
       text+=
-        " 最新收盤價位於5日均線之上，短線結構偏強。";
+        " 最新收盤價位於 5 日均線之上，短線結構偏強。";
 
     }else{
 
       text+=
-        " 最新收盤價位於5日均線之下，短線結構偏弱。";
+        " 最新收盤價位於 5 日均線之下，短線結構偏弱。";
 
     }
 
   }
 
 
-  if(ma10!==null){
+  if(
+    ma10!==null
+  ){
 
-    if(close>ma10){
+    if(
+      close>ma10
+    ){
 
       text+=
-        " 同時位於10日均線之上，中短期趨勢較偏多。";
+        " 同時位於 10 日均線之上，中短期趨勢較偏多。";
 
     }else{
 
       text+=
-        " 同時位於10日均線之下，中短期趨勢較偏空。";
+        " 同時位於 10 日均線之下，中短期趨勢較偏空。";
 
     }
 
@@ -1778,13 +2922,11 @@ function buildReason(rows,signal){
 
 
   text+=
-    " 目前判斷為「"+
-    signal.trend+
-    "」，這不是最終 AI 預測。";
+    ` 目前判斷為「${signal.trend}」，上漲機率指標為 ${signal.prob}% 。`;
 
 
   text+=
-    " 下一階段將加入更多市場因子與歷史回測，避免單靠單一技術指標做決策。";
+    " 這是第一階段技術規則，不應視為最終 AI 預測或投資保證。";
 
 
   return text;
@@ -1810,8 +2952,26 @@ async function renderWatch(){
     );
 
 
+  if(
+    !watchlist.length
+  ){
+
+    el.innerHTML=
+      `
+<div class="glass p-6 text-center text-sm text-slate-500">
+目前沒有自選股
+</div>
+`;
+
+    return;
+
+  }
+
+
   el.innerHTML=
-    watchlist.map((s,i)=>`
+
+    watchlist.map(
+      (s,i)=>`
 
 <div class="glass p-5">
 
@@ -1820,7 +2980,7 @@ async function renderWatch(){
 <div>
 
 <div class="text-lg font-black">
-${stockDB[s]||("台股 "+s)}
+${stockDB[s] || ("台股 "+s)}
 </div>
 
 <div class="text-[10px] text-slate-500">
@@ -1837,11 +2997,13 @@ class="text-slate-500 text-xl">
 
 </div>
 
+
 <div
 id="watch-${s}"
 class="mt-5 text-xs text-slate-500 loading">
 正在取得真實資料…
 </div>
+
 
 <button
 onclick="openStock('${s}')"
@@ -1851,46 +3013,77 @@ class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs fon
 
 </div>
 
-`).join("");
+`
+    ).join("");
 
 
-  for(const s of watchlist){
+  for(
+    const s of watchlist
+  ){
 
     try{
 
       const api=
-        await getStockData(s);
+        await getStockData(
+          s
+        );
+
 
       const rows=
-        extractRows(api)
-        .map(normalizeRow)
-        .filter(r=>r.date);
+        prepareRows(
+          api
+        );
+
+
+      if(
+        !rows.length
+      ){
+
+        throw new Error(
+          "無資料"
+        );
+
+      }
 
 
       const latest=
-        rows[rows.length-1];
+        rows[
+          rows.length-1
+        ];
+
 
       const change=
-        toNumber(latest.change);
+        toNumber(
+          latest.change
+        );
+
 
       const signal=
-        calculateSignal(rows);
+        calculateSignal(
+          rows
+        );
 
 
-      const el=
+      const el2=
         document.getElementById(
           "watch-"+s
         );
 
 
-      if(!el)continue;
+      if(!el2){
+
+        continue;
+
+      }
 
 
-      el.className=
+      el2.className=
         "mt-5";
 
 
-      el.innerHTML=`
+      el2.innerHTML=
+
+        `
 
 <div class="flex justify-between items-end">
 
@@ -1928,30 +3121,46 @@ ${formatNumber(latest.close)}
 漲跌
 </span>
 
-<span class="${change>=0?"text-emerald-400":"text-rose-400"} font-black">
-${latest.change||"--"}
-&nbsp;
-${latest.pct||""}
+<span
+class="${
+  Number.isFinite(change)
+  ?
+    (
+      change>=0
+      ?"text-emerald-400"
+      :"text-rose-400"
+    )
+  :
+    "text-slate-400"
+} font-black">
+
+${latest.change || "--"}
+
+${latest.pct || ""}
+
 </span>
 
 </div>
 
 `;
 
+
     }catch(error){
 
-      const el=
+      const el2=
         document.getElementById(
           "watch-"+s
         );
 
-      if(el){
 
-        el.className=
+      if(el2){
+
+        el2.className=
           "mt-5 text-xs text-rose-400";
 
-        el.textContent=
-          "資料讀取失敗";
+
+        el2.textContent=
+          "資料讀取失敗："+error.message;
 
       }
 
@@ -1968,37 +3177,58 @@ ${latest.pct||""}
 
 function addWatch(){
 
-  if(watchlist.length>=20){
+  if(
+    watchlist.length>=20
+  ){
 
-    alert("最多 20 檔");
+    alert(
+      "最多 20 檔"
+    );
 
     return;
 
   }
 
 
-  const s=
+  const input=
     prompt(
       "輸入台股代號，例如 2330"
-    )
-    ?.trim()
-    .replace(/[^0-9]/g,"");
+    );
+
+
+  const s=
+    input
+      ?.trim()
+      .replace(
+        /[^0-9]/g,
+        ""
+      )
+      .slice(
+        0,
+        6
+      );
 
 
   if(
     !s ||
     watchlist.includes(s)
   ){
+
     return;
+
   }
 
 
-  watchlist.push(s);
+  watchlist.push(
+    s
+  );
 
 
   localStorage.setItem(
     "aiStockWatchlist",
-    JSON.stringify(watchlist)
+    JSON.stringify(
+      watchlist
+    )
   );
 
 
@@ -2013,12 +3243,29 @@ function addWatch(){
 
 function removeWatch(i){
 
-  watchlist.splice(i,1);
+  if(
+    i<0 ||
+    i>=watchlist.length
+  ){
+
+    return;
+
+  }
+
+
+  watchlist.splice(
+    i,
+    1
+  );
+
 
   localStorage.setItem(
     "aiStockWatchlist",
-    JSON.stringify(watchlist)
+    JSON.stringify(
+      watchlist
+    )
   );
+
 
   renderWatch();
 
@@ -2033,9 +3280,13 @@ function openStock(s){
 
   document.getElementById(
     "symbolInput"
-  ).value=s;
+  ).value=
+    s;
 
-  switchPage("analysis");
+
+  switchPage(
+    "analysis"
+  );
 
 }
 
@@ -2044,57 +3295,132 @@ function openStock(s){
    分頁
 ========================================================= */
 
-function switchPage(page){
+function switchPage(
+  page
+){
 
   document
-  .querySelectorAll(".page")
-  .forEach(
-    p=>p.classList.remove("active")
+    .querySelectorAll(
+      ".page"
+    )
+    .forEach(
+      p=>
+        p.classList.remove(
+          "active"
+        )
+    );
+
+
+  const target=
+    document.getElementById(
+      page+"Page"
+    );
+
+
+  if(!target){
+
+    return;
+
+  }
+
+
+  target.classList.add(
+    "active"
   );
 
 
-  document
-  .getElementById(
-    page+"Page"
-  )
-  .classList.add("active");
-
-
   const map={
+
     home:"navHome",
+
     watchlist:"navWatch",
+
     analysis:"navAnalysis",
+
     report:"navReport"
+
   };
 
 
-  Object.entries(map).forEach(
+  Object.entries(
+    map
+  ).forEach(
     ([k,id])=>{
 
       document
-      .getElementById(id)
-      .className=
-        "flex flex-col items-center gap-1 "+
-        (
-          k===page
-          ?"text-blue-400"
-          :"text-slate-500"
-        );
+        .getElementById(id)
+        .className=
+          "flex flex-col items-center gap-1 "+
+          (
+            k===page
+            ?"text-blue-400"
+            :"text-slate-500"
+          );
 
     }
   );
 
 
-  if(page==="home"){
+  if(
+    page==="home"
+  ){
+
     loadHome();
+
   }
 
-  if(page==="watchlist"){
+
+  if(
+    page==="watchlist"
+  ){
+
     renderWatch();
+
   }
 
-  if(page==="analysis"){
+
+  if(
+    page==="analysis"
+  ){
+
     analyze();
+
+  }
+
+
+  if(
+    page==="report"
+  ){
+
+    if(
+      marketData &&
+      marketData.length
+    ){
+
+      marketBacktest=
+        backtest(
+          marketData
+        );
+
+
+      renderBacktest(
+        marketBacktest,
+        marketData.length
+      );
+
+
+      renderReportStatus(
+        marketData,
+        marketBacktest
+      );
+
+
+    }else{
+
+      loadHome();
+
+    }
+
   }
 
 }
@@ -2115,20 +3441,26 @@ analyze();
    PWA Service Worker
 ========================================================= */
 
-if("serviceWorker" in navigator){
+if(
+  "serviceWorker" in navigator
+){
 
   window.addEventListener(
     "load",
     ()=>{
+
       navigator.serviceWorker
-      .register("./sw.js")
-      .catch(
-        error=>
-          console.log(
-            "Service Worker:",
-            error
-          )
-      );
+        .register(
+          "./sw.js"
+        )
+        .catch(
+          error=>
+            console.log(
+              "Service Worker:",
+              error
+            )
+        );
+
     }
   );
 
