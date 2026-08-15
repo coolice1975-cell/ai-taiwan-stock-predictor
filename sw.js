@@ -1,4 +1,4 @@
-const CACHE_NAME = "ai-tw-stock-v3";
+const CACHE_NAME = "ai-tw-stock-v4";
 
 const STATIC_ASSETS = [
   "./",
@@ -6,168 +6,255 @@ const STATIC_ASSETS = [
   "./manifest.json"
 ];
 
-/* ================================
+
+/* =========================================================
    安裝新版 Service Worker
-================================ */
+========================================================= */
 
-self.addEventListener("install", event => {
+self.addEventListener(
+  "install",
+  event => {
 
-  event.waitUntil(
+    event.waitUntil(
 
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(STATIC_ASSETS))
-      .then(() => self.skipWaiting())
-
-  );
-
-});
-
-
-/* ================================
-   啟用新版 Service Worker
-   自動刪除舊版 Cache
-================================ */
-
-self.addEventListener("activate", event => {
-
-  event.waitUntil(
-
-    caches.keys()
-      .then(cacheNames => {
-
-        return Promise.all(
-
-          cacheNames
-            .filter(name => name !== CACHE_NAME)
-            .map(name => caches.delete(name))
-
-        );
-
-      })
-      .then(() => self.clients.claim())
-
-  );
-
-});
-
-
-/* ================================
-   Fetch
-================================ */
-
-self.addEventListener("fetch", event => {
-
-  const request = event.request;
-
-  /*
-
-    API / 非 GET 不進 Service Worker Cache
-
-  */
-
-  if (
-    request.method !== "GET" ||
-    request.url.includes("script.google.com")
-  ) {
-
-    return;
-
-  }
-
-
-  /*
-    HTML / 網頁：
-    網路優先
-
-    這是本次最重要的修正。
-  */
-
-  if (
-    request.mode === "navigate" ||
-    request.url.endsWith("/index.html") ||
-    request.url.endsWith("/")
-  ) {
-
-    event.respondWith(
-
-      fetch(request, {
-        cache: "no-store"
-      })
-      .then(response => {
-
-        if (response && response.ok) {
-
-          const clone = response.clone();
-
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(request, clone);
-            });
-
-        }
-
-        return response;
-
-      })
-      .catch(() => {
-
-        return caches.match(request);
-
-      })
+      caches
+        .open(CACHE_NAME)
+        .then(
+          cache =>
+            cache.addAll(
+              STATIC_ASSETS
+            )
+        )
+        .then(
+          () =>
+            self.skipWaiting()
+        )
 
     );
 
-    return;
+  }
+);
+
+
+/* =========================================================
+   啟用
+   自動刪除所有舊 Cache
+========================================================= */
+
+self.addEventListener(
+  "activate",
+  event => {
+
+    event.waitUntil(
+
+      caches
+        .keys()
+        .then(
+          cacheNames =>
+
+            Promise.all(
+
+              cacheNames
+                .filter(
+                  name =>
+                    name !== CACHE_NAME
+                )
+                .map(
+                  name =>
+                    caches.delete(
+                      name
+                    )
+                )
+
+            )
+        )
+        .then(
+          () =>
+            self.clients.claim()
+        )
+
+    );
 
   }
+);
 
 
-  /*
-    CSS / JS / Manifest 等：
-    Cache First
-    網路失敗時才使用快取
-  */
+/* =========================================================
+   Fetch
+========================================================= */
 
-  event.respondWith(
+self.addEventListener(
+  "fetch",
+  event => {
 
-    caches.match(request)
-      .then(cachedResponse => {
+    const request =
+      event.request;
 
-        if (cachedResponse) {
 
-          return cachedResponse;
+    /*
+      只處理 GET。
+    */
 
-        }
+    if(
+      request.method !== "GET"
+    ){
 
-        return fetch(request)
-          .then(response => {
+      return;
 
-            if (
+    }
+
+
+    /*
+      Google Apps Script API
+      絕對不進 Service Worker Cache。
+    */
+
+    if(
+      request.url.includes(
+        "script.google.com"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    /*
+      HTML：
+      網路優先。
+
+      這是避免舊版 index.html
+      一直被 Cache 卡住的核心。
+    */
+
+    if(
+      request.mode === "navigate" ||
+      request.url.endsWith(
+        "/index.html"
+      ) ||
+      request.url.endsWith(
+        "/"
+      )
+    ){
+
+      event.respondWith(
+
+        fetch(
+          request,
+          {
+            cache:"no-store"
+          }
+        )
+        .then(
+          response => {
+
+            if(
               response &&
               response.ok
-            ) {
+            ){
 
               const clone =
                 response.clone();
 
-              caches.open(CACHE_NAME)
-                .then(cache => {
 
-                  cache.put(
-                    request,
-                    clone
-                  );
-
-                });
+              caches
+                .open(
+                  CACHE_NAME
+                )
+                .then(
+                  cache =>
+                    cache.put(
+                      request,
+                      clone
+                    )
+                );
 
             }
 
+
             return response;
 
-          });
+          }
+        )
+        .catch(
+          () =>
+            caches.match(
+              request
+            )
+        )
 
-      })
+      );
 
-  );
+      return;
 
-});
+    }
+
+
+    /*
+      其他靜態檔案：
+
+      Cache First
+      沒有快取才連網。
+    */
+
+    event.respondWith(
+
+      caches
+        .match(
+          request
+        )
+        .then(
+          cachedResponse => {
+
+            if(
+              cachedResponse
+            ){
+
+              return cachedResponse;
+
+            }
+
+
+            return fetch(
+              request
+            )
+            .then(
+              response => {
+
+                if(
+                  response &&
+                  response.ok
+                ){
+
+                  const clone =
+                    response.clone();
+
+
+                  caches
+                    .open(
+                      CACHE_NAME
+                    )
+                    .then(
+                      cache =>
+                        cache.put(
+                          request,
+                          clone
+                        )
+                    );
+
+                }
+
+
+                return response;
+
+              }
+            );
+
+          }
+        )
+
+    );
+
+  }
+);
