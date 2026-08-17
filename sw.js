@@ -1,30 +1,32 @@
-const CACHE_NAME = "ai-tw-stock-v4";
+const CACHE="ai-tw-stock-v5";
 
-const STATIC_ASSETS = [
+const CORE=[
   "./",
   "./index.html",
   "./manifest.json"
 ];
 
 
-/* =========================================================
-   安裝新版 Service Worker
-========================================================= */
-
 self.addEventListener(
   "install",
+
   event => {
 
     event.waitUntil(
 
       caches
-        .open(CACHE_NAME)
+
+        .open(
+          CACHE
+        )
+
         .then(
-          cache =>
-            cache.addAll(
-              STATIC_ASSETS
+          c =>
+            c.addAll(
+              CORE
             )
         )
+
         .then(
           () =>
             self.skipWaiting()
@@ -33,41 +35,45 @@ self.addEventListener(
     );
 
   }
+
 );
 
 
-/* =========================================================
-   啟用
-   自動刪除所有舊 Cache
-========================================================= */
-
 self.addEventListener(
   "activate",
+
   event => {
 
     event.waitUntil(
 
       caches
+
         .keys()
+
         .then(
-          cacheNames =>
+
+          keys =>
 
             Promise.all(
 
-              cacheNames
+              keys
+
                 .filter(
-                  name =>
-                    name !== CACHE_NAME
+                  k =>
+                    k !== CACHE
                 )
+
                 .map(
-                  name =>
+                  k =>
                     caches.delete(
-                      name
+                      k
                     )
                 )
 
             )
+
         )
+
         .then(
           () =>
             self.clients.claim()
@@ -76,27 +82,22 @@ self.addEventListener(
     );
 
   }
+
 );
 
 
-/* =========================================================
-   Fetch
-========================================================= */
-
 self.addEventListener(
   "fetch",
+
   event => {
 
-    const request =
+    const req =
       event.request;
 
 
-    /*
-      只處理 GET。
-    */
-
     if(
-      request.method !== "GET"
+      req.method !==
+      "GET"
     ){
 
       return;
@@ -104,157 +105,151 @@ self.addEventListener(
     }
 
 
-    /*
-      Google Apps Script API
-      絕對不進 Service Worker Cache。
-    */
+    const url =
+      new URL(
+        req.url
+      );
+
 
     if(
-      request.url.includes(
-        "script.google.com"
+
+      url.origin ===
+      location.origin &&
+
+      (
+
+        url.pathname.endsWith(
+          "/index.html"
+        )
+
+        ||
+
+        url.pathname.endsWith(
+          "/"
+        )
+
       )
-    ){
 
-      return;
-
-    }
-
-
-    /*
-      HTML：
-      網路優先。
-
-      這是避免舊版 index.html
-      一直被 Cache 卡住的核心。
-    */
-
-    if(
-      request.mode === "navigate" ||
-      request.url.endsWith(
-        "/index.html"
-      ) ||
-      request.url.endsWith(
-        "/"
-      )
     ){
 
       event.respondWith(
 
         fetch(
-          request,
+          req,
           {
-            cache:"no-store"
+            cache:
+              "no-store"
           }
         )
+
         .then(
-          response => {
 
-            if(
-              response &&
-              response.ok
-            ){
+          r => {
 
-              const clone =
-                response.clone();
+            const copy =
+              r.clone();
 
 
-              caches
-                .open(
-                  CACHE_NAME
-                )
-                .then(
-                  cache =>
-                    cache.put(
-                      request,
-                      clone
-                    )
-                );
+            caches
 
-            }
+              .open(
+                CACHE
+              )
+
+              .then(
+                c =>
+                  c.put(
+                    req,
+                    copy
+                  )
+              );
 
 
-            return response;
+            return r;
 
           }
+
         )
+
         .catch(
+
           () =>
             caches.match(
-              request
+              req
             )
+
         )
 
       );
+
 
       return;
 
     }
 
 
-    /*
-      其他靜態檔案：
-
-      Cache First
-      沒有快取才連網。
-    */
-
     event.respondWith(
 
       caches
+
         .match(
-          request
+          req
         )
+
         .then(
-          cachedResponse => {
 
-            if(
-              cachedResponse
-            ){
+          cached =>
 
-              return cachedResponse;
+            cached ||
 
-            }
-
-
-            return fetch(
-              request
+            fetch(
+              req
             )
+
             .then(
-              response => {
+
+              r => {
 
                 if(
-                  response &&
-                  response.ok
+
+                  r.ok &&
+
+                  url.origin ===
+                  location.origin
+
                 ){
 
-                  const clone =
-                    response.clone();
+                  const copy =
+                    r.clone();
 
 
                   caches
+
                     .open(
-                      CACHE_NAME
+                      CACHE
                     )
+
                     .then(
-                      cache =>
-                        cache.put(
-                          request,
-                          clone
+                      c =>
+                        c.put(
+                          req,
+                          copy
                         )
                     );
 
                 }
 
 
-                return response;
+                return r;
 
               }
-            );
 
-          }
+            )
+
         )
 
     );
 
   }
+
 );
