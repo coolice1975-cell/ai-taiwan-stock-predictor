@@ -1,255 +1,139 @@
-const CACHE="ai-tw-stock-v5";
+const CACHE_NAME = "ai-tw-stock-v20260819";
 
-const CORE=[
+const STATIC_ASSETS = [
   "./",
   "./index.html",
   "./manifest.json"
 ];
 
 
-self.addEventListener(
-  "install",
+/* 安裝 */
+self.addEventListener("install", event => {
 
-  event => {
+  self.skipWaiting();
 
-    event.waitUntil(
+  event.waitUntil(
 
-      caches
+    caches.open(CACHE_NAME)
+      .then(cache =>
+        cache.addAll(STATIC_ASSETS)
+      )
 
-        .open(
-          CACHE
-        )
+  );
 
-        .then(
-          c =>
-            c.addAll(
-              CORE
-            )
-        )
-
-        .then(
-          () =>
-            self.skipWaiting()
-        )
-
-    );
-
-  }
-
-);
+});
 
 
-self.addEventListener(
-  "activate",
+/* 啟用 */
+self.addEventListener("activate", event => {
 
-  event => {
+  event.waitUntil(
 
-    event.waitUntil(
+    caches.keys().then(keys =>
 
-      caches
+      Promise.all(
 
-        .keys()
-
-        .then(
-
-          keys =>
-
-            Promise.all(
-
-              keys
-
-                .filter(
-                  k =>
-                    k !== CACHE
-                )
-
-                .map(
-                  k =>
-                    caches.delete(
-                      k
-                    )
-                )
-
-            )
-
-        )
-
-        .then(
-          () =>
-            self.clients.claim()
-        )
-
-    );
-
-  }
-
-);
-
-
-self.addEventListener(
-  "fetch",
-
-  event => {
-
-    const req =
-      event.request;
-
-
-    if(
-      req.method !==
-      "GET"
-    ){
-
-      return;
-
-    }
-
-
-    const url =
-      new URL(
-        req.url
-      );
-
-
-    if(
-
-      url.origin ===
-      location.origin &&
-
-      (
-
-        url.pathname.endsWith(
-          "/index.html"
-        )
-
-        ||
-
-        url.pathname.endsWith(
-          "/"
-        )
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
 
       )
 
-    ){
+    )
 
-      event.respondWith(
+  );
 
-        fetch(
-          req,
-          {
-            cache:
-              "no-store"
-          }
-        )
+  self.clients.claim();
 
-        .then(
-
-          r => {
-
-            const copy =
-              r.clone();
+});
 
 
-            caches
+/*
+  HTML：
+  永遠優先網路。
+  避免 GitHub Pages 一直顯示舊版本。
+*/
+self.addEventListener("fetch", event => {
 
-              .open(
-                CACHE
-              )
+  const request = event.request;
 
-              .then(
-                c =>
-                  c.put(
-                    req,
-                    copy
-                  )
-              );
+  if (request.method !== "GET") {
+    return;
+  }
 
+  const url = new URL(request.url);
 
-            return r;
+  /*
+    API 不進 Service Worker 快取
+  */
+  if (
+    url.hostname.includes("script.google.com") ||
+    url.hostname.includes("googleusercontent.com")
+  ) {
 
-          }
+    event.respondWith(
+      fetch(request, {
+        cache: "no-store"
+      })
+    );
 
-        )
-
-        .catch(
-
-          () =>
-            caches.match(
-              req
-            )
-
-        )
-
-      );
+    return;
+  }
 
 
-      return;
-
-    }
-
+  /*
+    HTML / 根目錄：Network First
+  */
+  if (
+    request.mode === "navigate" ||
+    url.pathname.endsWith(".html") ||
+    url.pathname === "/" ||
+    url.pathname.endsWith("/")
+  ) {
 
     event.respondWith(
 
-      caches
+      fetch(request, {
+        cache: "no-store"
+      })
 
-        .match(
-          req
-        )
+      .then(response => {
 
-        .then(
+        const clone =
+          response.clone();
 
-          cached =>
+        caches.open(CACHE_NAME)
+          .then(cache =>
+            cache.put(request, clone)
+          );
 
-            cached ||
+        return response;
 
-            fetch(
-              req
-            )
+      })
 
-            .then(
-
-              r => {
-
-                if(
-
-                  r.ok &&
-
-                  url.origin ===
-                  location.origin
-
-                ){
-
-                  const copy =
-                    r.clone();
-
-
-                  caches
-
-                    .open(
-                      CACHE
-                    )
-
-                    .then(
-                      c =>
-                        c.put(
-                          req,
-                          copy
-                        )
-                    );
-
-                }
-
-
-                return r;
-
-              }
-
-            )
-
-        )
+      .catch(() =>
+        caches.match(request)
+      )
 
     );
 
+    return;
   }
 
-);
+
+  /*
+    其他靜態資源：
+    Cache First
+  */
+  event.respondWith(
+
+    caches.match(request)
+      .then(cached => {
+
+        return cached || fetch(request);
+
+      })
+
+  );
+
+});
