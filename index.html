@@ -169,8 +169,6 @@ onclick="refreshCurrentPage()">
 
 <main class="p-5 space-y-4">
 
-<!-- 加權 -->
-
 <div class="glass p-6">
 
 <div class="flex justify-between items-start">
@@ -210,20 +208,14 @@ class="dataTime mt-2">
 </div>
 
 <div class="mt-4 text-xs text-slate-400">
-
 資料日期：
-
-<span id="taiexDate"
-class="text-white font-black">
+<span id="taiexDate" class="text-white font-black">
 --
 </span>
-
 </div>
 
 </div>
 
-
-<!-- 櫃買 -->
 
 <div class="glass p-5">
 
@@ -260,8 +252,6 @@ class="dataTime mt-1">
 
 </div>
 
-
-<!-- 市場結構 -->
 
 <div class="glass p-5">
 
@@ -313,8 +303,6 @@ class="text-xl font-black mt-1">
 </div>
 
 
-<!-- 大盤預測 -->
-
 <div class="glass p-6">
 
 <div class="text-center">
@@ -329,14 +317,11 @@ class="text-4xl font-black text-amber-400 mt-2">
 </div>
 
 <div class="text-sm text-slate-400 mt-2">
-
 模型信心
-
 <span id="marketProbability"
 class="text-white font-black">
 --
 </span>
-
 </div>
 
 <div class="mt-4 text-2xl font-black">
@@ -359,7 +344,6 @@ class="text-white font-black">
 
 </div>
 
-
 <div class="mt-5 pt-4 border-t border-white/5">
 
 <div class="smallLabel">
@@ -375,8 +359,6 @@ class="text-xs text-slate-400 leading-relaxed mt-2">
 
 </div>
 
-
-<!-- 技術 -->
 
 <div class="glass p-5">
 
@@ -395,8 +377,6 @@ class="space-y-4">
 
 </div>
 
-
-<!-- 歷史 -->
 
 <div class="glass overflow-hidden">
 
@@ -430,7 +410,6 @@ class="text-xs text-slate-400 leading-relaxed mt-2">
 
 </main>
 </section>
-
 
 
 <!-- =========================================================
@@ -473,8 +452,6 @@ onclick="loadMorning(true)">
 
 <main class="px-5 pt-4 space-y-4">
 
-<!-- 晨報預測 -->
-
 <div class="glass p-6">
 
 <div class="text-center">
@@ -491,7 +468,6 @@ class="text-4xl font-black text-amber-400 mt-2">
 <div class="mt-2 text-sm text-slate-400">
 
 模型信心
-
 <span id="morningProbability"
 class="text-white font-black">
 --
@@ -527,8 +503,6 @@ class="text-xs text-slate-400 leading-relaxed mt-5 text-left">
 </div>
 
 
-<!-- 隔夜市場 -->
-
 <div class="glass p-5">
 
 <div class="font-black text-sm mb-4">
@@ -541,8 +515,6 @@ class="space-y-3">
 
 </div>
 
-
-<!-- 新聞 -->
 
 <div class="glass p-5">
 
@@ -583,7 +555,6 @@ class="text-xs text-slate-400 leading-relaxed mt-2">
 </section>
 
 
-
 <!-- =========================================================
      ③ 自選
 ========================================================= -->
@@ -606,9 +577,7 @@ WATCHLIST
 
 <p class="text-[9px] text-slate-500 mt-1">
 最多 20 檔 ·
-<span id="watchCount">
-0
-</span>
+<span id="watchCount">0</span>
 檔
 </p>
 
@@ -624,13 +593,11 @@ class="bg-blue-600 active:scale-95 px-4 py-2.5 rounded-xl text-xs font-black">
 
 </header>
 
-
 <main id="watchContainer"
 class="px-5 pt-4 space-y-4">
 </main>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -686,8 +653,6 @@ class="bg-blue-600 px-5 rounded-2xl font-black">
 
 </div>
 
-
-<!-- 股票 -->
 
 <div class="glass p-5">
 
@@ -813,8 +778,6 @@ class="text-sm font-black mt-2">
 </div>
 
 
-<!-- 技術 -->
-
 <div class="glass p-5">
 
 <div class="font-black text-sm mb-4">
@@ -827,8 +790,6 @@ class="space-y-4">
 
 </div>
 
-
-<!-- 預測 -->
 
 <div class="glass p-5">
 
@@ -852,6 +813,7 @@ class="font-black mt-1">
 
 </div>
 
+
 <div class="bg-white/5 rounded-2xl p-3">
 
 <div class="smallLabel">
@@ -865,6 +827,7 @@ class="font-black mt-1">
 </div>
 
 </div>
+
 
 <div class="bg-white/5 rounded-2xl p-3">
 
@@ -891,8 +854,6 @@ class="text-xs text-slate-400 leading-relaxed mt-4">
 </div>
 
 
-<!-- 預測 vs 實際 -->
-
 <div class="glass p-5">
 
 <div class="font-black text-sm">
@@ -911,7 +872,6 @@ class="mt-4 text-xs text-slate-500">
 </section>
 
 
-
 <!-- =========================================================
      導航
 ========================================================= -->
@@ -923,13 +883,8 @@ onclick="switchPage('home')"
 id="navHome"
 class="flex flex-col items-center gap-1 text-blue-400">
 
-<span class="text-2xl">
-⌂
-</span>
-
-<span class="text-[10px] font-black">
-大盤
-</span>
+<span class="text-2xl">⌂</span>
+<span class="text-[10px] font-black">大盤</span>
 
 </button>
 
@@ -939,13 +894,8 @@ onclick="switchPage('morning')"
 id="navMorning"
 class="flex flex-col items-center gap-1 text-slate-500">
 
-<span class="text-2xl">
-▤
-</span>
-
-<span class="text-[10px] font-black">
-晨報
-</span>
+<span class="text-2xl">▤</span>
+<span class="text-[10px] font-black">晨報</span>
 
 </button>
 
@@ -955,13 +905,8 @@ onclick="switchPage('watchlist')"
 id="navWatch"
 class="flex flex-col items-center gap-1 text-slate-500">
 
-<span class="text-2xl">
-▦
-</span>
-
-<span class="text-[10px] font-black">
-自選
-</span>
+<span class="text-2xl">▦</span>
+<span class="text-[10px] font-black">自選</span>
 
 </button>
 
@@ -971,21 +916,22 @@ onclick="switchPage('analysis')"
 id="navAnalysis"
 class="flex flex-col items-center gap-1 text-slate-500">
 
-<span class="text-2xl">
-⌕
-</span>
-
-<span class="text-[10px] font-black">
-分析
-</span>
+<span class="text-2xl">⌕</span>
+<span class="text-[10px] font-black">分析</span>
 
 </button>
 
 </nav>
 
 
-
 <script>
+
+/* =========================================================
+   APP
+========================================================= */
+
+const APP_VERSION="20260819-03";
+
 
 /* =========================================================
    API
@@ -1000,23 +946,21 @@ const API_URL =
 ========================================================= */
 
 const stockDB={
-
-"2330":"台積電",
-"2317":"鴻海",
-"2454":"聯發科",
-"3017":"奇鋐",
-"2382":"廣達",
-"3037":"欣興",
-"2308":"台達電",
-"2881":"富邦金",
-"2882":"國泰金",
-"2891":"中信金",
-"2412":"中華電",
-"2303":"聯電",
-"0050":"元大台灣50",
-"0056":"元大高股息",
-"00878":"國泰永續高股息"
-
+  "2330":"台積電",
+  "2317":"鴻海",
+  "2454":"聯發科",
+  "3017":"奇鋐",
+  "2382":"廣達",
+  "3037":"欣興",
+  "2308":"台達電",
+  "2881":"富邦金",
+  "2882":"國泰金",
+  "2891":"中信金",
+  "2412":"中華電",
+  "2303":"聯電",
+  "0050":"元大台灣50",
+  "0056":"元大高股息",
+  "00878":"國泰永續高股息"
 };
 
 
@@ -1024,26 +968,14 @@ const stockDB={
    全域
 ========================================================= */
 
-let watchlist=
-  loadWatchlist();
+let watchlist=loadWatchlist();
+let currentSymbol="2330";
+let marketData=null;
+let morningData=null;
 
-let currentSymbol=
-  "2330";
-
-let marketData=
-  null;
-
-let morningData=
-  null;
-
-let loadingHome=
-  false;
-
-let loadingMorning=
-  false;
-
-let loadingAnalysis=
-  false;
+let loadingHome=false;
+let loadingMorning=false;
+let loadingAnalysis=false;
 
 
 /* =========================================================
@@ -1054,24 +986,21 @@ function loadWatchlist(){
 
   try{
 
-    const x=
-      JSON.parse(
-        localStorage.getItem(
-          "aiStockWatchlist"
-        ) || "null"
-      );
+    const x=JSON.parse(
+      localStorage.getItem(
+        "aiStockWatchlist"
+      ) || "null"
+    );
 
     if(Array.isArray(x)){
 
       return x
         .map(String)
         .map(
-          x=>
-            x
-              .replace(
-                /[^0-9]/g,
-                ""
-              )
+          x=>x.replace(
+            /[^0-9]/g,
+            ""
+          )
         )
         .filter(Boolean)
         .slice(0,20);
@@ -1091,7 +1020,7 @@ function loadWatchlist(){
 
 
 /* =========================================================
-   API GET
+   API GET｜完整防呆版
 ========================================================= */
 
 async function apiGet(
@@ -1103,13 +1032,17 @@ async function apiGet(
   let url=
     API_URL+
     "?action="+
-    encodeURIComponent(action);
+    encodeURIComponent(
+      action
+    );
 
   if(symbol){
 
     url+=
       "&symbol="+
-      encodeURIComponent(symbol);
+      encodeURIComponent(
+        symbol
+      );
 
   }
 
@@ -1138,7 +1071,11 @@ async function apiGet(
         {
           method:"GET",
           cache:"no-store",
-          signal:controller.signal
+          signal:controller.signal,
+          headers:{
+            "Accept":
+              "application/json"
+          }
         }
       );
 
@@ -1153,6 +1090,14 @@ async function apiGet(
 
     const text=
       await response.text();
+
+    if(!text){
+
+      throw new Error(
+        "API 沒有回傳資料"
+      );
+
+    }
 
     let json;
 
@@ -1170,7 +1115,20 @@ async function apiGet(
 
     }
 
-    if(!json.success){
+    if(
+      !json ||
+      typeof json!=="object"
+    ){
+
+      throw new Error(
+        "API 回傳格式錯誤"
+      );
+
+    }
+
+    if(
+      json.success!==true
+    ){
 
       throw new Error(
         json.error ||
@@ -1185,6 +1143,7 @@ async function apiGet(
   catch(e){
 
     if(
+      e &&
       e.name==="AbortError"
     ){
 
@@ -1199,7 +1158,9 @@ async function apiGet(
   }
   finally{
 
-    clearTimeout(timer);
+    clearTimeout(
+      timer
+    );
 
   }
 
@@ -1207,7 +1168,7 @@ async function apiGet(
 
 
 /* =========================================================
-   工具
+   基礎工具
 ========================================================= */
 
 function number(v){
@@ -1226,25 +1187,18 @@ function number(v){
     typeof v==="number"
   ){
 
-    return v;
+    return Number.isFinite(v)
+      ?v
+      :NaN;
 
   }
 
   const n=
     Number(
       String(v)
-        .replace(
-          /,/g,
-          ""
-        )
-        .replace(
-          /%/g,
-          ""
-        )
-        .replace(
-          /[^\d.+-]/g,
-          ""
-        )
+        .replace(/,/g,"")
+        .replace(/%/g,"")
+        .replace(/[^\d.+-]/g,"")
     );
 
   return Number.isFinite(n)
@@ -1281,6 +1235,49 @@ function fmt(
 }
 
 
+function safeText(v){
+
+  if(
+    v===null ||
+    v===undefined ||
+    v===""
+  ){
+
+    return "--";
+
+  }
+
+  return String(v);
+
+}
+
+
+function safeUrl(v){
+
+  if(!v){
+
+    return "#";
+
+  }
+
+  const text=
+    String(v).trim();
+
+  if(
+    /^https?:\/\//i.test(
+      text
+    )
+  ){
+
+    return text;
+
+  }
+
+  return "#";
+
+}
+
+
 function colorFor(v){
 
   const n=
@@ -1303,17 +1300,13 @@ function colorFor(v){
 
 function trendColor(t){
 
-  if(
-    t==="偏多"
-  ){
+  if(t==="偏多"){
 
     return "text-emerald-400";
 
   }
 
-  if(
-    t==="偏空"
-  ){
+  if(t==="偏空"){
 
     return "text-rose-400";
 
@@ -1368,8 +1361,7 @@ function formatTradeValue(v){
   ){
 
     return (
-      n/
-      1000000000000
+      n/1000000000000
     ).toFixed(2)+" 兆";
 
   }
@@ -1379,8 +1371,7 @@ function formatTradeValue(v){
   ){
 
     return (
-      n/
-      100000000
+      n/100000000
     ).toFixed(2)+" 億";
 
   }
@@ -1388,6 +1379,53 @@ function formatTradeValue(v){
   return n.toLocaleString(
     "zh-TW"
   );
+
+}
+
+
+function formatDisplayTime(
+  iso
+){
+
+  try{
+
+    const d=
+      new Date(iso);
+
+    if(
+      isNaN(
+        d.getTime()
+      )
+    ){
+
+      return safeText(
+        iso
+      );
+
+    }
+
+    return d.toLocaleString(
+      "zh-TW",
+      {
+        timeZone:"Asia/Taipei",
+        year:"numeric",
+        month:"2-digit",
+        day:"2-digit",
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit",
+        hour12:false
+      }
+    );
+
+  }
+  catch(e){
+
+    return safeText(
+      iso
+    );
+
+  }
 
 }
 
@@ -1400,23 +1438,25 @@ async function loadHome(
   force=false
 ){
 
-  if(
-    loadingHome
-  ){
+  if(loadingHome){
 
     return;
 
   }
 
-  loadingHome=
-    true;
+  loadingHome=true;
 
-  document
-    .getElementById(
+  const badge=
+    document.getElementById(
       "marketBadge"
-    )
-    .textContent=
+    );
+
+  if(badge){
+
+    badge.textContent=
       "資料讀取中";
+
+  }
 
   try{
 
@@ -1428,6 +1468,7 @@ async function loadHome(
       );
 
     if(
+      !data ||
       !data.market
     ){
 
@@ -1447,25 +1488,31 @@ async function loadHome(
   }
   catch(e){
 
-    document
-      .getElementById(
-        "marketBadge"
-      )
-      .textContent=
+    if(badge){
+
+      badge.textContent=
         "資料錯誤";
 
-    document
-      .getElementById(
+    }
+
+    const msg=
+      document.getElementById(
         "homeMessage"
-      )
-      .textContent=
-        "無法取得大盤資料："+e.message;
+      );
+
+    if(msg){
+
+      msg.textContent=
+        "大盤 API 讀取失敗："+safeText(
+          e && e.message
+        );
+
+    }
 
   }
   finally{
 
-    loadingHome=
-      false;
+    loadingHome=false;
 
   }
 
@@ -1474,33 +1521,44 @@ async function loadHome(
 
 function renderMarket(m){
 
+  m=
+    m &&
+    typeof m==="object"
+      ?m
+      :{};
+
   const taiex=
-    m.taiwanIndex ||
-    {};
+    m.taiwanIndex || {};
 
   const otc=
-    m.otcIndex ||
-    {};
+    m.otcIndex || {};
 
   const realtime=
     !!m.realtime;
 
-
-  document
-    .getElementById(
+  const badge=
+    document.getElementById(
       "marketBadge"
-    )
-    .textContent=
+    );
+
+  if(badge){
+
+    badge.textContent=
       realtime
         ?"盤中即時"
         :"最近交易";
 
+  }
 
-  document
-    .getElementById(
+
+  const updated=
+    document.getElementById(
       "homeUpdated"
-    )
-    .textContent=
+    );
+
+  if(updated){
+
+    updated.textContent=
       "系統更新："+(
         m.fetchedAt
           ?formatDisplayTime(
@@ -1509,15 +1567,22 @@ function renderMarket(m){
           :"--"
       );
 
+  }
 
-  document
-    .getElementById(
+
+  const taiexPrice=
+    document.getElementById(
       "taiexPrice"
-    )
-    .textContent=
+    );
+
+  if(taiexPrice){
+
+    taiexPrice.textContent=
       fmt(
         taiex.price
       );
+
+  }
 
 
   const taiexChange=
@@ -1531,71 +1596,57 @@ function renderMarket(m){
     );
 
 
-  document
-    .getElementById(
+  const taiexChangeEl=
+    document.getElementById(
       "taiexChange"
-    )
-    .textContent=
+    );
+
+  if(taiexChangeEl){
+
+    taiexChangeEl.textContent=
       Number.isFinite(
         taiexChange
       )
-      ?(
-        (
-          taiexChange>=0
-            ?"+"
-            :""
-        )+
-        fmt(
-          taiexChange
-        )+
-        "  "+
-        (
-          Number.isFinite(
-            taiexPct
-          )
-          ?(
-            (
-              taiexPct>=0
-                ?"+"
-                :""
-            )+
-            fmt(
+        ?(
+          (taiexChange>=0?"+":"")+
+          fmt(taiexChange)+
+          "  "+
+          (
+            Number.isFinite(
               taiexPct
-            )+
-            "%"
+            )
+              ?(
+                (taiexPct>=0?"+":"")+
+                fmt(taiexPct)+
+                "%"
+              )
+              :""
           )
-          :""
         )
-      )
-      :"--";
+        :"--";
 
-
-  document
-    .getElementById(
-      "taiexChange"
-    )
-    .className=
+    taiexChangeEl.className=
       "text-sm font-black "+
       colorFor(
         taiexChange
       );
 
+  }
 
-  document
-    .getElementById(
+
+  const status=
+    document.getElementById(
       "taiexStatus"
-    )
-    .textContent=
+    );
+
+  if(status){
+
+    status.textContent=
       realtime
         ?"● 盤中即時"
         :"最近交易日";
 
-
-  document
-    .getElementById(
-      "taiexStatus"
-    )
-    .className=
+    status.className=
       "text-[10px] font-black "+
       (
         realtime
@@ -1603,258 +1654,333 @@ function renderMarket(m){
           :"text-amber-400"
       );
 
+  }
 
-  document
-    .getElementById(
+
+  const time=
+    document.getElementById(
       "taiexTime"
-    )
-    .textContent=
-      taiex.time ||
-      "--";
+    );
+
+  if(time){
+
+    time.textContent=
+      safeText(
+        taiex.time
+      );
+
+  }
 
 
-  document
-    .getElementById(
+  const date=
+    document.getElementById(
       "taiexDate"
-    )
-    .textContent=
-      taiex.date ||
-      m.dataDate ||
-      "--";
+    );
+
+  if(date){
+
+    date.textContent=
+      safeText(
+        taiex.date ||
+        m.dataDate
+      );
+
+  }
 
 
   const otcPrice=
-    otc.price ??
-    (
-      otc.quote
-        ?otc.quote.price
-        :null
+    number(
+      otc.price ??
+      (
+        otc.quote
+          ?otc.quote.price
+          :null
+      )
     );
 
   const otcChange=
-    otc.change ??
-    (
-      otc.quote
-        ?otc.quote.change
-        :null
+    number(
+      otc.change ??
+      (
+        otc.quote
+          ?otc.quote.change
+          :null
+      )
     );
 
   const otcPct=
-    otc.pct ??
-    (
-      otc.quote
-        ?otc.quote.pct
-        :null
+    number(
+      otc.pct ??
+      (
+        otc.quote
+          ?otc.quote.pct
+          :null
+      )
     );
 
 
-  document
-    .getElementById(
+  const otcPriceEl=
+    document.getElementById(
       "otcPrice"
-    )
-    .textContent=
+    );
+
+  if(otcPriceEl){
+
+    otcPriceEl.textContent=
       fmt(
         otcPrice
       );
 
-
-  const otcChangeNumber=
-    number(
-      otcChange
-    );
-
-  const otcPctNumber=
-    number(
-      otcPct
-    );
+  }
 
 
-  document
-    .getElementById(
+  const otcChangeEl=
+    document.getElementById(
       "otcChange"
-    )
-    .textContent=
+    );
+
+  if(otcChangeEl){
+
+    otcChangeEl.textContent=
       Number.isFinite(
-        otcChangeNumber
+        otcChange
       )
-      ?(
-        (
-          otcChangeNumber>=0
-            ?"+"
-            :""
-        )+
-        fmt(
-          otcChangeNumber
-        )+
-        "  "+
-        (
-          Number.isFinite(
-            otcPctNumber
+        ?(
+          (otcChange>=0?"+":"")+
+          fmt(otcChange)+
+          "  "+
+          (
+            Number.isFinite(
+              otcPct
+            )
+              ?(
+                (otcPct>=0?"+":"")+
+                fmt(otcPct)+
+                "%"
+              )
+              :""
           )
-          ?(
-            (
-              otcPctNumber>=0
-                ?"+"
-                :""
-            )+
-            fmt(
-              otcPctNumber
-            )+
-            "%"
-          )
-          :""
         )
-      )
-      :"--";
+        :"--";
 
-
-  document
-    .getElementById(
-      "otcChange"
-    )
-    .className=
+    otcChangeEl.className=
       "font-black "+
       colorFor(
-        otcChangeNumber
+        otcChange
       );
 
+  }
 
-  document
-    .getElementById(
+
+  const otcDate=
+    document.getElementById(
       "otcDate"
-    )
-    .textContent=
-      otc.date ||
-      (
-        otc.quote
-          ?otc.quote.date
-          :""
-      ) ||
-      "--";
+    );
+
+  if(otcDate){
+
+    otcDate.textContent=
+      safeText(
+        otc.date ||
+        (
+          otc.quote
+            ?otc.quote.date
+            :""
+        )
+      );
+
+  }
 
 
   const breadth=
-    m.breadth ||
-    {};
+    m.breadth || {};
 
 
-  document
-    .getElementById(
+  const up=
+    document.getElementById(
       "breadthUp"
-    )
-    .textContent=
+    );
+
+  const down=
+    document.getElementById(
+      "breadthDown"
+    );
+
+  const flat=
+    document.getElementById(
+      "breadthFlat"
+    );
+
+
+  if(up){
+
+    up.textContent=
       breadth.up ??
       "--";
 
+  }
 
-  document
-    .getElementById(
-      "breadthDown"
-    )
-    .textContent=
+  if(down){
+
+    down.textContent=
       breadth.down ??
       "--";
 
+  }
 
-  document
-    .getElementById(
-      "breadthFlat"
-    )
-    .textContent=
+  if(flat){
+
+    flat.textContent=
       breadth.flat ??
       "--";
 
+  }
 
-  document
-    .getElementById(
+
+  const trade=
+    document.getElementById(
       "tradeValue"
-    )
-    .textContent=
+    );
+
+  if(trade){
+
+    trade.textContent=
       formatTradeValue(
         m.tradeValue
       );
 
+  }
 
-  document
-    .getElementById(
-      "marketTrend"
-    )
-    .textContent=
+
+  const trend=
+    safeText(
       m.trend ||
-      "資料不足";
+      "資料不足"
+    );
 
-
-  document
-    .getElementById(
+  const trendEl=
+    document.getElementById(
       "marketTrend"
-    )
-    .className=
+    );
+
+  if(trendEl){
+
+    trendEl.textContent=
+      trend;
+
+    trendEl.className=
       "text-4xl font-black mt-2 "+
       trendColor(
-        m.trend
+        trend
       );
 
+  }
 
-  document
-    .getElementById(
+
+  const probability=
+    number(
+      m.probability
+    );
+
+  const probabilityEl=
+    document.getElementById(
       "marketProbability"
-    )
-    .textContent=
-      m.probability!=null
-        ?m.probability+"%"
+    );
+
+  if(probabilityEl){
+
+    probabilityEl.textContent=
+      Number.isFinite(
+        probability
+      )
+        ?fmt(
+            probability,
+            0
+          )+"%"
         :"--";
 
+  }
 
-  document
-    .getElementById(
+
+  const range=
+    m.range &&
+    typeof m.range==="object"
+      ?m.range
+      :{};
+
+
+  const lowEl=
+    document.getElementById(
       "marketRangeLow"
-    )
-    .textContent=
-      fmt(
-        m.range &&
-        m.range.low
-      );
+    );
 
-
-  document
-    .getElementById(
+  const highEl=
+    document.getElementById(
       "marketRangeHigh"
-    )
-    .textContent=
+    );
+
+
+  if(lowEl){
+
+    lowEl.textContent=
       fmt(
-        m.range &&
-        m.range.high
+        range.low
       );
 
+  }
 
-  document
-    .getElementById(
+  if(highEl){
+
+    highEl.textContent=
+      fmt(
+        range.high
+      );
+
+  }
+
+
+  const reasonEl=
+    document.getElementById(
       "marketReason"
-    )
-    .textContent=
-      m.reason ||
-      "尚無模型判斷原因。";
+    );
+
+  if(reasonEl){
+
+    reasonEl.textContent=
+      safeText(
+        m.reason ||
+        "尚無模型判斷原因。"
+      );
+
+  }
 
 
   renderMarketFactors(
     m
   );
 
-
   renderMarketHistory(
-    m.history ||
-    []
+    Array.isArray(
+      m.history
+    )
+      ?m.history
+      :[]
   );
 
 
-  document
-    .getElementById(
+  const homeMessage=
+    document.getElementById(
       "homeMessage"
-    )
-    .textContent=
+    );
+
+  if(homeMessage){
+
+    homeMessage.textContent=
       realtime
         ?"目前顯示 TWSE 盤中即時資料；AI 預測使用歷史資料與技術特徵。"
         :"目前非盤中，顯示最近交易日資料；AI 預測不會把舊資料標示成即時。";
+
+  }
 
 }
 
@@ -1883,83 +2009,81 @@ function renderMarketFactors(m){
     );
 
 
-  const factors=[
+  const makeWidth=
+    (priceValue,ma)=>{
+      if(
+        !Number.isFinite(priceValue) ||
+        !Number.isFinite(ma) ||
+        ma===0
+      ){
+        return 50;
+      }
 
+      return Math.max(
+        15,
+        Math.min(
+          100,
+          priceValue/ma*50
+        )
+      );
+    };
+
+
+  const factors=[
     {
       name:"MA5",
       value:ma5,
       color:
         Number.isFinite(price) &&
         Number.isFinite(ma5)
-        ?(
-          price>=ma5
-            ?"text-emerald-400"
-            :"text-rose-400"
-        )
-        :"text-slate-400",
-      width:
-        Number.isFinite(price) &&
-        Number.isFinite(ma5)
-        ?Math.max(
-          15,
-          Math.min(
-            100,
-            price/ma5*50
+          ?(
+            price>=ma5
+              ?"text-emerald-400"
+              :"text-rose-400"
           )
+          :"text-slate-400",
+      width:
+        makeWidth(
+          price,
+          ma5
         )
-        :50
     },
-
     {
       name:"MA10",
       value:ma10,
       color:
         Number.isFinite(price) &&
         Number.isFinite(ma10)
-        ?(
-          price>=ma10
-            ?"text-emerald-400"
-            :"text-rose-400"
-        )
-        :"text-slate-400",
-      width:
-        Number.isFinite(price) &&
-        Number.isFinite(ma10)
-        ?Math.max(
-          15,
-          Math.min(
-            100,
-            price/ma10*50
+          ?(
+            price>=ma10
+              ?"text-emerald-400"
+              :"text-rose-400"
           )
+          :"text-slate-400",
+      width:
+        makeWidth(
+          price,
+          ma10
         )
-        :50
     },
-
     {
       name:"MA20",
       value:ma20,
       color:
         Number.isFinite(price) &&
         Number.isFinite(ma20)
-        ?(
-          price>=ma20
-            ?"text-emerald-400"
-            :"text-rose-400"
-        )
-        :"text-slate-400",
-      width:
-        Number.isFinite(price) &&
-        Number.isFinite(ma20)
-        ?Math.max(
-          15,
-          Math.min(
-            100,
-            price/ma20*50
+          ?(
+            price>=ma20
+              ?"text-emerald-400"
+              :"text-rose-400"
           )
+          :"text-slate-400",
+      width:
+        makeWidth(
+          price,
+          ma20
         )
-        :50
     },
-
     {
       name:"大盤趨勢",
       value:m.trend || "--",
@@ -1970,21 +2094,27 @@ function renderMarketFactors(m){
         m.trend==="偏多"
           ?75
           :m.trend==="偏空"
-          ?30
-          :50
+            ?30
+            :50
     }
-
   ];
 
 
-  document
-    .getElementById(
+  const el=
+    document.getElementById(
       "marketFactors"
-    )
-    .innerHTML=
-      factors
-        .map(
-          x=>`
+    );
+
+  if(!el){
+
+    return;
+
+  }
+
+
+  el.innerHTML=
+    factors.map(
+      x=>`
 
 <div>
 
@@ -1998,7 +2128,9 @@ ${escapeHtml(x.name)}
 ${
   typeof x.value==="number"
     ?fmt(x.value)
-    :escapeHtml(x.value)
+    :escapeHtml(
+        safeText(x.value)
+      )
 }
 </span>
 
@@ -2011,22 +2143,27 @@ ${
 </div>
 
 `
-        )
-        .join("");
+    ).join("");
 
 }
 
 
-function renderMarketHistory(rows){
+function renderMarketHistory(
+  rows
+){
 
   const el=
     document.getElementById(
       "marketHistory"
     );
 
-  if(
-    !rows.length
-  ){
+  if(!el){
+
+    return;
+
+  }
+
+  if(!Array.isArray(rows) || !rows.length){
 
     el.innerHTML=`
 <div class="p-5 text-xs text-slate-500">
@@ -2046,45 +2183,54 @@ function renderMarketHistory(rows){
       .map(
         r=>{
 
-          const c=
+          r=
+            r &&
+            typeof r==="object"
+              ?r
+              :{};
+
+          const change=
             number(
               r.change
             );
 
-          const p=
+          const pct=
             number(
               r.pct
             );
+
 
           return `
 
 <div class="grid grid-cols-4 items-center px-4 py-4 text-xs">
 
 <span class="text-slate-500">
-${escapeHtml(r.date || "--")}
+${escapeHtml(
+  safeText(r.date)
+)}
 </span>
 
 <span class="text-white font-bold">
 ${fmt(r.close)}
 </span>
 
-<span class="${colorFor(c)} font-bold">
+<span class="${colorFor(change)} font-bold">
 ${
-  Number.isFinite(c)
+  Number.isFinite(change)
     ?(
-      (c>=0?"+":"")+
-      fmt(c)
+      (change>=0?"+":"")+
+      fmt(change)
     )
     :"--"
 }
 </span>
 
-<span class="${colorFor(p)} text-right font-black">
+<span class="${colorFor(pct)} text-right font-black">
 ${
-  Number.isFinite(p)
+  Number.isFinite(pct)
     ?(
-      (p>=0?"+":"")+
-      fmt(p)+
+      (pct>=0?"+":"")+
+      fmt(pct)+
       "%"
     )
     :"--"
@@ -2110,23 +2256,43 @@ async function loadMorning(
   force=false
 ){
 
-  if(
-    loadingMorning
-  ){
+  if(loadingMorning){
 
     return;
 
   }
 
-  loadingMorning=
-    true;
+  loadingMorning=true;
 
-  document
-    .getElementById(
+
+  const trendEl=
+    document.getElementById(
       "morningTrend"
-    )
-    .textContent=
+    );
+
+  const reasonEl=
+    document.getElementById(
+      "morningReason"
+    );
+
+
+  if(trendEl){
+
+    trendEl.textContent=
       "分析中";
+
+    trendEl.className=
+      "text-4xl font-black mt-2 text-amber-400";
+
+  }
+
+
+  if(reasonEl){
+
+    reasonEl.textContent=
+      "正在取得隔夜市場、新聞與模型資料……";
+
+  }
 
 
   try{
@@ -2138,7 +2304,9 @@ async function loadMorning(
         force
       );
 
+
     if(
+      !data ||
       !data.report
     ){
 
@@ -2148,28 +2316,79 @@ async function loadMorning(
 
     }
 
+
     morningData=
       data.report;
 
-    renderMorning(
-      data.report
-    );
+
+    try{
+
+      renderMorning(
+        data.report
+      );
+
+    }
+    catch(renderError){
+
+      console.error(
+        "renderMorning error:",
+        renderError
+      );
+
+      if(trendEl){
+
+        trendEl.textContent=
+          "資料異常";
+
+        trendEl.className=
+          "text-4xl font-black mt-2 text-rose-400";
+
+      }
+
+      if(reasonEl){
+
+        reasonEl.textContent=
+          "晨報資料已取得，但畫面渲染發生錯誤："+safeText(
+            renderError &&
+            renderError.message
+          );
+
+      }
+
+    }
 
   }
   catch(e){
 
-    document
-      .getElementById(
-        "morningReason"
-      )
-      .textContent=
-        "晨報資料讀取失敗："+e.message;
+    console.error(
+      "loadMorning error:",
+      e
+    );
+
+    if(trendEl){
+
+      trendEl.textContent=
+        "無法取得";
+
+      trendEl.className=
+        "text-4xl font-black mt-2 text-rose-400";
+
+    }
+
+    if(reasonEl){
+
+      reasonEl.textContent=
+        "晨報 API 讀取失敗："+safeText(
+          e &&
+          e.message
+        );
+
+    }
 
   }
   finally{
 
-    loadingMorning=
-      false;
+    loadingMorning=false;
 
   }
 
@@ -2178,103 +2397,191 @@ async function loadMorning(
 
 function renderMorning(r){
 
-  document
-    .getElementById(
+  r=
+    r &&
+    typeof r==="object"
+      ?r
+      :{};
+
+
+  const generatedEl=
+    document.getElementById(
       "morningGenerated"
-    )
-    .textContent=
-      "更新時間："+(
+    );
+
+  if(generatedEl){
+
+    generatedEl.textContent=
+      "更新時間："+safeText(
         r.generatedAt ||
-        "--"
+        r.generatedDate
       );
+
+  }
 
 
   const p=
-    r.prediction ||
-    {};
+    r.prediction &&
+    typeof r.prediction==="object"
+      ?r.prediction
+      :{};
 
 
-  document
-    .getElementById(
-      "morningTrend"
-    )
-    .textContent=
+  const trend=
+    safeText(
       p.trend ||
-      "資料不足";
+      "資料不足"
+    );
 
 
-  document
-    .getElementById(
+  const trendEl=
+    document.getElementById(
       "morningTrend"
-    )
-    .className=
+    );
+
+  if(trendEl){
+
+    trendEl.textContent=
+      trend;
+
+    trendEl.className=
       "text-4xl font-black mt-2 "+
       trendColor(
-        p.trend
+        trend
       );
 
+  }
 
-  document
-    .getElementById(
+
+  const probability=
+    number(
+      p.probability
+    );
+
+  const probabilityEl=
+    document.getElementById(
       "morningProbability"
-    )
-    .textContent=
-      p.probability!=null
-        ?p.probability+"%"
+    );
+
+  if(probabilityEl){
+
+    probabilityEl.textContent=
+      Number.isFinite(
+        probability
+      )
+        ?fmt(
+            probability,
+            0
+          )+"%"
         :"--";
 
+  }
 
-  document
-    .getElementById(
+
+  const range=
+    p.range &&
+    typeof p.range==="object"
+      ?p.range
+      :{};
+
+
+  const lowEl=
+    document.getElementById(
       "morningRangeLow"
-    )
-    .textContent=
-      fmt(
-        p.range &&
-        p.range.low
-      );
+    );
 
-
-  document
-    .getElementById(
+  const highEl=
+    document.getElementById(
       "morningRangeHigh"
-    )
-    .textContent=
+    );
+
+
+  if(lowEl){
+
+    lowEl.textContent=
       fmt(
-        p.range &&
-        p.range.high
+        range.low
       );
 
+  }
 
-  document
-    .getElementById(
+  if(highEl){
+
+    highEl.textContent=
+      fmt(
+        range.high
+      );
+
+  }
+
+
+  if(
+    document.getElementById(
       "morningReason"
     )
-    .textContent=
-      p.reason ||
-      "尚無分析結果。";
+  ){
+
+    document.getElementById(
+      "morningReason"
+    ).textContent=
+      safeText(
+        p.reason ||
+        "目前沒有完整分析原因。"
+      );
+
+  }
 
 
   const markets=
-    r.markets ||
-    [];
-
-
-  document
-    .getElementById(
-      "overnightList"
+    Array.isArray(
+      r.markets
     )
-    .innerHTML=
-      markets
-        .map(
-          m=>{
+      ?r.markets
+      :[];
 
-            const pct=
-              number(
-                m.pct
-              );
 
-            return `
+  const overnightEl=
+    document.getElementById(
+      "overnightList"
+    );
+
+
+  if(overnightEl){
+
+    if(!markets.length){
+
+      overnightEl.innerHTML=`
+<div class="text-xs text-slate-500">
+目前沒有取得隔夜市場資料。
+</div>
+`;
+
+    }
+    else{
+
+      overnightEl.innerHTML=
+        markets
+          .map(
+            m=>{
+
+              m=
+                m &&
+                typeof m==="object"
+                  ?m
+                  :{};
+
+              const price=
+                number(
+                  m.price
+                );
+
+              const pct=
+                number(
+                  m.pct
+                );
+
+
+              return `
 
 <div class="bg-white/5 rounded-2xl p-4">
 
@@ -2283,11 +2590,20 @@ function renderMorning(r){
 <div>
 
 <div class="font-bold text-sm">
-${escapeHtml(m.name)}
+${escapeHtml(
+  safeText(
+    m.name ||
+    "--"
+  )
+)}
 </div>
 
 <div class="dataTime mt-1">
-${escapeHtml(m.date || "--")}
+${escapeHtml(
+  safeText(
+    m.date
+  )
+)}
 </div>
 
 </div>
@@ -2296,16 +2612,13 @@ ${escapeHtml(m.date || "--")}
 
 <div class="font-black">
 ${
-  Number.isFinite(
-    number(m.price)
-  )
-    ?fmt(m.price)
+  Number.isFinite(price)
+    ?fmt(price)
     :"--"
 }
 </div>
 
 <div class="${colorFor(pct)} text-xs font-black mt-1">
-
 ${
   Number.isFinite(pct)
     ?(
@@ -2315,7 +2628,6 @@ ${
     )
     :"--"
 }
-
 </div>
 
 </div>
@@ -2326,71 +2638,129 @@ ${
 
 `;
 
-          }
-        )
-        .join("");
+            }
+          )
+          .join("");
+
+    }
+
+  }
 
 
   const news=
-    r.news ||
-    [];
-
-
-  document
-    .getElementById(
-      "newsCount"
+    Array.isArray(
+      r.news
     )
-    .textContent=
+      ?r.news
+      :[];
+
+
+  const newsCount=
+    document.getElementById(
+      "newsCount"
+    );
+
+  if(newsCount){
+
+    newsCount.textContent=
       news.length+
       " 則";
 
+  }
 
-  document
-    .getElementById(
+
+  const newsList=
+    document.getElementById(
       "newsList"
-    )
-    .innerHTML=
-      news.length
+    );
 
-        ?news
+
+  if(newsList){
+
+    if(!news.length){
+
+      newsList.innerHTML=`
+<div class="text-xs text-slate-500">
+目前沒有取得公開財經新聞。
+</div>
+`;
+
+    }
+    else{
+
+      newsList.innerHTML=
+        news
           .map(
-            n=>`
+            n=>{
+
+              n=
+                n &&
+                typeof n==="object"
+                  ?n
+                  :{};
+
+              const title=
+                safeText(
+                  n.title ||
+                  "未命名新聞"
+                );
+
+              const link=
+                safeUrl(
+                  n.link
+                );
+
+              const pubDate=
+                safeText(
+                  n.pubDate ||
+                  ""
+                );
+
+
+              return `
 
 <a
-href="${escapeAttr(n.link || "#")}"
+href="${escapeAttr(link)}"
 target="_blank"
 rel="noopener noreferrer"
 class="block bg-white/5 rounded-2xl p-4 linkStock">
 
 <div class="text-sm font-bold leading-relaxed">
-${escapeHtml(n.title)}
+${escapeHtml(title)}
 </div>
 
 <div class="dataTime mt-2">
-${escapeHtml(n.pubDate || "")}
+${escapeHtml(pubDate)}
 </div>
 
 </a>
 
-`
-          )
-          .join("")
-
-        :`
-
-<div class="text-xs text-slate-500">
-目前沒有取得公開新聞。
-</div>
-
 `;
 
+            }
+          )
+          .join("");
 
-  document
-    .getElementById(
+    }
+
+  }
+
+
+  const source=
+    document.getElementById(
       "morningSource"
-    )
-    .textContent=
-      "國際市場：Yahoo Finance；新聞：Google News RSS；台股行情：TWSE。台指期需由正式期交所資料來源提供，不以其他商品代替。";
+    );
+
+  if(source){
+
+    source.textContent=
+      "國際市場：Yahoo Finance；"+
+      "新聞：Google News RSS；"+
+      "台股行情：TWSE；"+
+      "台指期：TAIFEX。"+
+      "外部資料若暫時無法取得，系統會以 -- 顯示，不影響其他資料。";
+
+  }
 
 }
 
@@ -2406,25 +2776,25 @@ async function renderWatch(){
       "watchContainer"
     );
 
-
-  document
-    .getElementById(
+  const count=
+    document.getElementById(
       "watchCount"
-    )
-    .textContent=
+    );
+
+  if(count){
+
+    count.textContent=
       watchlist.length;
 
+  }
 
-  if(
-    !watchlist.length
-  ){
+
+  if(!watchlist.length){
 
     container.innerHTML=`
-
 <div class="glass p-6 text-center text-sm text-slate-500">
 目前沒有自選股
 </div>
-
 `;
 
     return;
@@ -2444,19 +2814,23 @@ async function renderWatch(){
 <div>
 
 <a
-href="${yahooUrl(s)}"
+href="${escapeAttr(
+  yahooUrl(s)
+)}"
 target="_blank"
 rel="noopener noreferrer"
 class="linkStock">
 
 <div class="text-lg font-black underline decoration-slate-600 underline-offset-4">
-${escapeHtml(stockName(s))}
+${escapeHtml(
+  stockName(s)
+)}
 </div>
 
 </a>
 
 <div class="text-[10px] text-slate-500 mt-1">
-${escapeHtml(s)}.TW · 點擊名稱開啟 Yahoo 台灣
+${escapeHtml(s)}.TW · 點擊名稱開啟 Yahoo
 </div>
 
 </div>
@@ -2469,13 +2843,11 @@ class="text-slate-500 text-xl">
 
 </div>
 
-
 <div
 id="watch-${escapeAttr(s)}"
 class="mt-5 text-xs text-slate-500 loading">
-正在取得行情……
+正在取得資料……
 </div>
-
 
 <button
 onclick="openStock('${escapeAttr(s)}')"
@@ -2490,11 +2862,6 @@ class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs fon
       .join("");
 
 
-  /*
-    逐檔取得資料。
-    保留這種方式，避免一次大量 API 請求。
-  */
-
   for(
     const s of watchlist
   ){
@@ -2508,12 +2875,10 @@ class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs fon
         );
 
       const st=
-        data.stock ||
-        {};
+        data.stock || {};
 
       const latest=
-        st.latest ||
-        {};
+        st.latest || {};
 
       const live=
         !!st.realtime;
@@ -2528,19 +2893,21 @@ class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs fon
           latest.pct
         );
 
+
       const el=
         document.getElementById(
           "watch-"+s
         );
 
       if(!el){
+
         continue;
+
       }
 
 
       el.className=
         "mt-5";
-
 
       el.innerHTML=`
 
@@ -2554,28 +2921,30 @@ class="mt-4 w-full bg-white/5 border border-white/10 rounded-xl py-3 text-xs fon
     :"text-amber-400"
 }">
 
-${live
-  ?"● 盤中即時"
-  :"● 最近交易日"}
+${
+  live
+    ?"● 盤中即時"
+    :"● 最近交易日"
+}
 
 </div>
-
 
 <div class="text-[9px] text-slate-500 mt-1">
 ${escapeHtml(
-  latest.time ||
-  latest.date ||
-  "--"
+  safeText(
+    latest.time ||
+    latest.date
+  )
 )}
 </div>
 
-
 <div class="text-xl font-black mt-1">
-${fmt(latest.close)}
+${fmt(
+  latest.close
+)}
 </div>
 
 </div>
-
 
 <div class="text-right">
 
@@ -2589,15 +2958,15 @@ AI 趨勢
   )
 }">
 ${escapeHtml(
-  st.trend ||
-  "--"
+  safeText(
+    st.trend
+  )
 )}
 </div>
 
 </div>
 
 </div>
-
 
 <div class="flex justify-between mt-3 text-xs">
 
@@ -2648,7 +3017,10 @@ ${
           "mt-5 text-xs text-rose-400";
 
         el.textContent=
-          "資料讀取失敗："+e.message;
+          "資料讀取失敗："+safeText(
+            e &&
+            e.message
+          );
 
       }
 
@@ -2680,9 +3052,7 @@ function addWatch(){
     );
 
 
-  if(
-    input===null
-  ){
+  if(input===null){
 
     return;
 
@@ -2779,9 +3149,7 @@ async function analyze(
   force=false
 ){
 
-  if(
-    loadingAnalysis
-  ){
+  if(loadingAnalysis){
 
     return;
 
@@ -2829,7 +3197,9 @@ async function analyze(
       "stockName"
     )
     .textContent=
-      stockName(symbol);
+      stockName(
+        symbol
+      );
 
 
   document
@@ -2846,7 +3216,9 @@ async function analyze(
       "analysisYahoo"
     )
     .href=
-      yahooUrl(symbol);
+      yahooUrl(
+        symbol
+      );
 
 
   document
@@ -2865,8 +3237,7 @@ async function analyze(
       "正在取得即時與歷史資料……";
 
 
-  loadingAnalysis=
-    true;
+  loadingAnalysis=true;
 
 
   try{
@@ -2880,6 +3251,7 @@ async function analyze(
 
 
     if(
+      !data ||
       !data.stock
     ){
 
@@ -2890,9 +3262,45 @@ async function analyze(
     }
 
 
-    renderStock(
-      data.stock
-    );
+    try{
+
+      renderStock(
+        data.stock
+      );
+
+    }
+    catch(renderError){
+
+      console.error(
+        "renderStock error:",
+        renderError
+      );
+
+      document
+        .getElementById(
+          "stockTrend"
+        )
+        .textContent=
+          "資料異常";
+
+      document
+        .getElementById(
+          "stockTrend"
+        )
+        .className=
+          "text-2xl font-black text-rose-400";
+
+      document
+        .getElementById(
+          "stockReason"
+        )
+        .textContent=
+          "資料已取得，但畫面渲染發生錯誤："+safeText(
+            renderError &&
+            renderError.message
+          );
+
+    }
 
   }
   catch(e){
@@ -2904,14 +3312,12 @@ async function analyze(
       .textContent=
         "資料錯誤";
 
-
     document
       .getElementById(
         "stockTrend"
       )
       .className=
         "text-2xl font-black text-rose-400";
-
 
     document
       .getElementById(
@@ -2920,13 +3326,15 @@ async function analyze(
       .textContent=
         "無法取得 "+
         symbol+
-        " 資料："+e.message;
+        " 資料："+safeText(
+          e &&
+          e.message
+        );
 
   }
   finally{
 
-    loadingAnalysis=
-      false;
+    loadingAnalysis=false;
 
   }
 
@@ -2935,9 +3343,15 @@ async function analyze(
 
 function renderStock(st){
 
+  st=
+    st &&
+    typeof st==="object"
+      ?st
+      :{};
+
+
   const latest=
-    st.latest ||
-    {};
+    st.latest || {};
 
   const change=
     number(
@@ -2979,51 +3393,50 @@ function renderStock(st){
       "stockCode"
     )
     .textContent=
-      st.symbol+
+      safeText(
+        st.symbol
+      )+
       ".TW";
 
 
-  document
-    .getElementById(
+  const trend=
+    safeText(
+      st.trend
+    );
+
+
+  const trendEl=
+    document.getElementById(
       "stockTrend"
-    )
-    .textContent=
-      st.trend ||
-      "--";
+    );
+
+  trendEl.textContent=
+    trend;
+
+  trendEl.className=
+    "text-2xl font-black "+
+    trendColor(
+      st.trend
+    );
 
 
-  document
-    .getElementById(
-      "stockTrend"
-    )
-    .className=
-      "text-2xl font-black "+
-      trendColor(
-        st.trend
-      );
-
-
-  document
-    .getElementById(
+  const statusEl=
+    document.getElementById(
       "stockDataStatus"
-    )
-    .textContent=
+    );
+
+  statusEl.textContent=
+    live
+      ?"● 盤中即時資料"
+      :"● 最近交易日收盤資料";
+
+  statusEl.className=
+    "mt-4 text-[10px] "+
+    (
       live
-        ?"● 盤中即時資料"
-        :"● 最近交易日收盤資料";
-
-
-  document
-    .getElementById(
-      "stockDataStatus"
-    )
-    .className=
-      "mt-4 text-[10px] "+
-      (
-        live
-          ?"text-emerald-400"
-          :"text-amber-400"
-      );
+        ?"text-emerald-400"
+        :"text-amber-400"
+    );
 
 
   document
@@ -3041,54 +3454,51 @@ function renderStock(st){
       "stockPriceStatus"
     )
     .textContent=
-      latest.time ||
-      latest.date ||
-      "--";
+      safeText(
+        latest.time ||
+        latest.date
+      );
 
 
-  document
-    .getElementById(
+  const changeEl=
+    document.getElementById(
       "stockChange"
-    )
-    .textContent=
-      Number.isFinite(change)
-        ?(
-          (change>=0?"+":"")+
-          fmt(change)
-        )
-        :"--";
+    );
+
+  changeEl.textContent=
+    Number.isFinite(change)
+      ?(
+        (change>=0?"+":"")+
+        fmt(change)
+      )
+      :"--";
+
+  changeEl.className=
+    "text-2xl font-black mt-1 "+
+    colorFor(
+      change
+    );
 
 
-  document
-    .getElementById(
-      "stockChange"
-    )
-    .className=
-      "text-2xl font-black mt-1 "+
-      colorFor(change);
-
-
-  document
-    .getElementById(
+  const pctEl=
+    document.getElementById(
       "stockChangePct"
-    )
-    .textContent=
-      Number.isFinite(pct)
-        ?(
-          (pct>=0?"+":"")+
-          fmt(pct)+
-          "%"
-        )
-        :"--";
+    );
 
+  pctEl.textContent=
+    Number.isFinite(pct)
+      ?(
+        (pct>=0?"+":"")+
+        fmt(pct)+
+        "%"
+      )
+      :"--";
 
-  document
-    .getElementById(
-      "stockChangePct"
-    )
-    .className=
-      "text-2xl font-black mt-1 "+
-      colorFor(pct);
+  pctEl.className=
+    "text-2xl font-black mt-1 "+
+    colorFor(
+      pct
+    );
 
 
   document
@@ -3096,8 +3506,9 @@ function renderStock(st){
       "stockDate"
     )
     .textContent=
-      latest.date ||
-      "--";
+      safeText(
+        latest.date
+      );
 
 
   renderStockFactors(
@@ -3105,44 +3516,61 @@ function renderStock(st){
   );
 
 
-  document
-    .getElementById(
+  const direction=
+    document.getElementById(
       "analysisDirection"
-    )
-    .textContent=
-      st.trend ||
-      "--";
+    );
+
+  direction.textContent=
+    safeText(
+      st.trend
+    );
+
+  direction.className=
+    "font-black mt-1 "+
+    trendColor(
+      st.trend
+    );
 
 
-  document
-    .getElementById(
-      "analysisDirection"
-    )
-    .className=
-      "font-black mt-1 "+
-      trendColor(
-        st.trend
-      );
-
+  const probability=
+    number(
+      st.probability
+    );
 
   document
     .getElementById(
       "analysisProbability"
     )
     .textContent=
-      st.probability!=null
-        ?st.probability+"%"
+      Number.isFinite(
+        probability
+      )
+        ?fmt(
+            probability,
+            0
+          )+"%"
         :"--";
 
+
+  const accuracy=
+    number(
+      st.backtest &&
+      st.backtest.accuracy
+    );
 
   document
     .getElementById(
       "analysisAccuracy"
     )
     .textContent=
-      st.backtest &&
-      st.backtest.accuracy!=null
-        ?st.backtest.accuracy+"%"
+      Number.isFinite(
+        accuracy
+      )
+        ?fmt(
+            accuracy,
+            0
+          )+"%"
         :"--";
 
 
@@ -3151,23 +3579,31 @@ function renderStock(st){
       "stockReason"
     )
     .textContent=
-      st.reason ||
-      "--";
+      safeText(
+        st.reason
+      );
 
 
   renderPredictionHistory(
-    st.predictions ||
-    []
+    Array.isArray(
+      st.predictions
+    )
+      ?st.predictions
+      :[]
   );
 
 }
 
 
-function renderStockFactors(st){
+function renderStockFactors(
+  st
+){
+
+  st=
+    st || {};
 
   const latest=
-    st.latest ||
-    {};
+    st.latest || {};
 
   const price=
     number(
@@ -3176,95 +3612,99 @@ function renderStockFactors(st){
 
 
   const factors=[
-
     {
       name:"MA5",
       value:st.ma5
     },
-
     {
       name:"MA10",
       value:st.ma10
     },
-
     {
       name:"MA20",
       value:st.ma20
     },
-
     {
       name:"近期動能",
       value:
-        st.momentum!=null
-          ?fmt(st.momentum)+"%"
+        Number.isFinite(
+          number(
+            st.momentum
+          )
+        )
+          ?fmt(
+              st.momentum
+            )+"%"
           :"--"
     }
-
   ];
 
 
-  document
-    .getElementById(
+  const el=
+    document.getElementById(
       "stockFactors"
-    )
-    .innerHTML=
-      factors
-        .map(
-          (x,i)=>{
+    );
 
-            const n=
-              number(
-                x.value
+
+  el.innerHTML=
+    factors
+      .map(
+        (x,i)=>{
+
+          const n=
+            number(
+              x.value
+            );
+
+          let width=50;
+
+
+          if(
+            i<3 &&
+            Number.isFinite(price) &&
+            Number.isFinite(n) &&
+            n!==0
+          ){
+
+            width=
+              Math.max(
+                15,
+                Math.min(
+                  100,
+                  price/n*50
+                )
               );
 
-            let width=
-              50;
+          }
 
 
-            if(
-              i<3 &&
-              Number.isFinite(price) &&
-              Number.isFinite(n) &&
-              n!==0
-            ){
+          if(
+            i===3 &&
+            Number.isFinite(n)
+          ){
 
-              width=
-                Math.max(
-                  15,
-                  Math.min(
-                    100,
-                    price/n*50
-                  )
-                );
+            width=
+              Math.max(
+                10,
+                Math.min(
+                  100,
+                  50+n*10
+                )
+              );
 
-            }
+          }
 
 
-            if(
-              i===3 &&
-              Number.isFinite(n)
-            ){
-
-              width=
-                Math.max(
-                  10,
-                  Math.min(
-                    100,
-                    50+n*10
-                  )
-                );
-
-            }
-
-
-            return `
+          return `
 
 <div>
 
 <div class="flex justify-between text-xs mb-2">
 
 <span class="text-slate-300 font-bold">
-${escapeHtml(x.name)}
+${escapeHtml(
+  x.name
+)}
 </span>
 
 <span class="text-cyan-400 font-black">
@@ -3285,9 +3725,9 @@ ${
 
 `;
 
-          }
-        )
-        .join("");
+        }
+      )
+      .join("");
 
 }
 
@@ -3297,23 +3737,20 @@ function renderPredictionHistory(
 ){
 
   const el=
-    document
-      .getElementById(
-        "predictionHistory"
-      );
+    document.getElementById(
+      "predictionHistory"
+    );
 
 
   if(
-    !items ||
+    !Array.isArray(items) ||
     !items.length
   ){
 
     el.innerHTML=`
-
 <div class="text-xs text-slate-500">
 目前尚無預測紀錄。
 </div>
-
 `;
 
     return;
@@ -3326,7 +3763,27 @@ function renderPredictionHistory(
       .slice(-10)
       .reverse()
       .map(
-        x=>`
+        x=>{
+
+          x=
+            x &&
+            typeof x==="object"
+              ?x
+              :{};
+
+
+          const probability=
+            number(
+              x.probability
+            );
+
+          const actualPct=
+            number(
+              x.actualPct
+            );
+
+
+          return `
 
 <div class="border-b border-white/5 py-3 last:border-0">
 
@@ -3334,8 +3791,9 @@ function renderPredictionHistory(
 
 <span>
 ${escapeHtml(
-  x.date ||
-  "--"
+  safeText(
+    x.date
+  )
 )}
 </span>
 
@@ -3343,55 +3801,65 @@ ${escapeHtml(
   x.correct===true
     ?"text-emerald-400"
     :x.correct===false
-    ?"text-rose-400"
-    :"text-slate-400"
+      ?"text-rose-400"
+      :"text-slate-400"
 } font-black">
 
 ${
   x.correct===true
     ?"✓ 正確"
     :x.correct===false
-    ?"✕ 錯誤"
-    :"待驗證"
+      ?"✕ 錯誤"
+      :"待驗證"
 }
 
 </span>
 
 </div>
 
-
 <div class="text-[10px] text-slate-500 mt-1">
 
 預測：
 ${escapeHtml(
-  x.predictedTrend ||
-  "--"
+  safeText(
+    x.predictedTrend
+  )
 )}
 
 ｜
 實際：
 ${escapeHtml(
-  x.actualTrend ||
-  "待驗證"
+  safeText(
+    x.actualTrend ||
+    "待驗證"
+  )
 )}
 
 </div>
-
 
 <div class="text-[10px] text-slate-500 mt-1">
 
 模型信心：
 ${
-  x.probability!=null
-    ?x.probability+"%"
+  Number.isFinite(
+    probability
+  )
+    ?fmt(
+        probability,
+        0
+      )+"%"
     :"--"
 }
 
 ｜
 實際漲跌：
 ${
-  x.actualPct!=null
-    ?fmt(x.actualPct)+"%"
+  Number.isFinite(
+    actualPct
+  )
+    ?fmt(
+        actualPct
+      )+"%"
     :"待驗證"
 }
 
@@ -3399,7 +3867,9 @@ ${
 
 </div>
 
-`
+`;
+
+        }
       )
       .join("");
 
@@ -3420,7 +3890,6 @@ function openStock(
     )
     .value=
       symbol;
-
 
   switchPage(
     "analysis"
@@ -3457,7 +3926,9 @@ function switchPage(
 
 
   if(!target){
+
     return;
+
   }
 
 
@@ -3467,36 +3938,39 @@ function switchPage(
 
 
   const map={
-
     home:"navHome",
-
     morning:"navMorning",
-
     watchlist:"navWatch",
-
     analysis:"navAnalysis"
-
   };
 
 
-  Object.entries(map)
-    .forEach(
-      ([k,id])=>{
+  Object.entries(
+    map
+  ).forEach(
+    ([k,id])=>{
 
-        document
-          .getElementById(
-            id
-          )
-          .className=
-            "flex flex-col items-center gap-1 "+
-            (
-              k===page
-                ?"text-blue-400"
-                :"text-slate-500"
-            );
+      const el=
+        document.getElementById(
+          id
+        );
+
+      if(!el){
+
+        return;
 
       }
-    );
+
+      el.className=
+        "flex flex-col items-center gap-1 "+
+        (
+          k===page
+            ?"text-blue-400"
+            :"text-slate-500"
+        );
+
+    }
+  );
 
 
   if(
@@ -3550,7 +4024,9 @@ function refreshCurrentPage(){
 
 
   if(!active){
+
     return;
+
   }
 
 
@@ -3561,7 +4037,6 @@ function refreshCurrentPage(){
     loadHome(true);
 
   }
-
   else if(
     active.id==="morningPage"
   ){
@@ -3569,7 +4044,6 @@ function refreshCurrentPage(){
     loadMorning(true);
 
   }
-
   else if(
     active.id==="watchlistPage"
   ){
@@ -3577,59 +4051,11 @@ function refreshCurrentPage(){
     renderWatch();
 
   }
-
   else if(
     active.id==="analysisPage"
   ){
 
     analyze(true);
-
-  }
-
-}
-
-
-/* =========================================================
-   顯示時間
-========================================================= */
-
-function formatDisplayTime(
-  iso
-){
-
-  try{
-
-    const d=
-      new Date(iso);
-
-    if(
-      isNaN(
-        d.getTime()
-      )
-    ){
-
-      return iso;
-
-    }
-
-    return d.toLocaleString(
-      "zh-TW",
-      {
-        timeZone:"Asia/Taipei",
-        year:"numeric",
-        month:"2-digit",
-        day:"2-digit",
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit",
-        hour12:false
-      }
-    );
-
-  }
-  catch(e){
-
-    return iso;
 
   }
 
@@ -3683,18 +4109,59 @@ function escapeAttr(
 
 
 /* =========================================================
+   全域錯誤防護
+   防止單一資料欄位造成整頁失效
+========================================================= */
+
+window.addEventListener(
+  "error",
+  function(event){
+
+    console.error(
+      "Global JS error:",
+      event.error ||
+      event.message
+    );
+
+  }
+);
+
+
+window.addEventListener(
+  "unhandledrejection",
+  function(event){
+
+    console.error(
+      "Unhandled Promise:",
+      event.reason
+    );
+
+  }
+);
+
+
+/* =========================================================
    初始化
 ========================================================= */
 
-loadHome();
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
 
-renderWatch();
+    loadHome();
 
-analyze();
+    renderWatch();
+
+    analyze();
+
+  }
+);
 
 
 /* =========================================================
    Service Worker
+   注意：
+   SW 本身下一步再更新
 ========================================================= */
 
 if(
@@ -3703,19 +4170,12 @@ if(
 
   window.addEventListener(
     "load",
-    ()=>{
+    function(){
 
       navigator.serviceWorker
         .register(
-          "./sw.js?v=20260819",
-          {
-            updateViaCache:"none"
-          }
-        )
-        .then(
-          registration=>{
-            registration.update();
-          }
+          "./sw.js?v="+
+          APP_VERSION
         )
         .catch(
           e=>
