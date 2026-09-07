@@ -1,12 +1,11 @@
 {
   "name": "AI 台股預測",
   "short_name": "AI台股預測",
-  "description": "台股大盤、隔夜晨報、自選股與個股 AI 分析",
-  "lang": "zh-TW",
   "start_url": "./",
-  "scope": "./",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#020617",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "lang": "zh-Hant",
+  "icons": []
 }
